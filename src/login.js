@@ -35,7 +35,7 @@ function setFormMessage(formElement, type, message){
     createAccountForm.addEventListener("submit", (event) => {
        event.preventDefault(); // Prevent default form submission
  
-       // Form validation logic, I think this is wrong im confused 
+       // Form validation logic, I think this is wrong im confused, This one is gpt and I think it made it worse I'll fix it sometime
        const usernameInput = createAccountForm.querySelector("input[name='username']");
        if (usernameInput.value.length < 5) {
           setInputError(usernameInput, "Username must be at least 5 characters.");
