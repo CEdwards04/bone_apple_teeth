@@ -1,9 +1,17 @@
 function Navbar() {
     return (
-      <div className="App">
-            <h1>CS 230 Group 8 Project</h1>
-       <h2>Bone Apple Teeth</h2>
-      </div>
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div className="container-fluid">
+            <a className="navbar-brand" href="#">Bone Apple Teeth</a>
+            <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div className="navbar-nav">
+                    <a className="nav-link" href="#">About</a>
+                    <a className="nav-link" href="#">Contact</a>
+                </div>
+            </div>
+            <a className="nav-link" href="#">Login/Register</a>
+        </div>
+      </nav>
     );
   }
   

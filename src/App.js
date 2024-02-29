@@ -1,11 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
+import './Navbar';
+import Navbar from './Navbar';
 
 function App() {
   return (
     <div className="App">
-          <h1>CS 230 Group 8 Project</h1>
-     <h2>Bone Apple Teeth</h2>
+        <Navbar></Navbar>
+        <h1>CS 230 Group 8 Project</h1>
+        <h2>Bone Apple Teeth</h2>
     </div>
   );
 }
