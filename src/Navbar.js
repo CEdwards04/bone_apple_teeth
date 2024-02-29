@@ -2,7 +2,7 @@ function Navbar() {
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
-            <a className="navbar-brand" href="#">Bone Apple Teeth</a>
+            <img src="Bone_Apple_Teeth-logos_transparent.png" alt="Bone Apple Teeth Logo"/>
             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div className="navbar-nav">
                     <a className="nav-link" href="#">About</a>
