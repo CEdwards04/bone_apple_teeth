@@ -1,5 +1,7 @@
 import logo from './Bone_Apple_Teeth-logos_transparent.png';
 import ProfilePopup from './ProfilePopup';
+import mealSearch from './mealSearch';
+import redirect from './mealSearch';
 
 
 function Navbar() {
@@ -11,7 +13,7 @@ function Navbar() {
         </a>
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav">
-            <a className="nav-link" href="#">Meal Search</a>
+            <a className="nav-link" href="mealSearch.html">Meal Search</a>
             <a className="nav-link" href="#">About</a>
             <a className="nav-link" href="#">Contact</a>
           </div>
