@@ -1,4 +1,6 @@
 import logo from './Bone_Apple_Teeth-logos_transparent.png';
+import ProfilePopup from './ProfilePopup';
+
 
 function Navbar() {
   return (
@@ -13,6 +15,7 @@ function Navbar() {
             <a className="nav-link" href="#">Contact</a>
           </div>
         </div>
+        <ProfilePopup></ProfilePopup>
         <a className="nav-link" href="#"><button className="btn btn-dark" type="submit">Login/Register</button></a>
       </div>
     </nav>
