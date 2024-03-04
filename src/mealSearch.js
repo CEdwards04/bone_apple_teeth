@@ -3,7 +3,7 @@ import './Navbar';
 import Navbar from './Navbar';
 import './ProfilePopup';
 
-function mealSearch() {
+function MealSearch() {
     return (
         <div>
           <Navbar></Navbar>
@@ -13,4 +13,4 @@ function mealSearch() {
       );
 }
 
-export default mealSearch;
+export default MealSearch;

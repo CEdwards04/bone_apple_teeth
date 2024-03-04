@@ -1,4 +1,4 @@
-function card() {
+function Card() {
     return (
         <div className="d-flex justify-content-center">
             <div className="row row-cols-1 row-cols-md-4 g-4">
@@ -31,4 +31,4 @@ function card() {
     );
   }
 
-  export default card;
+  export default Card;
