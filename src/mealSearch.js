@@ -2,6 +2,8 @@ import './App.css';
 import './Navbar';
 import Navbar from './Navbar';
 import './ProfilePopup';
+import './mealCard';
+import Card from './mealCard';
 
 function MealSearch() {
     return (
@@ -9,6 +11,7 @@ function MealSearch() {
           <Navbar></Navbar>
           <h1>Meal Search</h1>
           <h2>Bone Apple Teeth</h2>
+          <Card></Card>
         </div>
       );
 }

@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './recipe.css';
 import './Navbar';
 import Navbar from './Navbar';
