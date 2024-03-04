@@ -1,4 +1,4 @@
-import './App.css';
+//import './App.css';
 //import './login.css';
 import './Navbar';
 import Navbar from './Navbar';
