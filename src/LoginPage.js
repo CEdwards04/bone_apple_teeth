@@ -2,7 +2,7 @@
 //import './login.css';
 import "./Navbar";
 import Navbar from "./Navbar";
-import "./ProfilePopup";
+import "./ProfilePage/ProfilePopup";
 import './LoginPage.css';
 function LoginPage() {
   return (

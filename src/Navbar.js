@@ -1,5 +1,5 @@
 import logo from './Bone_Apple_Teeth-logos_transparent.png';
-import ProfilePopup from './ProfilePopup';
+import ProfilePopup from './ProfilePage/ProfilePopup';
 import mealSearch from './mealSearch';
 import redirect from './mealSearch';
 
