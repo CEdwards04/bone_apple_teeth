@@ -1,75 +1,152 @@
-import './App.css';
-//import './App.css';
-//import './login.css';
-import './Navbar';
+import React, { useState } from 'react';
 import Navbar from './Navbar';
 
-function LoginPage() {
+const LoginPage = () => {
+  const [showLoginForm, setShowLoginForm] = useState(true);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Add your form submission logic here
+  };
+
+  const toggleForm = () => {
+    setShowLoginForm(!showLoginForm);
+  };
+
   return (
-    <><div>
-      <Navbar></Navbar>
-      <h1>LOGIN</h1>
-    </div><>
-        <head>
-          <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
-          <meta charset="utf-8"></meta>
-          <title>Login / Sign Up Form</title>
-          <link rel="stylesheet" href="login.css"></link>
-          <link rel="preconnect" href="https://fonts.googleapis.com"></link> //The font I chose this can be changed later just was messing around with fonts
-          //The font I chose this can be changed later just was messing around with fonts
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></link>
-          <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet"></link>
-        </head>
-        <body>
-          <Navbar></Navbar>
-          <div className="container">
-            <form className="form" id="login">
-              <h1 className="form__title">Login</h1>
-              <div className="form__message form__message--error"></div>
-              <div className="form__input-group">
-                <input type="text" className="form__input" autofocus placeholder="Username or email"></input>
-                <div className="form__input-error-message"></div>
-              </div>
-              <div className="form__input-group">
-                <input type="password" className="form__input" autofocus placeholder="Password"></input>
-                <div className="form__input-error-message"></div>
-              </div>
-              <button className="form__button" type="submit">Continue</button>
-              <p className="form__text">
-                <a href="#" className="form__link">Forgot your password?</a>
-              </p>
-              <p className="form__text">
-                <a className="form__link" href="./" id="linkCreateAccount">Don't have an account? Create account</a>
-              </p>
-            </form>
-            <form className="form form--hidden" id="createAccount">
-              <h1 className="form__title">Create Account</h1>
-              <div className="form__message form__message--error"></div>
-              <div className="form__input-group">
-                <input type="text" className="form__input" autofocus placeholder="Username"></input>
-                <div className="form__input-error-message"></div>
-              </div>
-              <div className="form__input-group">
-                <input type="text" className="form__input" autofocus placeholder="Email Adress"></input>
-                <div className="form__input-error-message"></div>
-              </div>
-              <div className="form__input-group">
-                <input type="text" className="form__input" autofocus placeholder="Password"></input>
-                <div className="form__input-error-message"></div>
-              </div>
-              <div className="form__input-group">
-                <input type="text" className="form__input" autofocus placeholder="Confirm Password"></input>
-                <div className="form__input-error-message"></div>
-              </div>
-              <button className="form__button" type="submit">Continue</button>
-              <p className="form__text">
-                <a className="form__link" href="./" id="linkLogin">Already have an account? Sign in</a>
-              </p>
-            </form>
-          </div>
-          <script src="script.js"></script>
-        </body>
-      </></>
+    <div>
+      <div className="navbar-container">
+        <Navbar />
+      </div>
+      <div style={styles.container}>
+        {showLoginForm && (
+          <form style={styles.form} id="login" onSubmit={handleSubmit}>
+            <h1 style={styles.form__title}>Login</h1>
+            <div style={{ ...styles.form__message, ...styles['form__message--error'] }}></div>
+            <div style={styles.form__input_group}>
+              <input type="text" style={styles.form__input} autoFocus placeholder="Username or email" />
+              <div style={styles.form__input_error_message}></div>
+            </div>
+            <div style={styles.form__input_group}>
+              <input type="password" style={styles.form__input} placeholder="Password" />
+              <div style={styles.form__input_error_message}></div>
+            </div>
+            <button style={styles.form__button} type="submit">Continue</button>
+            <p style={styles.form__text}>
+              <button style={styles.form__link} onClick={toggleForm}>Don't have an account? Create account</button>
+            </p>
+          </form>
+        )}
+
+        {!showLoginForm && (
+          <form style={{ ...styles.form, }} id="createAccount" onSubmit={handleSubmit}>
+            <h1 style={styles.form__title}>Create Account</h1>
+            <div style={{ ...styles.form__message, ...styles['form__message--error'] }}></div>
+            <div style={styles.form__input_group}>
+              <input type="text" style={styles.form__input} autoFocus placeholder="Username" />
+              <div style={styles.form__input_error_message}></div>
+            </div>
+            <div style={styles.form__input_group}>
+              <input type="text" style={styles.form__input} autoFocus placeholder="Email Address" />
+              <div style={styles.form__input_error_message}></div>
+            </div>
+            <div style={styles.form__input_group}>
+              <input type="password" style={styles.form__input} autoFocus placeholder="Password" />
+              <div style={styles.form__input_error_message}></div>
+            </div>
+            <div style={styles.form__input_group}>
+              <input type="password" style={styles.form__input} autoFocus placeholder="Confirm Password" />
+              <div style={styles.form__input_error_message}></div>
+            </div>
+            <button style={styles.form__button} type="submit">Continue</button>
+            <p style={styles.form__text}>
+              <button style={styles.form__link} onClick={toggleForm}>Already have an account? Sign in</button>
+            </p>
+          </form>
+        )}
+      </div>
+    </div>
   );
-}
-export default LoginPage; 
+};
+
+const styles = {
+  container: {
+    width: '400px',
+    maxWidth: '400px',
+    margin: '1rem auto', // Center the form horizontally
+    padding: '2rem',
+    boxShadow: '0 0 40px rgba(0, 0, 0, 0.2)',
+    borderRadius: '4px',
+    background: '#ffffff',
+    fontFamily: 'Rubik, sans-serif',
+  },
+  form: {
+    textAlign: 'center',
+  },
+  form__title: {
+    marginBottom: '2rem',
+    textAlign: 'center',
+  },
+  form__message: {
+    textAlign: 'center',
+    marginBottom: '1rem',
+  },
+  'form__message--error': {
+    color: '#cc3333',
+  },
+  form__input_group: {
+    marginBottom: '1rem',
+  },
+  form__input: {
+    display: 'block',
+    width: '100%',
+    padding: '0.75rem',
+    boxSizing: 'border-box',
+    borderRadius: '4px',
+    border: '1px solid #3B4C5A',
+    outline: 'none',
+    background: '#eeeeee',
+    transition: 'background 0.2s, border-color 0.2s',
+  },
+  form__input_error_message: {
+    marginTop: '0.5rem',
+    fontSize: '0.85rem',
+    color: '#cc3333',
+  },
+  form__button: {
+    width: '100%',
+    padding: '1rem 2rem',
+    fontSize: '1.1rem',
+    color: '#ffffff',
+    border: 'none',
+    borderRadius: '4px',
+    outline: 'none',
+    cursor: 'pointer',
+    background: '#3B4C5A',
+  },
+  form__button_hover: {
+    background: '#007f67',
+  },
+  form__button_active: {
+    transform: 'scale(0.98)',
+  },
+  form__text: {
+    textAlign: 'center',
+  },
+  form__link: {
+    color: '#252c6a',
+    textDecoration: 'none',
+    cursor: 'pointer',
+    border: 'none',
+    background: 'none',
+    outline: 'none',
+  },
+  'form__link:hover': {
+    textDecoration: 'underline',
+  },
+  'form--hidden': {
+    display: 'none',
+  },
+};
+
+export default LoginPage;
