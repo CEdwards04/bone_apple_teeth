@@ -1,8 +1,8 @@
 import './App.css';
+//import './App.css';
 //import './login.css';
 import './Navbar';
 import Navbar from './Navbar';
-import './ProfilePopup';
 
 function LoginPage() {
   return (
@@ -72,3 +72,4 @@ function LoginPage() {
       </></>
   );
 }
+export default LoginPage; 
