@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Navbar from './Navbar';
+import LoginStyle from './CSS Modules/LoginPage.module.css';
 
 const LoginPage = () => {
   const [showLoginForm, setShowLoginForm] = useState(true);
@@ -18,49 +19,49 @@ const LoginPage = () => {
       <div className="navbar-container">
         <Navbar />
       </div>
-      <div style={styles.container}>
+      <div className={LoginStyle.container}>
         {showLoginForm && (
-          <form style={styles.form} id="login" onSubmit={handleSubmit}>
-            <h1 style={styles.form__title}>Login</h1>
-            <div style={{ ...styles.form__message, ...styles['form__message--error'] }}></div>
-            <div style={styles.form__input_group}>
-              <input type="text" style={styles.form__input} autoFocus placeholder="Username or email" />
-              <div style={styles.form__input_error_message}></div>
+          <form className={LoginStyle.form} id="login" onSubmit={handleSubmit}>
+            <h1 className={LoginStyle.form_title}>Login</h1>
+            <div className={'${LoginStyle.form_message} ${LoginStyle.form_input_error_message}'}></div>
+            <div className={LoginStyle.form_input_group}>
+              <input type="text" className={LoginStyle.form_input} autoFocus placeholder="Username or email" />
+              <div className={LoginStyle.form_input_error_message}></div>
             </div>
-            <div style={styles.form__input_group}>
-              <input type="password" style={styles.form__input} placeholder="Password" />
-              <div style={styles.form__input_error_message}></div>
+            <div className={LoginStyle.form_input_group}>
+              <input type="password" className={LoginStyle.form_input} placeholder="Password" />
+              <div className={LoginStyle.form_input_error_message}></div>
             </div>
-            <button style={styles.form__button} type="submit">Continue</button>
-            <p style={styles.form__text}>
-              <button style={styles.form__link} onClick={toggleForm}>Don't have an account? Create account</button>
+            <button className={LoginStyle.form_button} type="submit">Continue</button>
+            <p className={LoginStyle.form_text}>
+              <button className={LoginStyle.form_link} onClick={toggleForm}>Don't have an account? Create account</button>
             </p>
           </form>
         )}
 
         {!showLoginForm && (
-          <form style={{ ...styles.form, }} id="createAccount" onSubmit={handleSubmit}>
-            <h1 style={styles.form__title}>Create Account</h1>
-            <div style={{ ...styles.form__message, ...styles['form__message--error'] }}></div>
-            <div style={styles.form__input_group}>
-              <input type="text" style={styles.form__input} autoFocus placeholder="Username" />
-              <div style={styles.form__input_error_message}></div>
+          <form className={LoginStyle.form} id="createAccount" onSubmit={handleSubmit}>
+            <h1 className={LoginStyle.form_title}>Create Account</h1>
+            <div className={'${LoginStyle.form_message} ${LoginStyle.form_message-error}'}></div>
+            <div className={LoginStyle.form__input_group}>
+              <input type="text" className={LoginStyle.form_input} autoFocus placeholder="Username" />
+              <div className={LoginStyle.form_input_error_message}></div>
             </div>
-            <div style={styles.form__input_group}>
-              <input type="text" style={styles.form__input} autoFocus placeholder="Email Address" />
-              <div style={styles.form__input_error_message}></div>
+            <div className={LoginStyle.form_input_group}>
+              <input type="text" className={LoginStyle.form_input} autoFocus placeholder="Email Address" />
+              <div className={LoginStyle.form_input_error_message}></div>
             </div>
-            <div style={styles.form__input_group}>
-              <input type="password" style={styles.form__input} autoFocus placeholder="Password" />
-              <div style={styles.form__input_error_message}></div>
+            <div className={LoginStyle.form_input_group}>
+              <input type="password" className={LoginStyle.form_input} autoFocus placeholder="Password" />
+              <div className={LoginStyle.form_input_error_message}></div>
             </div>
-            <div style={styles.form__input_group}>
-              <input type="password" style={styles.form__input} autoFocus placeholder="Confirm Password" />
-              <div style={styles.form__input_error_message}></div>
+            <div className={LoginStyle.form_input_group}>
+              <input type="password" className={LoginStyle.form_input} autoFocus placeholder="Confirm Password" />
+              <div className={LoginStyle.form_input_error_message}></div>
             </div>
-            <button style={styles.form__button} type="submit">Continue</button>
-            <p style={styles.form__text}>
-              <button style={styles.form__link} onClick={toggleForm}>Already have an account? Sign in</button>
+            <button className={LoginStyle.form_button} type="submit">Continue</button>
+            <p className={LoginStyle.form_text}>
+              <button className={LoginStyle.form_link} onClick={toggleForm}>Already have an account? Sign in</button>
             </p>
           </form>
         )}
@@ -69,7 +70,8 @@ const LoginPage = () => {
   );
 };
 
-const styles = {
+/*
+const LoginStyle = {
   container: {
     width: '400px',
     maxWidth: '400px',
@@ -148,5 +150,7 @@ const styles = {
     display: 'none',
   },
 };
+
+*/
 
 export default LoginPage;
