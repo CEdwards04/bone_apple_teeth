@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; 
-import './ProfilePage.css';
+import ProfileStyle from './ProfilePage.module.css';
 
 const ProfilePopup = () => {
     return (
-        <Link to="/profile" className="profile-button">Profile</Link> 
+        <Link to="/profile" className={ProfileStyle.profile_button}>Profile</Link> 
     );
 };
 
