@@ -1,12 +1,12 @@
 import './App.css';
-import './ProfilePage/ProfilePopup';
-import './ProfilePage/ProfilePage'
+import './Pages/ProfilePage/ProfilePopup';
+import './Pages/ProfilePage/ProfilePage'
 import { BrowserRouter, Routes, Route, useHref} from "react-router-dom";
 import Home from './Home';
 import MealSearch from './mealSearch';
 import LoginPage from './LoginPage';
-import ProfilePopup from './ProfilePage/ProfilePopup';
-import UserProfile from './ProfilePage/ProfilePage';
+import ProfilePopup from './Pages/ProfilePage/ProfilePopup';
+import UserProfile from './Pages/ProfilePage/ProfilePage';
 
 function App() {
   return (

@@ -1,7 +1,7 @@
 import './App.css';
 import './Navbar';
 import Navbar from './Navbar';
-import './ProfilePage/ProfilePopup';
+import './Pages/ProfilePage/ProfilePopup';
 
 function Home() {
   return (

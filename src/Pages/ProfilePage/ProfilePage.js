@@ -1,7 +1,7 @@
 
-import '../Navbar'
+import '../../Navbar';
 import React from 'react';
-import Navbar from '../Navbar'; 
+import Navbar from '../../Navbar';
 import ProfileStyle from './ProfilePage.module.css';
 import RecipeCard from './ProfileRecipeCard';
 import FavoritesCard from './ProfileFavoritesCard';
