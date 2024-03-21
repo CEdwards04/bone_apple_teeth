@@ -1,0 +1,17 @@
+td {
+    padding: 0px 20px;
+}
+
+form {
+    text-align: left;
+}
+
+.meal_cards {
+    padding-left: 150px;
+    color: white;
+    position: absolute;
+}
+
+label {
+    padding-right: 10px;
+}
