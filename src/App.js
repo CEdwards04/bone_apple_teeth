@@ -8,6 +8,32 @@ import LoginPage from './LoginPage';
 import ProfilePopup from './Pages/ProfilePage/ProfilePopup';
 import UserProfile from './Pages/ProfilePage/ProfilePage';
 
+import { Amplify } from 'aws-amplify';
+
+import { withAuthenticator } from '@aws-amplify/ui-react';
+import '@aws-amplify/ui-react/styles.css';
+import config from './amplifyconfiguration.json';
+Amplify.configure(config);
+
+function App({ signOut, user }) {
+  return (
+    <div className="App">
+      <button onClick={signOut}>Sign out</button>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home></Home>}></Route>
+          <Route path="/meal-search" element={<MealSearch></MealSearch>}></Route>
+          <Route path="/login" element={<LoginPage></LoginPage>}></Route>
+          <Route path="/profile" element={<UserProfile />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
+  );
+}
+
+export default withAuthenticator(App);
+
+
 /*function App() {
   return (
     <div className="App">
@@ -25,7 +51,7 @@ import UserProfile from './Pages/ProfilePage/ProfilePage';
 
 export default App;*/
 
-import { Amplify } from 'aws-amplify';
+/*import { Amplify } from 'aws-amplify';
 
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
@@ -41,4 +67,4 @@ function App({ signOut, user }) {
   );
 }
 
-export default withAuthenticator(App);
+export default withAuthenticator(App);*/
