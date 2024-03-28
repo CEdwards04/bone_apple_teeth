@@ -8,7 +8,7 @@ import LoginPage from './LoginPage';
 import ProfilePopup from './Pages/ProfilePage/ProfilePopup';
 import UserProfile from './Pages/ProfilePage/ProfilePage';
 
-/*function App() {
+function App() {
   return (
     <div className="App">
       <BrowserRouter>
@@ -23,9 +23,9 @@ import UserProfile from './Pages/ProfilePage/ProfilePage';
   );
 }
 
-export default App;*/
+export default App;
 
-import { Amplify } from 'aws-amplify';
+/*import { Amplify } from 'aws-amplify';
 
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
@@ -41,4 +41,4 @@ function App({ signOut, user }) {
   );
 }
 
-export default withAuthenticator(App);
+export default withAuthenticator(App);*/
