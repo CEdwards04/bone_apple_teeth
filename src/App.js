@@ -22,9 +22,8 @@ function App({ signOut, user }) {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home></Home>}></Route>
-          <Route path="/meal-search" element={<MealSearch></MealSearch>}></Route>
-          <Route path="/login" element={<LoginPage></LoginPage>}></Route>
-          <Route path="/profile" element={<UserProfile />} />
+          <Route path="/meal-search/" element={<MealSearch></MealSearch>}></Route>
+          <Route path="/profile/" element={<UserProfile />} />
         </Routes>
       </BrowserRouter>
     </div>
