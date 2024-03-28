@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-boneappleteeth-dev-22658-authRole",
+      "UnauthRoleArn": "arn:aws:iam::381491943721:role/amplify-boneappleteeth-dev-22658-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::381491943721:role/amplify-boneappleteeth-dev-22658-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-boneappleteeth-dev-22658-deployment",
+      "UnauthRoleName": "amplify-boneappleteeth-dev-22658-unauthRole",
+      "StackName": "amplify-boneappleteeth-dev-22658",
+      "StackId": "arn:aws:cloudformation:us-east-2:381491943721:stack/amplify-boneappleteeth-dev-22658/2dff1780-eccc-11ee-a0b6-069cc8284ddf",
+      "AmplifyAppId": "d2u4lnn045tihj"
+    },
+    "categories": {
+      "auth": {
+        "boneappleteeth579749ce": {}
+      }
+    }
+  }
+}
