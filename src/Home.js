@@ -9,6 +9,7 @@ function Home() {
       <Navbar></Navbar>
       <h1>CS 230 Group 8 Project</h1>
       <h2>Bone Apple Teeth</h2>
+      <h3>Attempt 2</h3>
     </div>
   );
 }
