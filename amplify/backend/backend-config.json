@@ -1,6 +1,32 @@
 {
+  "api": {
+    "boneappleteeth": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "boneappleteeth"
+        }
+      ],
+      "output": {
+        "authConfig": {
+          "additionalAuthenticationProviders": [],
+          "defaultAuthentication": {
+            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+            "userPoolConfig": {
+              "userPoolId": "authboneappleteeth"
+            }
+          }
+        }
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "AppSync"
+    }
+  },
   "auth": {
-    "boneappleteeth579749ce": {
+    "boneappleteeth": {
       "customAuth": false,
       "dependsOn": [],
       "frontendAuthConfig": {
@@ -9,12 +35,15 @@
           "SMS"
         ],
         "passwordProtectionSettings": {
-          "passwordPolicyCharacters": [],
+          "passwordPolicyCharacters": [
+            "REQUIRES_LOWERCASE",
+            "REQUIRES_NUMBERS",
+            "REQUIRES_SYMBOLS",
+            "REQUIRES_UPPERCASE"
+          ],
           "passwordPolicyMinLength": 8
         },
-        "signupAttributes": [
-          "EMAIL"
-        ],
+        "signupAttributes": [],
         "socialProviders": [],
         "usernameAttributes": [
           "EMAIL"
@@ -25,6 +54,19 @@
       },
       "providerPlugin": "awscloudformation",
       "service": "Cognito"
+    }
+  },
+  "hosting": {
+    "S3AndCloudFront": {
+      "providerPlugin": "awscloudformation",
+      "service": "S3AndCloudFront"
+    }
+  },
+  "storage": {
+    "s3boneappleteethstoragefull": {
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "S3"
     }
   }
 }
