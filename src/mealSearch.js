@@ -69,19 +69,22 @@ function MealSearch() {
             <h1>Meal Search</h1>
             <h2>Bone Apple Teeth</h2>
             <table>
-                <tr>
-                    <td>
-                        <MealSearchFunction />
-                    </td>
-                    <td className={mealSearchStyle.meal_cards}>
-                        {recipeData && recipeData.map((recipe, index) => (
-                            <Card key={index} recipe={recipe} />
-                        ))}
-                    </td>
-                </tr>
+                <tbody>
+                    <tr>
+                        <td>
+                            <MealSearchFunction />
+                        </td>
+                        <td className={mealSearchStyle.meal_cards}>
+                            {recipeData && recipeData.map((recipe, index) => (
+                                <Card key={index} recipe={recipe} />
+                            ))}
+                        </td>
+                    </tr>
+                </tbody>
             </table>
         </div>
     );
+    
 }
 
 export default MealSearch;
