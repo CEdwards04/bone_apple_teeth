@@ -42,6 +42,9 @@
       "auth": {
         "boneappleteeth579749ce": {},
         "boneappleteeth": {}
+      },
+      "storage": {
+        "s3boneappleteethstoragefull": {}
       }
     }
   }
