@@ -6,21 +6,15 @@ import Card from './mealCard';
 import mealSearchStyle from './CSS Modules/mealSearch.module.css';
 import MealSearchFunction from './mealSearchFunction';
 import './style.css';
+import axios from 'axios';
 
 function MealSearch() {
     const [recipeData, setRecipeData] = useState([]);
 
     useEffect(() => {
-        const fetchRecipes = async () => {
-            const analyzeUrl = 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/analyze?language=en&includeNutrition=false&includeTaste=false';
-            const analyzeOptions = {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json',
-                    'X-RapidAPI-Key': '42bae32b8cmsh6a99cae29fbd3e3p154198jsn4da3a35b7cd5',
-                    'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
-                },
-                body: JSON.stringify({
+        const fetchData = async () => {
+            try {
+                const analyzeResponse = await axios.post('https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/analyze', {
                     title: 'Spaghetti Carbonara',
                     servings: 2,
                     ingredients: [
@@ -30,42 +24,48 @@ function MealSearch() {
                         '1  egg',
                         '0.5 cup parmesan cheese'
                     ],
-                    instructions: 'Bring a large pot of water to a boil and season generously with salt. Add the pasta to the water once boiling and cook until al dente. Reserve 2 cups of cooking water and drain the pasta. '
-                })
-            };
+                    instructions: 'Bring a large pot of water to a boil and season generously with salt. Add the pasta to the water once boiling and cook until al dente. Reserve 2 cups of cooking water and drain the pasta.'
+                }, {
+                    headers: {
+                        'content-type': 'application/json',
+                        'X-RapidAPI-Key': '42bae32b8cmsh6a99cae29fbd3e3p154198jsn4da3a35b7cd5',
+                        'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
+                    }
+                });
 
-            try {
-                const response = await fetch(analyzeUrl, analyzeOptions);
-                const result = await response.text();
-                console.log(result); // Optionally, log the result
-            } catch (error) {
-                console.error(error);
-            }
+                console.log("Analyze Response:", analyzeResponse.data);
 
-            const searchUrl = 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?ingredients=apples%2Cflour%2Csugar&number=5&ignorePantry=true&ranking=1';
-            const searchOptions = {
-                method: 'GET',
-                headers: {
-                    'X-RapidAPI-Key': '42bae32b8cmsh6a99cae29fbd3e3p154198jsn4da3a35b7cd5',
-                    'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
-                }
-            };
+                const searchResponse = await axios.get('https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients', {
+                    params: {
+                        ingredients: 'apples,flour,sugar',
+                        number: 5,
+                        ignorePantry: true,
+                        ranking: 1
+                    },
+                    headers: {
+                        'X-RapidAPI-Key': '42bae32b8cmsh6a99cae29fbd3e3p154198jsn4da3a35b7cd5',
+                        'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
+                    }
+                });
 
-            try {
-                const response = await fetch(searchUrl, searchOptions);
-                const result = await response.json();
-                if (Array.isArray(result)) {
-                    setRecipeData(result);
+                console.log("Search Response:", searchResponse.data);
+
+                if (Array.isArray(searchResponse.data)) {
+                    setRecipeData(searchResponse.data);
                 } else {
-                    console.error("API response is not an array:", result);
+                    console.error("API response is not an array:", searchResponse.data);
+                    setRecipeData([]);
                 }
             } catch (error) {
-                console.error(error);
+                console.error("Error fetching data:", error);
+                setRecipeData([]);
             }
         };
 
-        fetchRecipes();
+        fetchData();
     }, []);
+
+    console.log("recipeData:", recipeData);
 
     return (
         <div>
@@ -91,3 +91,4 @@ function MealSearch() {
 }
 
 export default MealSearch;
+
