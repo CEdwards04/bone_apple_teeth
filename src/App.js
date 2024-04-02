@@ -64,7 +64,6 @@ console.log(deleteResult);
   
   return (
     <div className="App">
-      <button onClick={signOut}>Sign out</button>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home></Home>}></Route>
