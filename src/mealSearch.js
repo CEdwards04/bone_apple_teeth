@@ -8,7 +8,7 @@ import MealSearchFunction from './mealSearchFunction';
 import './style.css';
 
 function MealSearch() {
-    const [recipeData, setRecipeData] = useState(null);
+    const [recipeData, setRecipeData] = useState([]);
 
     useEffect(() => {
         const fetchRecipes = async () => {
@@ -54,7 +54,11 @@ function MealSearch() {
             try {
                 const response = await fetch(searchUrl, searchOptions);
                 const result = await response.json();
-                setRecipeData(result);
+                if (Array.isArray(result)) {
+                    setRecipeData(result);
+                } else {
+                    console.error("API response is not an array:", result);
+                }
             } catch (error) {
                 console.error(error);
             }
@@ -84,7 +88,6 @@ function MealSearch() {
             </table>
         </div>
     );
-    
 }
 
 export default MealSearch;
