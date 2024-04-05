@@ -72,7 +72,7 @@ function FavoritesCard() {
           <div key={recipe.id} className="col">
             <div className="card text-bg-secondary" style={{ width: '18rem' }}>
               <div className="card-header">
-                <h5 className="card-title">{recipe.name}</h5>
+                <h5 className="card-title">{recipe.name ? recipe.name : 'Unnamed Recipe'}</h5>
               </div>
               <div className="card-body">
                 <button className="btn btn-danger" onClick={() => handleDeleteRecipe(recipe.id)}>Delete</button>

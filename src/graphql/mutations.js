@@ -1,6 +1,33 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const createRecipe = /* GraphQL */ `
+  mutation CreateRecipe($input: CreateRecipeInput!) {
+    createRecipe(input: $input) {
+      id
+      name
+      __typename
+    }
+  }
+`;
+export const updateRecipe = /* GraphQL */ `
+  mutation UpdateRecipe($input: UpdateRecipeInput!) {
+    updateRecipe(input: $input) {
+      id
+      name
+      __typename
+    }
+  }
+`;
+export const deleteRecipe = /* GraphQL */ `
+  mutation DeleteRecipe($input: DeleteRecipeInput!) {
+    deleteRecipe(input: $input) {
+      id
+      name
+      __typename
+    }
+  }
+`;
 export const createTodo = /* GraphQL */ `
   mutation CreateTodo(
     $input: CreateTodoInput!
