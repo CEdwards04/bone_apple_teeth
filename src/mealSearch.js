@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import Navbar from './Navbar';
+import Navbar from './Navbar'; // Import Navbar component
 import './Pages/ProfilePage/ProfilePopup';
 import './mealCard';
 import Card from './mealCard';
 import mealSearchStyle from './CSS Modules/mealSearch.module.css';
 import MealSearchFunction from './mealSearchFunction';
 import './style.css';
-import axios from 'axios';
+import axios from 'axios'; 
+
 
 function MealSearch() {
     const [recipeData, setRecipeData] = useState([]);
