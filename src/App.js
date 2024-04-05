@@ -3,7 +3,7 @@ import './Pages/ProfilePage/ProfilePopup';
 import './Pages/ProfilePage/ProfilePage'
 import { BrowserRouter, Routes, Route, useHref} from "react-router-dom";
 import Home from './Home';
-import MealSearch from './mealSearch';
+import MealSearch from '../src/mealSearch';
 import LoginPage from './LoginPage';
 import ProfilePopup from './Pages/ProfilePage/ProfilePopup';
 import UserProfile from './Pages/ProfilePage/ProfilePage';
