@@ -57,6 +57,8 @@ export const onCreateRecipe = /* GraphQL */ `
     onCreateRecipe(filter: $filter, owner: $owner) {
       id
       name
+      ingredients
+      instructions
       createdAt
       updatedAt
       owner
@@ -72,6 +74,8 @@ export const onUpdateRecipe = /* GraphQL */ `
     onUpdateRecipe(filter: $filter, owner: $owner) {
       id
       name
+      ingredients
+      instructions
       createdAt
       updatedAt
       owner
@@ -87,6 +91,8 @@ export const onDeleteRecipe = /* GraphQL */ `
     onDeleteRecipe(filter: $filter, owner: $owner) {
       id
       name
+      ingredients
+      instructions
       createdAt
       updatedAt
       owner

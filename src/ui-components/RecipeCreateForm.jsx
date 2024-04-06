@@ -24,15 +24,27 @@ export default function RecipeCreateForm(props) {
   } = props;
   const initialValues = {
     name: "",
+    ingredients: "",
+    instructions: "",
   };
   const [name, setName] = React.useState(initialValues.name);
+  const [ingredients, setIngredients] = React.useState(
+    initialValues.ingredients
+  );
+  const [instructions, setInstructions] = React.useState(
+    initialValues.instructions
+  );
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     setName(initialValues.name);
+    setIngredients(initialValues.ingredients);
+    setInstructions(initialValues.instructions);
     setErrors({});
   };
   const validations = {
     name: [{ type: "Required" }],
+    ingredients: [],
+    instructions: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -61,6 +73,8 @@ export default function RecipeCreateForm(props) {
         event.preventDefault();
         let modelFields = {
           name,
+          ingredients,
+          instructions,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -124,6 +138,8 @@ export default function RecipeCreateForm(props) {
           if (onChange) {
             const modelFields = {
               name: value,
+              ingredients,
+              instructions,
             };
             const result = onChange(modelFields);
             value = result?.name ?? value;
@@ -137,6 +153,58 @@ export default function RecipeCreateForm(props) {
         errorMessage={errors.name?.errorMessage}
         hasError={errors.name?.hasError}
         {...getOverrideProps(overrides, "name")}
+      ></TextField>
+      <TextField
+        label="Ingredients"
+        isRequired={false}
+        isReadOnly={false}
+        value={ingredients}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              name,
+              ingredients: value,
+              instructions,
+            };
+            const result = onChange(modelFields);
+            value = result?.ingredients ?? value;
+          }
+          if (errors.ingredients?.hasError) {
+            runValidationTasks("ingredients", value);
+          }
+          setIngredients(value);
+        }}
+        onBlur={() => runValidationTasks("ingredients", ingredients)}
+        errorMessage={errors.ingredients?.errorMessage}
+        hasError={errors.ingredients?.hasError}
+        {...getOverrideProps(overrides, "ingredients")}
+      ></TextField>
+      <TextField
+        label="Instructions"
+        isRequired={false}
+        isReadOnly={false}
+        value={instructions}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              name,
+              ingredients,
+              instructions: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.instructions ?? value;
+          }
+          if (errors.instructions?.hasError) {
+            runValidationTasks("instructions", value);
+          }
+          setInstructions(value);
+        }}
+        onBlur={() => runValidationTasks("instructions", instructions)}
+        errorMessage={errors.instructions?.errorMessage}
+        hasError={errors.instructions?.hasError}
+        {...getOverrideProps(overrides, "instructions")}
       ></TextField>
       <Flex
         justifyContent="space-between"
