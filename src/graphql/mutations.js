@@ -1,33 +1,6 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createRecipe = /* GraphQL */ `
-  mutation CreateRecipe($input: CreateRecipeInput!) {
-    createRecipe(input: $input) {
-      id
-      name
-      __typename
-    }
-  }
-`;
-export const updateRecipe = /* GraphQL */ `
-  mutation UpdateRecipe($input: UpdateRecipeInput!) {
-    updateRecipe(input: $input) {
-      id
-      name
-      __typename
-    }
-  }
-`;
-export const deleteRecipe = /* GraphQL */ `
-  mutation DeleteRecipe($input: DeleteRecipeInput!) {
-    deleteRecipe(input: $input) {
-      id
-      name
-      __typename
-    }
-  }
-`;
 export const createTodo = /* GraphQL */ `
   mutation CreateTodo(
     $input: CreateTodoInput!
@@ -69,6 +42,51 @@ export const deleteTodo = /* GraphQL */ `
       id
       name
       description
+      createdAt
+      updatedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const createRecipe = /* GraphQL */ `
+  mutation CreateRecipe(
+    $input: CreateRecipeInput!
+    $condition: ModelRecipeConditionInput
+  ) {
+    createRecipe(input: $input, condition: $condition) {
+      id
+      name
+      createdAt
+      updatedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const updateRecipe = /* GraphQL */ `
+  mutation UpdateRecipe(
+    $input: UpdateRecipeInput!
+    $condition: ModelRecipeConditionInput
+  ) {
+    updateRecipe(input: $input, condition: $condition) {
+      id
+      name
+      createdAt
+      updatedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const deleteRecipe = /* GraphQL */ `
+  mutation DeleteRecipe(
+    $input: DeleteRecipeInput!
+    $condition: ModelRecipeConditionInput
+  ) {
+    deleteRecipe(input: $input, condition: $condition) {
+      id
+      name
       createdAt
       updatedAt
       owner

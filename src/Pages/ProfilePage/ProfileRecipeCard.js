@@ -9,6 +9,7 @@ const client = generateClient();
 
 function FavoritesCard() {
   const [recipes, setRecipes] = useState([]);
+  const [error, setError] = useState(null);
 
   // Function to fetch recipes from GraphQL API
   async function fetchRecipes() {
@@ -17,6 +18,7 @@ function FavoritesCard() {
       setRecipes(recipeData.data.listRecipes.items);
     } catch (error) {
       console.error('Error fetching recipes:', error);
+      setError('Error fetching recipes. Please try again.');
     }
   }
 
@@ -31,11 +33,14 @@ function FavoritesCard() {
     if (recipeName) {
       try {
         const response = await client.graphql(graphqlOperation(createRecipe, { name: recipeName }));
-        console.log('Create recipe response:', response);
-        // Update state with new recipe data
-        setRecipes(prevRecipes => [...prevRecipes, response.data.createRecipe]);
+        if (response.data.createRecipe) {
+          setRecipes(prevRecipes => [...prevRecipes, response.data.createRecipe]);
+        } else {
+          setError('Error creating recipe. Please try again.');
+        }
       } catch (error) {
         console.error('Error creating recipe:', error);
+        setError('Error creating recipe. Please try again.');
       }
     }
   }
@@ -44,10 +49,11 @@ function FavoritesCard() {
   async function handleDeleteRecipe(id) {
     try {
       await client.graphql(graphqlOperation(deleteRecipe, { id }));
-      // Refetch recipes after deletion
-      fetchRecipes();
+      // Update state by removing the deleted recipe
+      setRecipes(prevRecipes => prevRecipes.filter(recipe => recipe.id !== id));
     } catch (error) {
       console.error('Error deleting recipe:', error);
+      setError('Error deleting recipe. Please try again.');
     }
   }
 
@@ -57,10 +63,15 @@ function FavoritesCard() {
     if (newName) {
       try {
         await client.graphql(graphqlOperation(updateRecipe, { id, name: newName }));
-        // Refetch recipes after update
-        fetchRecipes();
+        // Update state with the updated recipe name
+        setRecipes(prevRecipes =>
+          prevRecipes.map(recipe =>
+            recipe.id === id ? { ...recipe, name: newName } : recipe
+          )
+        );
       } catch (error) {
         console.error('Error updating recipe:', error);
+        setError('Error updating recipe. Please try again.');
       }
     }
   }
@@ -83,6 +94,7 @@ function FavoritesCard() {
         ))}
       </div>
       <button className="btn btn-success" onClick={handleCreateRecipe}>Add Recipe</button>
+      {error && <div className="alert alert-danger">{error}</div>}
     </div>
   );
 }

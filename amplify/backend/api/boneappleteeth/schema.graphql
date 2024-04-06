@@ -7,21 +7,12 @@ type Todo @model @auth(rules: [{ allow: owner }]) {
   name: String!
   description: String
 }
-type Recipe {
+type Recipe @model @auth(rules: [{ allow: owner }]){
   id: ID!
   name: String!
 }
 
-type Query {
-  getRecipe(id: ID!): Recipe
-  listRecipes: [Recipe]
-}
 
-type Mutation {
-  createRecipe(input: CreateRecipeInput!): Recipe
-  updateRecipe(input: UpdateRecipeInput!): Recipe
-  deleteRecipe(input: DeleteRecipeInput!): Recipe
-}
 
 input CreateRecipeInput {
   name: String!

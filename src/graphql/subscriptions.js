@@ -49,3 +49,48 @@ export const onDeleteTodo = /* GraphQL */ `
     }
   }
 `;
+export const onCreateRecipe = /* GraphQL */ `
+  subscription OnCreateRecipe(
+    $filter: ModelSubscriptionRecipeFilterInput
+    $owner: String
+  ) {
+    onCreateRecipe(filter: $filter, owner: $owner) {
+      id
+      name
+      createdAt
+      updatedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const onUpdateRecipe = /* GraphQL */ `
+  subscription OnUpdateRecipe(
+    $filter: ModelSubscriptionRecipeFilterInput
+    $owner: String
+  ) {
+    onUpdateRecipe(filter: $filter, owner: $owner) {
+      id
+      name
+      createdAt
+      updatedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const onDeleteRecipe = /* GraphQL */ `
+  subscription OnDeleteRecipe(
+    $filter: ModelSubscriptionRecipeFilterInput
+    $owner: String
+  ) {
+    onDeleteRecipe(filter: $filter, owner: $owner) {
+      id
+      name
+      createdAt
+      updatedAt
+      owner
+      __typename
+    }
+  }
+`;
