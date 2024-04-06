@@ -30,9 +30,15 @@ function FavoritesCard() {
   // Function to handle recipe creation
   async function handleCreateRecipe() {
     const recipeName = prompt('Enter recipe name:');
-    if (recipeName) {
+    const recipeIngredients = prompt('Enter recipe ingredients:');
+    const recipeInstructions = prompt('Enter recipe instructions:');
+    if (recipeName && recipeIngredients && recipeInstructions) {
       try {
-        const response = await client.graphql(graphqlOperation(createRecipe, { name: recipeName }));
+        const response = await client.graphql(graphqlOperation(createRecipe, { 
+          name: recipeName,
+          ingredients: recipeIngredients,
+          instructions: recipeInstructions,
+        }));
         if (response.data.createRecipe) {
           setRecipes(prevRecipes => [...prevRecipes, response.data.createRecipe]);
         } else {
@@ -60,13 +66,20 @@ function FavoritesCard() {
   // Function to handle recipe update
   async function handleUpdateRecipe(id) {
     const newName = prompt('Enter new recipe name:');
-    if (newName) {
+    const newIngredients = prompt('Enter new recipe ingredients:');
+    const newInstructions = prompt('Enter new recipe instructions:');
+    if (newName && newIngredients && newInstructions) {
       try {
-        await client.graphql(graphqlOperation(updateRecipe, { id, name: newName }));
-        // Update state with the updated recipe name
+        await client.graphql(graphqlOperation(updateRecipe, { 
+          id, 
+          name: newName,
+          ingredients: newIngredients,
+          instructions: newInstructions,
+        }));
+        // Update state with the updated recipe details
         setRecipes(prevRecipes =>
           prevRecipes.map(recipe =>
-            recipe.id === id ? { ...recipe, name: newName } : recipe
+            recipe.id === id ? { ...recipe, name: newName, ingredients: newIngredients, instructions: newInstructions } : recipe
           )
         );
       } catch (error) {
@@ -86,6 +99,8 @@ function FavoritesCard() {
                 <h5 className="card-title">{recipe.name ? recipe.name : 'Unnamed Recipe'}</h5>
               </div>
               <div className="card-body">
+                <p>Ingredients: {recipe.ingredients}</p>
+                <p>Instructions: {recipe.instructions}</p>
                 <button className="btn btn-danger" onClick={() => handleDeleteRecipe(recipe.id)}>Delete</button>
                 <button className="btn btn-primary" onClick={() => handleUpdateRecipe(recipe.id)}>Update</button>
               </div>
