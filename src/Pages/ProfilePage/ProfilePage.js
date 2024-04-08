@@ -1,3 +1,13 @@
+/*********************************************
+ * @author
+ * @contribution
+ * 
+ * @author Jeffrey Adkins
+ * @contribution Setup login to work on this page as well as the logout
+ *               button only appearing here.
+ * 
+ * @brief
+ *********************************************/
 
 import '../../Navbar';
 import React from 'react';

@@ -1,3 +1,13 @@
+/*********************************************
+ * @author Jeffrey Adkins
+ * @contribution Jsx skeleton and setting up mealSearchFunction.jsx
+ * 
+ * @author
+ * @contribution
+ * 
+ * @brief
+ *********************************************/
+
 import React, { useEffect, useState } from 'react';
 import Navbar from './Navbar'; // Import Navbar component
 import './Pages/ProfilePage/ProfilePopup';

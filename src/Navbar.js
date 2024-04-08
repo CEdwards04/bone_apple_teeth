@@ -1,7 +1,11 @@
+/*********************************************
+ * @author Jeffrey Adkins
+ * @contribution Entire file
+ * @brief This is the navbar component that is visible on all webpages.
+ *        This provides basic navigation functionality
+ *********************************************/
+
 import logo from './Bone_Apple_Teeth-logos_transparent.png';
-import ProfilePopup from './Pages/ProfilePage/ProfilePopup';
-import mealSearch from './mealSearch';
-import redirect from './mealSearch';
 
 
 function Navbar() {

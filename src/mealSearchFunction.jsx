@@ -1,3 +1,10 @@
+/*********************************************
+ * @author Jeffrey Adkins
+ * @contribution Form basics: labels, input boxes, and common ingredients
+ * @brief Basic searching function that has common ingredients listed as
+ *        checkboxes
+ *********************************************/
+
 function MealSearchFunction() {
     return (
         <form>

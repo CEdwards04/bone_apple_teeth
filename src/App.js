@@ -1,3 +1,15 @@
+/*********************************************
+ * @author Jeffrey Adkins
+ * @contibution React-Router-Dom routing skeleton and page switching
+ * 
+ * @author
+ * @contribution
+ * 
+ * @brief This is the function in which the website is rendered. This file
+ *        also contains the react-router-dom in which allows switching
+ *        between webpages.
+ *********************************************/
+
 import './App.css';
 import './Pages/ProfilePage/ProfilePopup';
 import './Pages/ProfilePage/ProfilePage'
