@@ -1,142 +1,284 @@
 /*********************************************
- * @author Jeffrey Adkins
+ * @author Jeffrey Adkins, Kaleb Lawrence
  * @contribution Form basics: labels, input boxes, and common ingredients
+ * @contribution Styled the form so that there is a drop down menu to select common ingredients.
  * @brief Basic searching function that has common ingredients listed as
  *        checkboxes
  *********************************************/
 
+import React, { useState } from 'react';
+import MealSearchStyle from './CSS Modules/mealSearch.module.css';
+
 function MealSearchFunction() {
+    const [showDairyCheckboxes, setShowDairyCheckboxes] = useState(false);
+    const [showGrainsCheckboxes, setShowGrainsCheckboxes] = useState(false);
+    const [showFruitsCheckboxes, setShowFruitsCheckboxes] = useState(false);
+    const [showMeatsCheckboxes, setShowMeatsCheckboxes] = useState(false);
+    const [showPoultryCheckboxes, setShowPoultryCheckboxes] = useState(false);
+    const [showFishSeafoodCheckboxes, setShowFishSeafoodCheckboxes] = useState(false);
+    const [showOilsCheckboxes, setShowOilsCheckboxes] = useState(false);
+
+    const toggleDairyCheckboxes = () => {
+        setShowDairyCheckboxes(!showDairyCheckboxes);
+    };
+    const toggleGrainsCheckboxes = () => {
+        setShowGrainsCheckboxes(!showGrainsCheckboxes);
+    };
+    const toggleFruitsCheckboxes = () => {
+        setShowFruitsCheckboxes(!showFruitsCheckboxes);
+    };
+    const toggleMeatsCheckboxes = () => {
+        setShowMeatsCheckboxes(!showMeatsCheckboxes);
+    };
+    const togglePoultryCheckboxes = () => {
+        setShowPoultryCheckboxes(!showPoultryCheckboxes);
+    };
+    const toggleFishSeafoodCheckboxes = () => {
+        setShowFishSeafoodCheckboxes(!showFishSeafoodCheckboxes);
+    };
+    const toggleOilsCheckboxes = () => {
+        setShowOilsCheckboxes(!showOilsCheckboxes);
+    };
+
+
     return (
-        <form>
-            <label htmlFor="force_only_selected">Force only selected </label>
-            <input type="checkbox" id="force_only_selected" name="force_only_selected" />
-            <br />
-            <label htmlFor="milk">Milk </label>
-            <input type="checkbox" id="milk" name="dairy" />
-            <br />
-            <label htmlFor="butter">Butter </label>
-            <input type="checkbox" id="butter" name="dairy" />
-            <br />
-            <label htmlFor="cheese">Cheese </label>
-            <input type="checkbox" id="cheese" name="dairy" />
-            <br />
-            <label htmlFor="yogurt">Yogurt </label>
-            <input type="checkbox" id="yogurt" name="dairy" />
-            <br />
-            <label htmlFor="ice_cream">Ice Cream </label>
-            <input type="checkbox" id="ice_cream" name="dairy" />
-            <br />
-            <label htmlFor="test1">Test1 </label>
-            <input type="checkbox" id="test1" name="test1" />
-            <br />
-            <label htmlFor="bread">Bread </label>
-            <input type="checkbox" id="bread" name="grains" />
-            <br />
-            <label htmlFor="oats1">Oats </label>
-            <input type="checkbox" id="oats1" name="grains" />
-            <br />
-            <label htmlFor="oats2">Oats </label>
-            <input type="checkbox" id="oats2" name="grains" />
-            <br />
-            <label htmlFor="barley">Barley </label>
-            <input type="checkbox" id="barley" name="whole_grains" />
-            <br />
-            <label htmlFor="rice">Rice </label>
-            <input type="checkbox" id="rice" name="whole_grains" />
-            <br />
-            <label htmlFor="apples">Apples </label>
-            <input type="checkbox" id="apples" name="fruits" />
-            <br />
-            <label htmlFor="bananas">Bananas </label>
-            <input type="checkbox" id="bananas" name="fruits" />
-            <br />
-            <label htmlFor="oranges">Oranges </label>
-            <input type="checkbox" id="oranges" name="fruits" />
-            <br />
-            <label htmlFor="lemons">Lemons </label>
-            <input type="checkbox" id="lemons" name="fruits" />
-            <br />
-            <label htmlFor="limes">Limes </label>
-            <input type="checkbox" id="limes" name="fruits" />
-            <br />
-            <label htmlFor="peaches">Peaches </label>
-            <input type="checkbox" id="peaches" name="fruits" />
-            <br />
-            <label htmlFor="pears">Pears </label>
-            <input type="checkbox" id="pears" name="fruits" />
-            <br />
-            <label htmlFor="pineapples">Pineapples </label>
-            <input type="checkbox" id="pineapples" name="fruits" />
-            <br />
-            <label htmlFor="strawberries">Strawberries </label>
-            <input type="checkbox" id="strawberries" name="fruits" />
-            <br />
-            <label htmlFor="blueberries">Blueberries </label>
-            <input type="checkbox" id="blueberries" name="fruits" />
-            <br />
-            <label htmlFor="raspberries">Raspberries </label>
-            <input type="checkbox" id="raspberries" name="fruits" />
-            <br />
-            <label htmlFor="beef">Beef </label>
-            <input type="checkbox" id="beef" name="meats" />
-            <br />
-            <label htmlFor="pork">Pork </label>
-            <input type="checkbox" id="pork" name="meats" />
-            <br />
-            <label htmlFor="lamb">Lamb </label>
-            <input type="checkbox" id="lamb" name="meats" />
-            <br />
-            <label htmlFor="veal">Veal </label>
-            <input type="checkbox" id="veal" name="meats" />
-            <br />
-            <label htmlFor="meat_milk">Milk </label>
-            <input type="checkbox" id="meat_milk" name="meats" />
-            <br />
-            <label htmlFor="chicken">Chicken </label>
-            <input type="checkbox" id="chicken" name="poultry" />
-            <br />
-            <label htmlFor="turkey">Turkey </label>
-            <input type="checkbox" id="turkey" name="poultry" />
-            <br />
-            <label htmlFor="duck">Duck </label>
-            <input type="checkbox" id="duck" name="poultry" />
-            <br />
-            <label htmlFor="fish">Fish </label>
-            <input type="checkbox" id="fish" name="fish_seafood" />
-            <br />
-            <label htmlFor="scallops">Scallops </label>
-            <input type="checkbox" id="scallops" name="fish_seafood" />
-            <br />
-            <label htmlFor="fish2">Fish </label>
-            <input type="checkbox" id="fish2" name="fish_seafood" />
-            <br />
-            <label htmlFor="prawns">Prawns </label>
-            <input type="checkbox" id="prawns" name="fish_seafood" />
-            <br />
-            <label htmlFor="lobster">Lobster </label>
-            <input type="checkbox" id="lobster" name="fish_seafood" />
-            <br />
-            <label htmlFor="oysters">Oysters </label>
-            <input type="checkbox" id="oysters" name="fish_seafood" />
-            <br />
-            <label htmlFor="clams">Clams </label>
-            <input type="checkbox" id="clams" name="fish_seafood" />
-            <br />
-            <label htmlFor="olive_oil">Olive Oil </label>
-            <input type="checkbox" id="olive_oil" name="oils" />
-            <br />
-            <label htmlFor="coconut_oil">Coconut Oil </label>
-            <input type="checkbox" id="coconut_oil" name="oils" />
-            <br />
-            <label htmlFor="avocado_oil">Avocado Oil </label>
-            <input type="checkbox" id="avocado_oil" name="oils" />
-            <br />
-            <label htmlFor="vegetable_oil">Vegetable Oil </label>
-            <input type="checkbox" id="vegetable_oil" name="oils" />
-            <br />
-        </form>
+        <div className={MealSearchStyle.container}>
+            <form className={MealSearchStyle.form}>
+                <label htmlFor="force_only_selected">Force only selected</label>
+                <input type="checkbox" id="force_only_selected" name="force_only_selected" />
+
+                <div className={MealSearchStyle.category}>
+                    <h3 className={MealSearchStyle.categoryTitle}>
+                        Dairy
+                        <span className={MealSearchStyle.dropdownArrow} onClick={toggleDairyCheckboxes}>
+                            &#9662; {}
+                        </span>
+                    </h3>
+                    <div className={MealSearchStyle.checkboxGroup} style={{ display: showDairyCheckboxes ? 'block' : 'none' }}>
+                        <div className={MealSearchStyle.checkboxRow}>
+                            <input type="checkbox" id="dairy_milk" name="dairy" />
+                            <label htmlFor="dairy_milk">Milk</label>
+                        </div>
+                        <div className={MealSearchStyle.checkboxRow}>
+                            <input type="checkbox" id="dairy_butter" name="dairy" />
+                            <label htmlFor="dairy_butter">Butter</label>
+                        </div>
+                        <div className={MealSearchStyle.checkboxRow}>
+                            <input type="checkbox" id="dairy_cheese" name="dairy" />
+                            <label htmlFor="dairy_cheese">Cheese</label>
+                        </div>
+                        <div className={MealSearchStyle.checkboxRow}>
+                            <input type="checkbox" id="dairy_yogurt" name="dairy" />
+                            <label htmlFor="dairy_yogurt">Yogurt</label>
+                        </div>
+                        <div className={MealSearchStyle.checkboxRow}>
+                            <input type="checkbox" id="dairy_ice_cream" name="dairy" />
+                            <label htmlFor="dairy_ice_cream">Ice Cream</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div className={MealSearchStyle.category}>
+                    <h3 className={MealSearchStyle.categoryTitle}>
+                        Grains
+                        <span className={MealSearchStyle.dropdownArrow} onClick={toggleGrainsCheckboxes}>
+                            &#9662; 
+                        </span>
+                    </h3>
+                    <div className={MealSearchStyle.checkboxGroup} style={{ display: showGrainsCheckboxes ? 'block' : 'none' }}>
+                        <div className={MealSearchStyle.checkboxRow}>
+                            <input type="checkbox" id="grains_bread" name="grains" />
+                            <label htmlFor="grains_bread">Bread</label>
+                        </div>
+                        <div className={MealSearchStyle.checkboxRow}>
+                            <input type="checkbox" id="grains_oats" name="grains" />
+                            <label htmlFor="grains_oats">Oats</label>
+                        </div>
+                        <div className={MealSearchStyle.checkboxRow}>
+                            <input type="checkbox" id="grains_rice" name="grains" />
+                            <label htmlFor="grains_rice">Rice</label>
+                        </div>
+                        <div className={MealSearchStyle.checkboxRow}>
+                            <input type="checkbox" id="grains_quinoa" name="grains" />
+                            <label htmlFor="grains_quinoa">Quinoa</label>
+                        </div>
+                        <div className={MealSearchStyle.checkboxRow}>
+                            <input type="checkbox" id="grains_barley" name="grains" />
+                            <label htmlFor="grains_barley">Barley</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div className={MealSearchStyle.category}>
+                    <h3 className={MealSearchStyle.categoryTitle}>
+                        Fruits
+                        <span className={MealSearchStyle.dropdownArrow} onClick={toggleFruitsCheckboxes}>
+                            &#9662; 
+                        </span>
+                    </h3>
+                    <div className={MealSearchStyle.checkboxGroup} style={{ display: showFruitsCheckboxes ? 'block' : 'none' }}>
+                        <div className={MealSearchStyle.checkboxRow}>
+                            <input type="checkbox" id="fruits_apples" name="fruits" />
+                            <label htmlFor="fruits_apples">Apples</label>
+                        </div>
+                        <div className={MealSearchStyle.checkboxRow}>
+                            <input type="checkbox" id="fruits_bananas" name="fruits" />
+                            <label htmlFor="fruits_bananas">Bananas</label>
+                        </div>
+                        <div className={MealSearchStyle.checkboxRow}>
+                            <input type="checkbox" id="fruits_oranges" name="fruits" />
+                            <label htmlFor="fruits_oranges">Oranges</label>
+                        </div>
+                        <div className={MealSearchStyle.checkboxRow}>
+                            <input type="checkbox" id="fruits_lemons" name="fruits" />
+                            <label htmlFor="fruits_lemons">Lemons</label>
+                        </div>
+                        <div className={MealSearchStyle.checkboxRow}>
+                            <input type="checkbox" id="fruits_limes" name="fruits" />
+                            <label htmlFor="fruits_limes">Limes</label>
+                        </div>
+                        <div className={MealSearchStyle.checkboxRow}>
+                            <input type="checkbox" id="fruits_peaches" name="fruits" />
+                            <label htmlFor="fruits_peaches">Peaches</label>
+                        </div>
+                        <div className={MealSearchStyle.checkboxRow}>
+                            <input type="checkbox" id="fruits_pears" name="fruits" />
+                            <label htmlFor="fruits_pears">Pears</label>
+                        </div>
+                        <div className={MealSearchStyle.checkboxRow}>
+                            <input type="checkbox" id="fruits pineapples" name="fruits" />
+                            <label htmlFor="fruits_pineapples">Pineapples</label>
+                        </div>
+                        <div className={MealSearchStyle.checkboxRow}>
+                            <input type="checkbox" id="fruits_strawberries" name="fruits" />
+                            <label htmlFor="fruits_strawberries">Strawberries</label>
+                        </div>
+                        <div className={MealSearchStyle.checkboxRow}>
+                            <input type="checkbox" id="fruits_blueberries" name="fruits" />
+                            <label htmlFor="fruits_blueberries">Blueberries</label>
+                        </div>
+                        <div className={MealSearchStyle.checkboxRow}>
+                            <input type="checkbox" id="fruits_raspberries" name="fruits" />
+                            <label htmlFor="fruits_raspberries">Raspberries</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div className={MealSearchStyle.category}>
+                <h3 className={MealSearchStyle.categoryTitle}>
+                    Meats
+                    <span className={MealSearchStyle.dropdownArrow} onClick={toggleMeatsCheckboxes}>
+                        &#9662; 
+                    </span>
+                </h3>
+                <div className={MealSearchStyle.checkboxGroup} style={{ display: showMeatsCheckboxes ? 'block' : 'none' }}>
+                        <div className={MealSearchStyle.checkboxRow}>
+                        <input type="checkbox" id="meats_beef" name="meats" />
+                        <label htmlFor="meats_beef">Beef</label>
+                    </div>
+                    <div className={MealSearchStyle.checkboxRow}>
+                        <input type="checkbox" id="meats_pork" name="meats" />
+                        <label htmlFor="meats_pork">Pork</label>
+                    </div>
+                    <div className={MealSearchStyle.checkboxRow}>
+                        <input type="checkbox" id="meats_lamb" name="meats" />
+                        <label htmlFor="meats_lamb">Lamb</label>
+                    </div>
+                    <div className={MealSearchStyle.checkboxRow}>
+                        <input type="checkbox" id="meats_veal" name="meats" />
+                        <label htmlFor="meats_veal">Veal</label>
+                    </div>
+                </div>
+            </div>
+            <div className={MealSearchStyle.category}>
+                    <h3 className={MealSearchStyle.categoryTitle}>
+                        Poultry
+                        <span className={MealSearchStyle.dropdownArrow} onClick={togglePoultryCheckboxes}>
+                            &#9662;
+                        </span>
+                    </h3>
+                    <div className={MealSearchStyle.checkboxGroup} style={{ display: showPoultryCheckboxes ? 'block' : 'none' }}>
+                        <div className={MealSearchStyle.checkboxRow}>
+                            <input type="checkbox" id="poultry_chicken" name="poultry" />
+                            <label htmlFor="poultry_chicken">Chicken</label>
+                        </div>
+                        <div className={MealSearchStyle.checkboxRow}>
+                            <input type="checkbox" id="poultry_turkey" name="poultry" />
+                            <label htmlFor="poultry_turkey">Turkey</label>
+                        </div>
+                        <div className={MealSearchStyle.checkboxRow}>
+                            <input type="checkbox" id="poultry_duck" name="poultry" />
+                            <label htmlFor="poultry_duck">Duck</label>
+                        </div>
+                    </div>
+                </div>
+                <div className={MealSearchStyle.category}>
+                    <h3 className={MealSearchStyle.categoryTitle}>
+                        Fish/Seafood
+                        <span className={MealSearchStyle.dropdownArrow} onClick={toggleFishSeafoodCheckboxes}>
+                            &#9662; 
+                        </span>
+                    </h3>
+                    <div className={MealSearchStyle.checkboxGroup} style={{ display: showFishSeafoodCheckboxes ? 'block' : 'none' }}>
+                        <div className={MealSearchStyle.checkboxRow}>
+                            <input type="checkbox" id="seafood_fish" name="seafood" />
+                            <label htmlFor="seafood_fish">Fish</label>
+                        </div>
+                        <div className={MealSearchStyle.checkboxRow}>
+                            <input type="checkbox" id="seafood_scallops" name="seafood" />
+                            <label htmlFor="seafood_scallops">Scallops</label>
+                        </div>
+                        <div className={MealSearchStyle.checkboxRow}>
+                            <input type="checkbox" id="seafood_prawns" name="seafood" />
+                            <label htmlFor="seafood_prawns">Prawns</label>
+                        </div>
+                        <div className={MealSearchStyle.checkboxRow}>
+                            <input type="checkbox" id="seafood_lobster" name="seafood" />
+                            <label htmlFor="seafood_lobster">Lobster</label>
+                        </div>
+                        <div className={MealSearchStyle.checkboxRow}>
+                            <input type="checkbox" id="seafood_oysters" name="seafood" />
+                            <label htmlFor="seafood_oysters">Oysters</label>
+                        </div>
+                        <div className={MealSearchStyle.checkboxRow}>
+                            <input type="checkbox" id="seafood_clams" name="seafood" />
+                            <label htmlFor="seafood_clams">Clams</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div className={MealSearchStyle.category}>
+                <h3 className={MealSearchStyle.categoryTitle}>
+                    Oils
+                    <span className={MealSearchStyle.dropdownArrow} onClick={toggleOilsCheckboxes}>
+                        &#9662;
+                    </span>
+                </h3>
+                <div className={MealSearchStyle.checkboxGroup} style={{ display: showOilsCheckboxes ? 'block' : 'none' }}>
+                    <div className={MealSearchStyle.checkboxRow}>
+                        <input type="checkbox" id="oils_olive" name="oils" />
+                        <label htmlFor="oils_olive">Olive Oil</label>
+                    </div>
+                    <div className={MealSearchStyle.checkboxRow}>
+                        <input type="checkbox" id="oils_coconut" name="oils" />
+                        <label htmlFor="oils_coconut">Coconut Oil</label>
+                    </div>
+                    <div className={MealSearchStyle.checkboxRow}>
+                        <input type="checkbox" id="oils_avocado" name="oils" />
+                        <label htmlFor="oils_avocado">Avocado Oil</label>
+                    </div>
+                    <div className={MealSearchStyle.checkboxRow}>
+                        <input type="checkbox" id="oils_vegetable" name="oils" />
+                        <label htmlFor="oils_vegetable">Vegetable Oil</label>
+                    </div>
+                </div>
+            </div>
+
+            </form>
+        </div>
     );
 }
 
 export default MealSearchFunction;
+
 
