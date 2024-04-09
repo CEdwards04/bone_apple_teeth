@@ -1,0 +1,14 @@
+{
+  "resourceName": "s3boneappleteethstoragefull",
+  "bucketName": "boneappleteethstoragefull",
+  "policyUUID": "42a48ec3",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ"
+  ],
+  "authAccess": [
+    "READ",
+    "CREATE_AND_UPDATE",
+    "DELETE"
+  ]
+}
