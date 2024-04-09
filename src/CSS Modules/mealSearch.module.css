@@ -1,22 +1,111 @@
 /*********************************************
- * @author
- * @brief
+ * @author Kaleb Lawrence
+ * @brief Basic styling to make the page look neat, special styling for the checkboxes so
+ drop down menu works correctly, as well as special styling for Force selected so it didn't look bland.
  *********************************************/
 
-td {
+ /*Some of these might not be used I'm not sure and haven't checked*/
+ td {
     padding: 0px 20px;
 }
 
-form {
+.form {
     text-align: left;
 }
 
 .meal_cards {
-    padding-left: 150px;
-    color: white;
+    color: black;
     position: absolute;
 }
 
-label {
-    padding-right: 10px;
+.checkbox-container {
+    margin-bottom: 1rem;
+  }
+  
+  .checkbox-label {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    color: #252c6a;
+  }
+  
+  .checkbox-input {
+    margin-right: 0.5rem;
+  }
+  
+  .checkbox-hidden {
+    display: none;
+  }
+  .container {
+    width: 400px;
+    max-width: 400px;
+    margin: auto;
+    padding: 2rem;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    background-color: #ffffff;
+  }
+  
+  .dropdownArrow {
+    cursor: pointer;
 }
+.categoryTitle {
+    cursor: pointer;
+}
+  
+  .category {
+    margin-top: 1.5rem;
+  }
+  
+  .checkboxGroup {
+    margin-bottom: 0.5rem;
+  }
+  
+  label {
+    margin-right: 0.5rem;
+  }
+
+  .forceOnlySelected {
+    margin-bottom: 10px; 
+}
+
+.forceOnlySelected input[type="checkbox"] {
+    display: none; 
+}
+
+
+.forceOnlySelected label {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+    padding-left: 25px; 
+}
+
+.forceOnlySelected label::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 2px;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background-color: #fff;
+}
+
+
+.forceOnlySelected input[type="checkbox"]:checked + label::before {
+    background-color: #007bff;
+}
+
+.forceOnlySelected input[type="checkbox"]:checked + label::after {
+    content: '\2713'; 
+    position: absolute;
+    top: 0;
+    left: 4px;
+    font-size: 16px;
+    color: #fff; 
+}
+
+

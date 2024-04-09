@@ -1,9 +1,9 @@
 /*********************************************
  * @author Jeffrey Adkins, Kaleb Lawrence
  * @contribution Form basics: labels, input boxes, and common ingredients
- * @contribution Styled the form so that there is a drop down menu to select common ingredients.
+ * @contribution  Added more form basics so that there is a drop down menu to select common ingredients.
  * @brief Basic searching function that has common ingredients listed as
- *        checkboxes
+ *        checkboxes in a drop down menu.
  *********************************************/
 
 import React, { useState } from 'react';
@@ -44,11 +44,14 @@ function MealSearchFunction() {
     return (
         <div className={MealSearchStyle.container}>
             <form className={MealSearchStyle.form}>
-                <label htmlFor="force_only_selected">Force only selected</label>
-                <input type="checkbox" id="force_only_selected" name="force_only_selected" />
+                {/* Updated styling for "Force only selected" checkbox */}
+                <div className={MealSearchStyle.forceOnlySelected}>
+                    <input type="checkbox" id="force_only_selected" name="force_only_selected" />
+                    <label htmlFor="force_only_selected">Force only selected</label>
+                </div>
 
                 <div className={MealSearchStyle.category}>
-                    <h3 className={MealSearchStyle.categoryTitle}>
+                    <h3 className={MealSearchStyle.categoryTitle}onClick={toggleDairyCheckboxes}>
                         Dairy
                         <span className={MealSearchStyle.dropdownArrow} onClick={toggleDairyCheckboxes}>
                             &#9662; {}
@@ -79,7 +82,7 @@ function MealSearchFunction() {
                 </div>
 
                 <div className={MealSearchStyle.category}>
-                    <h3 className={MealSearchStyle.categoryTitle}>
+                    <h3 className={MealSearchStyle.categoryTitle}onClick={toggleGrainsCheckboxes}>
                         Grains
                         <span className={MealSearchStyle.dropdownArrow} onClick={toggleGrainsCheckboxes}>
                             &#9662; 
@@ -110,7 +113,7 @@ function MealSearchFunction() {
                 </div>
 
                 <div className={MealSearchStyle.category}>
-                    <h3 className={MealSearchStyle.categoryTitle}>
+                    <h3 className={MealSearchStyle.categoryTitle}onClick={toggleFruitsCheckboxes}>
                         Fruits
                         <span className={MealSearchStyle.dropdownArrow} onClick={toggleFruitsCheckboxes}>
                             &#9662; 
@@ -165,7 +168,7 @@ function MealSearchFunction() {
                 </div>
 
                 <div className={MealSearchStyle.category}>
-                <h3 className={MealSearchStyle.categoryTitle}>
+                <h3 className={MealSearchStyle.categoryTitle}onClick={toggleMeatsCheckboxes}>
                     Meats
                     <span className={MealSearchStyle.dropdownArrow} onClick={toggleMeatsCheckboxes}>
                         &#9662; 
@@ -191,7 +194,7 @@ function MealSearchFunction() {
                 </div>
             </div>
             <div className={MealSearchStyle.category}>
-                    <h3 className={MealSearchStyle.categoryTitle}>
+                    <h3 className={MealSearchStyle.categoryTitle}onClick={togglePoultryCheckboxes}>
                         Poultry
                         <span className={MealSearchStyle.dropdownArrow} onClick={togglePoultryCheckboxes}>
                             &#9662;
@@ -213,7 +216,7 @@ function MealSearchFunction() {
                     </div>
                 </div>
                 <div className={MealSearchStyle.category}>
-                    <h3 className={MealSearchStyle.categoryTitle}>
+                    <h3 className={MealSearchStyle.categoryTitle}onClick={toggleFishSeafoodCheckboxes}>
                         Fish/Seafood
                         <span className={MealSearchStyle.dropdownArrow} onClick={toggleFishSeafoodCheckboxes}>
                             &#9662; 
@@ -248,7 +251,7 @@ function MealSearchFunction() {
                 </div>
 
                 <div className={MealSearchStyle.category}>
-                <h3 className={MealSearchStyle.categoryTitle}>
+                <h3 className={MealSearchStyle.categoryTitle}onClick={toggleOilsCheckboxes}>
                     Oils
                     <span className={MealSearchStyle.dropdownArrow} onClick={toggleOilsCheckboxes}>
                         &#9662;
