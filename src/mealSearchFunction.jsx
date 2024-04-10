@@ -1,6 +1,8 @@
 /*********************************************
- * @author Jeffrey Adkins, Kaleb Lawrence
+ * @author Jeffrey Adkins
  * @contribution Form basics: labels, input boxes, and common ingredients
+ * 
+ * @author Kaleb Lawrence
  * @contribution  Added more form basics so that there is a drop down menu to select common ingredients.
  * @brief Basic searching function that has common ingredients listed as
  *        checkboxes in a drop down menu.
