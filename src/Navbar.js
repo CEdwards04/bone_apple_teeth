@@ -18,8 +18,8 @@ function Navbar() {
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav">
             <a className="nav-link" href="/meal-search">Meal Search</a>
-            <a className="nav-link" href="#">About</a>
-            <a className="nav-link" href="#">Contact</a>
+            <a className="nav-link" href="#About">About</a>
+            <a className="nav-link" href="#Contact">Contact</a>
           </div>
         </div>
         <a className="nav-link" href="/profile"><button className="btn btn-dark" type="submit">User Account</button></a>

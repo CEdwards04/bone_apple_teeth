@@ -1,0 +1,58 @@
+h1{
+    font-family: brandon-grotesque, "sans serif", sans-serif, "Helvetica Neue", Helvetica, arial;
+    font-weight: 1000;
+    font-style: normal;
+    font-stretch: normal;
+    text-transform: uppercase;
+    white-space: normal;
+    letter-spacing: 1px;
+    transform: translatex(28%);
+}
+
+.creator {
+  float: left;
+  width: 100%;
+  clear: both;
+  transform: translatex(28%);
+ 
+}
+.creator.author{
+  width:100%
+}
+.creator.author{
+  width: 100%;
+  float: left;
+  position: relative;
+}
+.creator .author .fd-avatar {
+  float: left;
+  margin: 0 14px 0 0;
+  border-radius: 0;
+}
+.creator .author .author-name {
+  color: #009970;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  
+  font-style: normal;
+  font-stretch: normal;
+  text-transform: none;
+  white-space: normal;
+  letter-spacing: 0;
+  font-size: 2px;
+  font-weight: 700;
+  margin: 0;
+  position: absolute;
+  left: 150px;
+  -ms-transform: translateY(10%);
+  transform: translateY(135%);
+}
+p{
+   transform: translatex(28%);
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.foot{
+  background-color: black;
+}
+.about-des{
+  margin-bottom: 100px;
+}
