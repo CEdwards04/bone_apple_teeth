@@ -1,0 +1,39 @@
+.slider {
+
+}
+
+.round {
+
+}
+
+.switch {
+
+}
+
+.switch input {
+
+}
+
+.slider:before {
+
+}
+
+input:checked + .slider {
+
+}
+
+input:focus + .slider {
+
+}
+
+input:checked + slider:before {
+
+}
+
+.slider.round {
+
+}
+
+.slider.round:before {
+    
+}
