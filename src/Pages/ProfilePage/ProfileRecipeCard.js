@@ -1,12 +1,17 @@
 /*********************************************
- * @author
+ * @author Caleb Edwards
+ * @contributions
+ * 
+ * @author Kaleb Lawrence
+ * @contributions Made the create recipe a form instead of a pop up menu, Graphql stayed the same for the most part
  * @brief
  *********************************************/
+//Does not show ingredients or instructions in the card, it didn't prior to the form either and I didn't really try to fix it for now but I will at some point.
 
 import React, { useState, useEffect } from 'react';
 import { Amplify } from 'aws-amplify';
 import { listRecipes, createRecipe, deleteRecipe, updateRecipe } from '../../graphql/graphql-operations';
-import awsConfig from '../../aws-exports'; // Import your AWS configuration file
+import awsConfig from '../../aws-exports';
 import { graphqlOperation } from '@aws-amplify/api-graphql';
 import { generateClient } from "aws-amplify/api";
 Amplify.configure(awsConfig);
@@ -15,8 +20,11 @@ const client = generateClient();
 function FavoritesCard() {
   const [recipes, setRecipes] = useState([]);
   const [error, setError] = useState(null);
+  const [newRecipeName, setNewRecipeName] = useState('');
+  const [newRecipeIngredients, setNewRecipeIngredients] = useState('');
+  const [newRecipeInstructions, setNewRecipeInstructions] = useState('');
+  const [showForm, setShowForm] = useState(false);
 
-  // Function to fetch recipes from GraphQL API
   async function fetchRecipes() {
     try {
       const recipeData = await client.graphql(graphqlOperation(listRecipes));
@@ -27,25 +35,25 @@ function FavoritesCard() {
     }
   }
 
-  // Fetch recipes from GraphQL API on component mount
   useEffect(() => {
     fetchRecipes();
   }, []);
 
-  // Function to handle recipe creation
-  async function handleCreateRecipe() {
-    const recipeName = prompt('Enter recipe name:');
-    const recipeIngredients = prompt('Enter recipe ingredients:');
-    const recipeInstructions = prompt('Enter recipe instructions:');
-    if (recipeName && recipeIngredients && recipeInstructions) {
+  async function handleSubmit(event) {
+    event.preventDefault();
+    if (newRecipeName && newRecipeIngredients && newRecipeInstructions) {
       try {
         const response = await client.graphql(graphqlOperation(createRecipe, { 
-          name: recipeName,
-          ingredients: recipeIngredients,
-          instructions: recipeInstructions,
+          name: newRecipeName,
+          ingredients: newRecipeIngredients,
+          instructions: newRecipeInstructions,
         }));
         if (response.data.createRecipe) {
           setRecipes(prevRecipes => [...prevRecipes, response.data.createRecipe]);
+          setNewRecipeName('');
+          setNewRecipeIngredients('');
+          setNewRecipeInstructions('');
+          setShowForm(false);
         } else {
           setError('Error creating recipe. Please try again.');
         }
@@ -56,11 +64,9 @@ function FavoritesCard() {
     }
   }
 
-  // Function to handle recipe deletion
   async function handleDeleteRecipe(id) {
     try {
       await client.graphql(graphqlOperation(deleteRecipe, { id }));
-      // Update state by removing the deleted recipe
       setRecipes(prevRecipes => prevRecipes.filter(recipe => recipe.id !== id));
     } catch (error) {
       console.error('Error deleting recipe:', error);
@@ -68,35 +74,48 @@ function FavoritesCard() {
     }
   }
 
-  // Function to handle recipe update
   async function handleUpdateRecipe(id) {
-    const newName = prompt('Enter new recipe name:');
-    const newIngredients = prompt('Enter new recipe ingredients:');
-    const newInstructions = prompt('Enter new recipe instructions:');
-    if (newName && newIngredients && newInstructions) {
-      try {
-        await client.graphql(graphqlOperation(updateRecipe, { 
-          id, 
-          name: newName,
-          ingredients: newIngredients,
-          instructions: newInstructions,
-        }));
-        // Update state with the updated recipe details
-        setRecipes(prevRecipes =>
-          prevRecipes.map(recipe =>
-            recipe.id === id ? { ...recipe, name: newName, ingredients: newIngredients, instructions: newInstructions } : recipe
-          )
-        );
-      } catch (error) {
-        console.error('Error updating recipe:', error);
-        setError('Error updating recipe. Please try again.');
-      }
+    const recipeToUpdate = recipes.find(recipe => recipe.id === id);
+    if (recipeToUpdate) {
+      setNewRecipeName(recipeToUpdate.name);
+      setNewRecipeIngredients(recipeToUpdate.ingredients);
+      setNewRecipeInstructions(recipeToUpdate.instructions);
+      setShowForm(true);
     }
   }
 
   return (
-    <div className="d-flex justify-content-center">
-      <div className="row row-cols-4 row-cols-md-1 g-4">
+    <div>
+      {/* Button to toggle form visibility */}
+      {!showForm && (
+        <div className="d-flex"> 
+          <button className="btn btn-success mb-3 me-2" onClick={() => setShowForm(true)}> 
+            Add Recipe
+          </button>
+        </div>
+      )}
+      {/* Form for creating a recipe */}
+      {showForm && (
+        <form onSubmit={handleSubmit}>
+          <div className="mb-3">
+            <label htmlFor="recipeName" className="form-label">Recipe Name</label>
+            <input type="text" className="form-control" id="recipeName" value={newRecipeName} onChange={(e) => setNewRecipeName(e.target.value)} />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="recipeIngredients" className="form-label">Ingredients</label>
+            <input type="text" className="form-control" id="recipeIngredients" value={newRecipeIngredients} onChange={(e) => setNewRecipeIngredients(e.target.value)} />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="recipeInstructions" className="form-label">Instructions</label>
+            <textarea className="form-control" id="recipeInstructions" rows="3" value={newRecipeInstructions} onChange={(e) => setNewRecipeInstructions(e.target.value)}></textarea>
+          </div>
+          <div>
+            <button type="submit" className="btn btn-primary">Add Recipe</button>
+            <button type="button" className="btn btn-secondary ms-2" onClick={() => setShowForm(false)}>Cancel</button>
+          </div>
+        </form>
+      )}
+      <div className="d-flex flex-wrap">
         {recipes.map(recipe => (
           <div key={recipe.id} className="col">
             <div className="card text-bg-secondary" style={{ width: '18rem' }}>
@@ -113,7 +132,6 @@ function FavoritesCard() {
           </div>
         ))}
       </div>
-      <button className="btn btn-success" onClick={handleCreateRecipe}>Add Recipe</button>
       {error && <div className="alert alert-danger">{error}</div>}
     </div>
   );
