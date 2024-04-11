@@ -14,8 +14,6 @@ type Recipe @model @auth(rules: [{ allow: owner }]){
   instructions: String
 }
 
-
-
 input CreateRecipeInput {
   name: String!
   ingredients: String
