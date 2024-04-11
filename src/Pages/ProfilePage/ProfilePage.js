@@ -22,6 +22,7 @@ import '@aws-amplify/ui-react/styles.css';
 import config from '../../amplifyconfiguration.json';
 Amplify.configure(config); 
 
+
 const UserProfile = ({ signOut, user }) => {
     return (
         <>
@@ -46,6 +47,7 @@ const UserProfile = ({ signOut, user }) => {
                         </ul>
                     </div>
                 </div>
+                <a href="/profile/settings"><button>Settings</button></a>
                 <button className={ProfileStyle.logout_btn} onClick={signOut}>Sign out</button>
             </div>
         </>
