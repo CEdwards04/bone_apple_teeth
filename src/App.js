@@ -20,6 +20,7 @@ import LoginPage from './LoginPage';
 import ProfilePopup from './Pages/ProfilePage/ProfilePopup';
 import UserProfile from './Pages/ProfilePage/ProfilePage';
 import UserSettings from './Pages/SettingsPage/Settings';
+import Contact from './Contact';
 import { createTodo, updateTodo, deleteTodo } from './graphql/mutations';
 import { listTodos } from './graphql/queries';
 import { Amplify } from 'aws-amplify';
@@ -81,6 +82,8 @@ console.log(deleteResult);
         <Routes>
           <Route path="/" element={<Home></Home>}></Route>
           <Route path="/meal-search/" element={<MealSearch></MealSearch>}></Route>
+          <Route path="/about" element={<Home />} /> /*Re-routes to home for now*/
+          <Route path="/contact" element={<Contact />} />
           <Route path="/profile/" element={<UserProfile />} />
           <Route path="/profile/settings" element={<UserSettings />} />
         </Routes>
