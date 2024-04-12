@@ -10,21 +10,21 @@ type Todo @model @auth(rules: [{ allow: owner }]) {
 type Recipe @model @auth(rules: [{ allow: owner }]){
   id: ID!
   name: String!
-  ingredients: String
-  instructions: String
+  ingredients: String!
+  instructions: String!
 }
 
 input CreateRecipeInput {
   name: String!
-  ingredients: String
-  instructions: String
+  ingredients: String!
+  instructions: String!
 }
 
 input UpdateRecipeInput {
   id: ID!
-  name: String
-  ingredients: String
-  instructions: String
+  name: String!
+  ingredients: String!
+  instructions: String!
 }
 
 input DeleteRecipeInput {
