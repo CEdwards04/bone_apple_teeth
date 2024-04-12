@@ -47,5 +47,24 @@
         "s3boneappleteethstoragefull": {}
       }
     }
+  },
+  "hopefinal": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-boneappleteeth-hopefinal-121541-authRole",
+      "UnauthRoleArn": "arn:aws:iam::767398030545:role/amplify-boneappleteeth-hopefinal-121541-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::767398030545:role/amplify-boneappleteeth-hopefinal-121541-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-boneappleteeth-hopefinal-121541-deployment",
+      "UnauthRoleName": "amplify-boneappleteeth-hopefinal-121541-unauthRole",
+      "StackName": "amplify-boneappleteeth-hopefinal-121541",
+      "StackId": "arn:aws:cloudformation:us-east-2:767398030545:stack/amplify-boneappleteeth-hopefinal-121541/e8bfc5c0-f8e7-11ee-b7fd-063ae3bb3da5",
+      "AmplifyAppId": "d2guuqnalacqy6"
+    },
+    "categories": {
+      "auth": {
+        "boneappleteeth": {},
+        "boneappleteeth7e2ffc44": {}
+      }
+    }
   }
 }
