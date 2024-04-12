@@ -3,7 +3,7 @@
  * @brief Just placeholders for when users can favorite recipes and they show on the profile.
  *********************************************/
 
-function RecipeCard() {
+function ProfileFavoritesCard() {
   return (
       <div className="d-flex justify-content-center">
           <div className="row row-cols-4 row-cols-md-1 g-4">
@@ -36,4 +36,4 @@ function RecipeCard() {
   );
 }
 
-export default RecipeCard;
+export default ProfileFavoritesCard;

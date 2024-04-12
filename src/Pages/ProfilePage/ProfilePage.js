@@ -13,8 +13,8 @@ import '../../Navbar';
 import React from 'react';
 import Navbar from '../../Navbar';
 import ProfileStyle from './ProfilePage.module.css';
-import RecipeCard from './ProfileRecipeCard';
-import FavoritesCard from './ProfileFavoritesCard';
+import ProfileRecipeCard from './ProfileRecipeCard';
+import ProfileFavoritesCard from './ProfileFavoritesCard';
 
 import { Amplify } from 'aws-amplify';
 import { withAuthenticator } from '@aws-amplify/ui-react';
@@ -36,13 +36,13 @@ const UserProfile = ({ signOut, user }) => {
                 <div className={ProfileStyle.section_container}>
                     <div className={ProfileStyle.section}>
                         <h2>My Recipes</h2>
-                        <RecipeCard></RecipeCard>
+                        <ProfileRecipeCard></ProfileRecipeCard>
                         <ul className={ProfileStyle.list}>
                         </ul>
                     </div>
                     <div className={ProfileStyle.section}>
                         <h2>My Favorites</h2>
-                        <FavoritesCard></FavoritesCard>
+                        <ProfileFavoritesCard></ProfileFavoritesCard>
                         <ul className={ProfileStyle.list}>
                         </ul>
                     </div>
