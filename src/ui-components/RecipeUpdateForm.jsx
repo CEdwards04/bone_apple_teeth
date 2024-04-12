@@ -64,8 +64,8 @@ export default function RecipeUpdateForm(props) {
   React.useEffect(resetStateValues, [recipeRecord]);
   const validations = {
     name: [{ type: "Required" }],
-    ingredients: [],
-    instructions: [],
+    ingredients: [{ type: "Required" }],
+    instructions: [{ type: "Required" }],
   };
   const runValidationTasks = async (
     fieldName,
@@ -94,8 +94,8 @@ export default function RecipeUpdateForm(props) {
         event.preventDefault();
         let modelFields = {
           name,
-          ingredients: ingredients ?? null,
-          instructions: instructions ?? null,
+          ingredients,
+          instructions,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -175,7 +175,7 @@ export default function RecipeUpdateForm(props) {
       ></TextField>
       <TextField
         label="Ingredients"
-        isRequired={false}
+        isRequired={true}
         isReadOnly={false}
         value={ingredients}
         onChange={(e) => {
@@ -201,7 +201,7 @@ export default function RecipeUpdateForm(props) {
       ></TextField>
       <TextField
         label="Instructions"
-        isRequired={false}
+        isRequired={true}
         isReadOnly={false}
         value={instructions}
         onChange={(e) => {
