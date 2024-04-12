@@ -17,7 +17,7 @@ import { generateClient } from "aws-amplify/api";
 Amplify.configure(awsConfig);
 const client = generateClient();
 
-function FavoritesCard() {
+function ProfileRecipeCard() {
   const [recipes, setRecipes] = useState([]);
   const [error, setError] = useState(null);
   const [newRecipeName, setNewRecipeName] = useState('');
@@ -137,4 +137,4 @@ function FavoritesCard() {
   );
 }
 
-export default FavoritesCard;
+export default ProfileRecipeCard;
