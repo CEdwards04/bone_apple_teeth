@@ -8,13 +8,6 @@
       "cognitoUserPoolId": "authboneappleteeth"
     },
     "conflictResolution": {},
-    "additionalAuthTypes": [
-      {
-        "mode": "API_KEY",
-        "expirationTime": 7,
-        "apiKeyExpirationDate": "2024-04-13T22:37:10.052Z",
-        "keyDescription": ""
-      }
-    ]
+    "additionalAuthTypes": []
   }
 }

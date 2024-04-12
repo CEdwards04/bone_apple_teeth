@@ -9,7 +9,6 @@ export type AmplifyDependentResourcesAttributes = {
     "boneappleteeth": {
       "AppClientID": "string",
       "AppClientIDWeb": "string",
-      "CreatedSNSRole": "string",
       "IdentityPoolId": "string",
       "IdentityPoolName": "string",
       "UserPoolArn": "string",
