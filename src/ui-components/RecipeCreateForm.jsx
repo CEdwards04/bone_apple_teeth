@@ -43,8 +43,8 @@ export default function RecipeCreateForm(props) {
   };
   const validations = {
     name: [{ type: "Required" }],
-    ingredients: [],
-    instructions: [],
+    ingredients: [{ type: "Required" }],
+    instructions: [{ type: "Required" }],
   };
   const runValidationTasks = async (
     fieldName,
@@ -156,7 +156,7 @@ export default function RecipeCreateForm(props) {
       ></TextField>
       <TextField
         label="Ingredients"
-        isRequired={false}
+        isRequired={true}
         isReadOnly={false}
         value={ingredients}
         onChange={(e) => {
@@ -182,7 +182,7 @@ export default function RecipeCreateForm(props) {
       ></TextField>
       <TextField
         label="Instructions"
-        isRequired={false}
+        isRequired={true}
         isReadOnly={false}
         value={instructions}
         onChange={(e) => {
