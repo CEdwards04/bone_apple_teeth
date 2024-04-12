@@ -1,6 +1,6 @@
 /*********************************************
- * @author
- * @contribution
+ * @author Caleb Edwards
+ * @contribution Set up the inital profile page with everything but the login.
  * 
  * @author Jeffrey Adkins
  * @contribution Setup login to work on this page as well as the logout

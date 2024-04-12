@@ -1,6 +1,6 @@
 /*********************************************
- * @author
- * @brief
+ * @author Caleb Edwards
+ * @brief Just placeholders for when users can favorite recipes and they show on the profile.
  *********************************************/
 
 function RecipeCard() {

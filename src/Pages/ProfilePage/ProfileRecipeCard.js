@@ -1,13 +1,13 @@
 /*********************************************
  * @author Caleb Edwards
- * @contributions
+ * @contributions Created the inital recipe card and its functions.
  * 
  * @author Kaleb Lawrence
  * @contributions Made the create recipe a form instead of a pop up menu, Graphql stayed the same for the most part
  * @brief
  *********************************************/
 //Does not show ingredients or instructions in the card, it didn't prior to the form either and I didn't really try to fix it for now but I will at some point.
-
+// Problem with the ingredients and instructions is fixed but now the update function makes a whole new card instead of changing the existing one. I will continue working on it - caleb
 import React, { useState, useEffect } from 'react';
 import { Amplify } from 'aws-amplify';
 import { listRecipes, createRecipe, deleteRecipe, updateRecipe } from '../../graphql/graphql-operations';

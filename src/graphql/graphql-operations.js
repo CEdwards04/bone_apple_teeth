@@ -6,19 +6,24 @@ export const listRecipes = /* GraphQL */ `
       items {
         id
         name
+        ingredients
+        instructions
       }
     }
   }
 `;
 
 export const createRecipe = /* GraphQL */ `
-  mutation CreateRecipe($name: String!) {
-    createRecipe(input: { name: $name }) {
+  mutation CreateRecipe($name: String!, $instructions: String!, $ingredients: String!) {
+    createRecipe(input: { name: $name, instructions: $instructions, ingredients: $ingredients }) {
       id
       name
+      ingredients
+      instructions
     }
   }
 `;
+
 
 export const deleteRecipe = /* GraphQL */ `
   mutation DeleteRecipe($id: ID!) {
@@ -29,10 +34,13 @@ export const deleteRecipe = /* GraphQL */ `
 `;
 
 export const updateRecipe = /* GraphQL */ `
-  mutation UpdateRecipe($id: ID!, $name: String!) {
-    updateRecipe(input: { id: $id, name: $name }) {
+  mutation UpdateRecipe($id: ID!, $name: String!, $ingredients: String!, $instructions: String!) {
+    updateRecipe(input: { id: $id, name: $name, ingredients: $ingredients, instructions: $instructions }) {
       id
       name
+      ingredients
+      instructions
     }
   }
 `;
+
