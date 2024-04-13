@@ -31,7 +31,7 @@ import '@aws-amplify/ui-react/styles.css';
 import { createElement, useEffect } from 'react';
 Amplify.configure(config);
 
-function App({ signOut, user }) {
+function App() {
   
   useEffect(() => {
   const client = generateClient();
@@ -92,7 +92,7 @@ console.log(deleteResult);
   );
 }
 
-export default withAuthenticator(App);
+export default App;
 
 /*function App() {
   return (
