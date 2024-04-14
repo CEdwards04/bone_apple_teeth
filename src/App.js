@@ -19,7 +19,8 @@ import MealSearch from '../src/mealSearch';
 import LoginPage from './LoginPage';
 import ProfilePopup from './Pages/ProfilePage/ProfilePopup';
 import UserProfile from './Pages/ProfilePage/ProfilePage';
-import UserSettings from './Pages/SettingsPage/Settings';
+import Settings from './Settings/Settings';
+
 import Contact from './Contact';
 import { createTodo, updateTodo, deleteTodo } from './graphql/mutations';
 import { listTodos } from './graphql/queries';
@@ -29,6 +30,8 @@ import config from './amplifyconfiguration.json';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import { createElement, useEffect } from 'react';
+
+
 Amplify.configure(config);
 
 function App() {
@@ -85,7 +88,7 @@ console.log(deleteResult);
           <Route path="/about" element={<Home />} /> /*Re-routes to home for now*/
           <Route path="/contact" element={<Contact />} />
           <Route path="/profile/" element={<UserProfile />} />
-          <Route path="/profile/settings" element={<UserSettings />} />
+          <Route path="/settings" element={<Settings />} />
         </Routes>
       </BrowserRouter>
     </div>
