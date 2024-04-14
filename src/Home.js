@@ -1,5 +1,6 @@
 /*********************************************
  * @author Jeffrey Adkins
+ * @contribution Entire file
  * @brief This is the home page of the website.
  *********************************************/
 

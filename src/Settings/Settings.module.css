@@ -1,3 +1,10 @@
+/*********************************************
+ * @author Jeffrey Adkins
+ * @contribution Entire file
+ * 
+ * @brief This provides the CSS for the slider
+ *********************************************/
+
 
 .content_center {
     margin: auto;
@@ -11,7 +18,7 @@
     bottom: 0;
     border-radius: 10px;
     cursor: pointer;
-    background-color: rgb(13, 224, 247); 
+    background-color: #9992da; 
     transition: .6s;
   }
   
@@ -36,7 +43,7 @@
   }
   
   input:checked + .slider {
-    background-color: #08cafb; 
+    background-color: #5a4ae3; 
   }
   
   input:checked + .slider:before {
