@@ -2,6 +2,8 @@
  * @author Jeffrey Adkins
  * @contribution 
  * 
+ * @author Adel Ismail
+ * @contribution 
  * @brief
  *********************************************/
 
@@ -13,6 +15,10 @@ import useDarkMode from './useDarkMode';
 function Settings() {
   const [darkMode, toggleDarkMode] = useDarkMode();
 
+  const toggleGlobalDarkMode = () => {
+    toggleDarkMode();
+    localStorage.setItem('darkMode', !darkMode);
+  };
   return (
     <>
       <Navbar />
@@ -23,7 +29,7 @@ function Settings() {
         <hr />
         <section>
           <h4>Account Details</h4>
-          {/* account details here */}
+          <p></p>
         </section>
         <hr />
         <section>
@@ -39,7 +45,7 @@ function Settings() {
                     <input
                       type="checkbox"
                       checked={darkMode}
-                      onChange={toggleDarkMode}
+                      onChange={toggleGlobalDarkMode}
                     />
                     <span className={Settings_Style.slider}></span>
                   </label>
@@ -50,10 +56,11 @@ function Settings() {
         </section>
       </div>
       <style jsx global>{`
+      
         body {
           background-color: ${darkMode ? "#111" : "#fff"};
           color: ${darkMode ? "#fff" : "#111"};
-          transition: background-color 0.3s, color 0.3s;
+          transition: background-color .7s, color .7s;
           height: 100vh; 
           margin: 0; 
           font-family: Arial, sans-serif; 

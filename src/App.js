@@ -30,12 +30,16 @@ import config from './amplifyconfiguration.json';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import { createElement, useEffect } from 'react';
+import useDarkMode from './Settings/useDarkMode';
 
 
 Amplify.configure(config);
 
 function App() {
-  
+  const [darkMode] = useDarkMode();
+
+
+
   useEffect(() => {
   const client = generateClient();
  
@@ -82,20 +86,36 @@ console.log(deleteResult);
   return (
     <div className="App">
       <BrowserRouter>
-        <Routes>
+        <div className={`app ${darkMode ? 'dark' : 'light'}`}>
+          <Routes>
           <Route path="/" element={<Home></Home>}></Route>
           <Route path="/meal-search/" element={<MealSearch></MealSearch>}></Route>
           <Route path="/about" element={<Home />} /> /*Re-routes to home for now*/
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/profile/" element={<UserProfile />} />
-          <Route path="/settings" element={<Settings />} />
-        </Routes>
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/profile/" element={<UserProfile />} />
+            <Route path="/settings" element={<Settings />} />
+          </Routes>
+        </div>
       </BrowserRouter>
+      <style jsx global>{`
+        body {
+          background-color: ${darkMode ? '#111' : '#fff'};
+          color: ${darkMode ? '#fff' : '#111'};
+          transition: background-color 0s, color 0.2s;
+          height: 100vh;
+          margin: 0;
+          font-family: Arial, sans-serif;
+        }
+      `}</style>
     </div>
   );
 }
 
 export default App;
+
+
+
+
 
 /*function App() {
   return (
