@@ -52,6 +52,21 @@ function MealSearchFunction() {
                     <label htmlFor="force_only_selected">Force only selected</label>
                 </div>
 
+                <div className={MealSearchStyle.forceOnlySelected}>
+                    <input type="checkbox" id="breakfast" name="breakfast" />
+                    <label htmlFor="breakfast">Breakfast</label>
+                </div>
+
+                <div className={MealSearchStyle.forceOnlySelected}>
+                    <input type="checkbox" id="Lunch" name="Lunch" />
+                    <label htmlFor="Lunch">Lunch</label>
+                </div>
+
+                <div className={MealSearchStyle.forceOnlySelected}>
+                    <input type="checkbox" id="Dinner" name="Dinner" />
+                    <label htmlFor="Dinner">Dinner</label>
+                </div>
+
                 <div className={MealSearchStyle.category}>
                     <h3 className={MealSearchStyle.categoryTitle}onClick={toggleDairyCheckboxes}>
                         Dairy
