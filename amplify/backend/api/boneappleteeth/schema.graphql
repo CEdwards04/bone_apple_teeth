@@ -1,0 +1,7 @@
+type Recipe @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String!
+  ingredients: String!
+  instructions: String!
+  Favorite: Boolean
+}
