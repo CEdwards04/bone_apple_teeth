@@ -1,6 +1,7 @@
 /*********************************************
  * @author Jeffrey Adkins
- * @contribution Jsx skeleton and setting up mealSearchFunction.jsx
+ * @contribution Jsx skeleton, setting up mealSearchFunction.jsx, help with
+ *               API configuring to display on page
  * 
  * @author
  * @contribution
