@@ -42,6 +42,7 @@ export const getRecipe = /* GraphQL */ `
       name
       ingredients
       instructions
+      Favorite
       createdAt
       updatedAt
       owner
@@ -61,6 +62,7 @@ export const listRecipes = /* GraphQL */ `
         name
         ingredients
         instructions
+        Favorite
         createdAt
         updatedAt
         owner

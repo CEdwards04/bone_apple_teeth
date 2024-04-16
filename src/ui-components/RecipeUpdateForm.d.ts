@@ -5,7 +5,7 @@
  **************************************************************************/
 
 import * as React from "react";
-import { GridProps, TextFieldProps } from "@aws-amplify/ui-react";
+import { GridProps, SwitchFieldProps, TextFieldProps } from "@aws-amplify/ui-react";
 export declare type EscapeHatchProps = {
     [elementHierarchy: string]: Record<string, unknown>;
 } | null;
@@ -25,11 +25,13 @@ export declare type RecipeUpdateFormInputValues = {
     name?: string;
     ingredients?: string;
     instructions?: string;
+    Favorite?: boolean;
 };
 export declare type RecipeUpdateFormValidationValues = {
     name?: ValidationFunction<string>;
     ingredients?: ValidationFunction<string>;
     instructions?: ValidationFunction<string>;
+    Favorite?: ValidationFunction<boolean>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type RecipeUpdateFormOverridesProps = {
@@ -37,6 +39,7 @@ export declare type RecipeUpdateFormOverridesProps = {
     name?: PrimitiveOverrideProps<TextFieldProps>;
     ingredients?: PrimitiveOverrideProps<TextFieldProps>;
     instructions?: PrimitiveOverrideProps<TextFieldProps>;
+    Favorite?: PrimitiveOverrideProps<SwitchFieldProps>;
 } & EscapeHatchProps;
 export declare type RecipeUpdateFormProps = React.PropsWithChildren<{
     overrides?: RecipeUpdateFormOverridesProps | undefined | null;

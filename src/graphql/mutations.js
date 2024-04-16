@@ -59,6 +59,7 @@ export const createRecipe = /* GraphQL */ `
       name
       ingredients
       instructions
+      Favorite
       createdAt
       updatedAt
       owner
@@ -76,6 +77,7 @@ export const updateRecipe = /* GraphQL */ `
       name
       ingredients
       instructions
+      Favorite
       createdAt
       updatedAt
       owner
@@ -93,6 +95,7 @@ export const deleteRecipe = /* GraphQL */ `
       name
       ingredients
       instructions
+      Favorite
       createdAt
       updatedAt
       owner

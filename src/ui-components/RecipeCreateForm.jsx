@@ -6,7 +6,13 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { Button, Flex, Grid, TextField } from "@aws-amplify/ui-react";
+import {
+  Button,
+  Flex,
+  Grid,
+  SwitchField,
+  TextField,
+} from "@aws-amplify/ui-react";
 import { fetchByPath, getOverrideProps, validateField } from "./utils";
 import { generateClient } from "aws-amplify/api";
 import { createRecipe } from "../graphql/mutations";
@@ -26,6 +32,7 @@ export default function RecipeCreateForm(props) {
     name: "",
     ingredients: "",
     instructions: "",
+    Favorite: false,
   };
   const [name, setName] = React.useState(initialValues.name);
   const [ingredients, setIngredients] = React.useState(
@@ -34,17 +41,20 @@ export default function RecipeCreateForm(props) {
   const [instructions, setInstructions] = React.useState(
     initialValues.instructions
   );
+  const [Favorite, setFavorite] = React.useState(initialValues.Favorite);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     setName(initialValues.name);
     setIngredients(initialValues.ingredients);
     setInstructions(initialValues.instructions);
+    setFavorite(initialValues.Favorite);
     setErrors({});
   };
   const validations = {
     name: [{ type: "Required" }],
     ingredients: [{ type: "Required" }],
     instructions: [{ type: "Required" }],
+    Favorite: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -75,6 +85,7 @@ export default function RecipeCreateForm(props) {
           name,
           ingredients,
           instructions,
+          Favorite,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -140,6 +151,7 @@ export default function RecipeCreateForm(props) {
               name: value,
               ingredients,
               instructions,
+              Favorite,
             };
             const result = onChange(modelFields);
             value = result?.name ?? value;
@@ -166,6 +178,7 @@ export default function RecipeCreateForm(props) {
               name,
               ingredients: value,
               instructions,
+              Favorite,
             };
             const result = onChange(modelFields);
             value = result?.ingredients ?? value;
@@ -192,6 +205,7 @@ export default function RecipeCreateForm(props) {
               name,
               ingredients,
               instructions: value,
+              Favorite,
             };
             const result = onChange(modelFields);
             value = result?.instructions ?? value;
@@ -206,6 +220,33 @@ export default function RecipeCreateForm(props) {
         hasError={errors.instructions?.hasError}
         {...getOverrideProps(overrides, "instructions")}
       ></TextField>
+      <SwitchField
+        label="Favorite"
+        defaultChecked={false}
+        isDisabled={false}
+        isChecked={Favorite}
+        onChange={(e) => {
+          let value = e.target.checked;
+          if (onChange) {
+            const modelFields = {
+              name,
+              ingredients,
+              instructions,
+              Favorite: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.Favorite ?? value;
+          }
+          if (errors.Favorite?.hasError) {
+            runValidationTasks("Favorite", value);
+          }
+          setFavorite(value);
+        }}
+        onBlur={() => runValidationTasks("Favorite", Favorite)}
+        errorMessage={errors.Favorite?.errorMessage}
+        hasError={errors.Favorite?.hasError}
+        {...getOverrideProps(overrides, "Favorite")}
+      ></SwitchField>
       <Flex
         justifyContent="space-between"
         {...getOverrideProps(overrides, "CTAFlex")}

@@ -1,0 +1,12 @@
+{
+  "AppSyncApiName": "boneappleteeth",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthModeLastUpdated": "2024-04-16T19:22:18.046Z",
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authboneappleteeth",
+      "Outputs.UserPoolId"
+    ]
+  }
+}
