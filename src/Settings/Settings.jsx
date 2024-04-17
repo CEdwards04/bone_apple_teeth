@@ -55,7 +55,7 @@ function Settings() {
           </table>
         </section>
       </div>
-      <style jsx global>{`
+      <style global="true">{`
       
         body {
           background-color: ${darkMode ? "#111" : "#fff"};

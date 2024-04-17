@@ -97,7 +97,7 @@ console.log(deleteResult);
           </Routes>
         </div>
       </BrowserRouter>
-      <style jsx global>{`
+      <style jsx="true">{`
         body {
           background-color: ${darkMode ? '#111' : '#fff'};
           color: ${darkMode ? '#fff' : '#111'};
