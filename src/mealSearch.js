@@ -79,6 +79,8 @@ function MealSearch() {
 
     console.log("recipeData:", recipeData);
 
+    
+
     return (
         <div>
             <Navbar />
@@ -92,13 +94,7 @@ function MealSearch() {
                         </td>
                         <td className={mealSearchStyle.meal_cards}>
                             {recipeData && recipeData.map((recipe, index) => (
-                                <div key={recipe.id}>
-                                    
-                                    <h2>{recipe.title}</h2>
-                                    <h3>{recipe.ingredients}</h3>
-                                    <p>{recipe.recipe}</p>
-                                </div>
-                                
+                                <Card key={recipe.id} recipe={recipe} />
                             ))}
                         </td>
                     </tr>
