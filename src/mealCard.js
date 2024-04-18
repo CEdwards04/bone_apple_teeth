@@ -1,6 +1,10 @@
 /*********************************************
  * @author Jeffrey Adkins
- * @contribution Entire file
+ * @contribution Code for the meal cards
+ * 
+ * @author
+ * @contribution
+ * 
  * @brief This is the basic meal card component in which will load
  *        the meals and display them on the webpage.
  *********************************************/
