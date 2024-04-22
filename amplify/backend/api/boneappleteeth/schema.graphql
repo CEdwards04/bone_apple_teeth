@@ -1,3 +1,10 @@
+type UserData @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  email: String
+  phone: String
+}
+
 type Recipe @model @auth(rules: [{allow: public}]) {
   id: ID!
   name: String!
