@@ -15,6 +15,9 @@
       "auth": {
         "boneappleteeth": {},
         "boneappleteeth7e2ffc44": {}
+      },
+      "storage": {
+        "s3boneappleteethimg": {}
       }
     }
   },
