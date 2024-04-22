@@ -44,11 +44,11 @@ export const updateRecipe = /* GraphQL */ `
   }
 `;
 
-export const updateUser = /* GraphQL */ `
-  mutation UpdateUser(
-    $input: UpdateUserInput!
+export const updateUserData = /* GraphQL */ `
+  mutation UpdateUserData(
+    $input: UpdateUserDataInput!
   ) {
-    updateUser(input: $input) {
+    updateUserData(input: $input) {
       id
       name
       email
@@ -60,11 +60,11 @@ export const updateUser = /* GraphQL */ `
   }
 `;
 
-export const deleteUser = /* GraphQL */ `
-  mutation DeleteUser(
-    $input: DeleteUserInput!
+export const deleteUserData = /* GraphQL */ `
+  mutation DeleteUserData(
+    $input: DeleteUserDataInput!
   ) {
-    deleteUser(input: $input) {
+    deleteUserData(input: $input) {
       id
       name
       email

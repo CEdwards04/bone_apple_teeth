@@ -14,10 +14,10 @@ import useDarkMode from './useDarkMode';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import { Amplify } from 'aws-amplify';
 import { signIn, signOut } from 'aws-amplify/auth';
-import { updateUser } from '../graphql/graphql-operations';
 import { graphqlOperation } from '@aws-amplify/api-graphql';
 import { generateClient } from "aws-amplify/api";
 import config from '../amplifyconfiguration.json';
+import { updateUserData, deleteUserData } from '../graphql/graphql-operations';
 Amplify.configure(config); 
 const client = generateClient();
 
@@ -47,7 +47,7 @@ function Settings() {
       };
   
       // Update the user's information in the backend
-      await client.graphql(graphqlOperation(updateUser, { input }));
+      await client.graphql(graphqlOperation(updateUserData, { input }));
   
       // Optionally, provide feedback to the user that the data was successfully updated
       console.log('User data updated successfully:', input);
