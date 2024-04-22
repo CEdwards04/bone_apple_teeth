@@ -17,7 +17,7 @@ function Card({ recipe }) {
             <div className="row row-cols-1 row-cols-md-4 g-4">
                 <div className="col">
                     <div className="card text-bg-secondary" style={{width: '18rem'}}>
-                        <img className="card-img-top" src={'https://img.spoonacular.com/recipes/618390-312x231.jpg'} alt={recipe.title}></img>
+                        <img className="card-img-top" src={recipe.imageUrl} alt={recipe.title}></img>
                         <div className="card-header"><h5 className="card-title">{recipe.title}</h5></div>
                         <div className="card-body">
                             <h6 className="card-subtitle mb-2 text-muted">Ingredients</h6>
