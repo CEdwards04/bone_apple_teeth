@@ -1,0 +1,14 @@
+{
+  "resourceName": "s3boneappleteethimg",
+  "bucketName": "bone-apple-teeth-img",
+  "policyUUID": "ff9bd083",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ]
+}
