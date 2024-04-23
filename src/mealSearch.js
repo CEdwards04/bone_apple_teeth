@@ -50,8 +50,8 @@ function MealSearch() {
                 const searchResponse = await axios.get('https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients', {
                     params: {
                         ingredients: 'apples,flour,sugar',
-                        number: 5,
-                        ignorePantry: true,
+                        number: 40,
+                        ignorePantry: false,
                         ranking: 1
                     },
                     headers: {
@@ -94,7 +94,7 @@ function MealSearch() {
                         </td>
                         <td className={mealSearchStyle.meal_cards}>
                             {recipeData && recipeData.map((recipe, index) => (
-                                <Card key={recipe.id} recipe={recipe} image ={recipe.imageUrl}/>
+                                <Card key={recipe.id} recipe={recipe} imageUrl = {recipe.image}/>
                             ))}
                         </td>
                     </tr>
