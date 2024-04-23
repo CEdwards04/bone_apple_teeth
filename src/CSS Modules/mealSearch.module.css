@@ -13,6 +13,11 @@
     padding: 0px 20px;
 }
 
+.recipe_display {
+  padding: 0px 20px;
+  display: flex;
+}
+
 .form {
     text-align: left;
 }
@@ -20,6 +25,12 @@
 .meal_cards {
     color: black;
     position: absolute;
+    display: flex;
+    flex-wrap: flex;
+    flex-direction: row;
+    flex-basis: auto;
+    gap: 10px;
+    align-items: center;
 }
 
 .checkbox-container {
