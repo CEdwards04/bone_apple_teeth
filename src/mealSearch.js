@@ -50,7 +50,7 @@ function MealSearch() {
                 const searchResponse = await axios.get('https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients', {
                     params: {
                         ingredients: 'apples,flour,sugar',
-                        number: 25,
+                        number: 40,
                         ignorePantry: false,
                         ranking: 1
                     },
@@ -86,14 +86,20 @@ function MealSearch() {
             <Navbar />
             <h1>Meal Search</h1>
             <h2>Bone Apple Teeth</h2>
-            
-            <MealSearchFunction />
-            <tr className={mealSearchStyle.meal_cards}>
-            {recipeData && recipeData.map((recipe, index) => (
-                <Card key={recipe.id} recipe={recipe} imageUrl = {recipe.image}/>
-            ))}
-            </tr>
-       
+            <table>
+                <tbody>
+                    <tr>
+                        <td className={mealSearchStyle.form}>
+                            <MealSearchFunction />
+                        </td>
+                        <td className={mealSearchStyle.meal_cards}>
+                            {recipeData && recipeData.map((recipe, index) => (
+                                <Card key={recipe.id} recipe={recipe} imageUrl = {recipe.image}/>
+                            ))}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     );
 }
