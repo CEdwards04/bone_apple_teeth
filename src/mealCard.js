@@ -15,7 +15,7 @@ function Card({ recipe }) {
     return (
         <div className="d-flex justify-content-center">
             <div className="row row-cols-2 row-cols-md-4 g-4">
-                <div className="meal_cards">
+                <div className="col">
                     <div className="card text-bg-secondary" style={{width: '15rem'}}> {/* Adjust the width here */}
                         <img className="card-img-top" src={recipe.image} alt={recipe.title}></img>
                         <div className="card-header"><h5 className="card-title">{recipe.title}</h5></div>
