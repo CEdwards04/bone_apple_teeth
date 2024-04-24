@@ -86,20 +86,14 @@ function MealSearch() {
             <Navbar />
             <h1>Meal Search</h1>
             <h2>Bone Apple Teeth</h2>
-            <table>
-                <tbody>
-                    <tr>
-                        <td>
-                            <MealSearchFunction />
-                        </td>
-                        <td className={mealSearchStyle.meal_cards}>
-                            {recipeData && recipeData.map((recipe, index) => (
-                                <Card key={recipe.id} recipe={recipe} imageUrl = {recipe.image}/>
-                            ))}
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            
+            <MealSearchFunction />
+            <tr className={mealSearchStyle.meal_cards}>
+            {recipeData && recipeData.map((recipe, index) => (
+                <Card key={recipe.id} recipe={recipe} imageUrl = {recipe.image}/>
+            ))}
+            </tr>
+       
         </div>
     );
 }
