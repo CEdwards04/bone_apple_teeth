@@ -50,7 +50,7 @@ function MealSearch() {
                 const searchResponse = await axios.get('https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients', {
                     params: {
                         ingredients: 'apples,flour,sugar',
-                        number: 40,
+                        number: 25,
                         ignorePantry: false,
                         ranking: 1
                     },
