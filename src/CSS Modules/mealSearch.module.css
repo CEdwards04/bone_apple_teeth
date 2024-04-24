@@ -32,6 +32,24 @@
   gap: 15px;
 }
 
+.meal_card {
+  width: 200px; /* Adjust as needed */
+  height: 300px; /* Adjust as needed */
+  overflow: hidden;
+}
+
+.card {
+  height: 100%; /* Ensures the card takes up full height of its container */
+}
+
+.grid-item{
+  height: 100%;
+}
+
+.card-content{
+  height: 100%;
+}
+
 .checkbox-container {
     margin-bottom: 1rem;
   }
