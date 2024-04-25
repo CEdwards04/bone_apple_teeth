@@ -12,20 +12,24 @@ import React, { useState } from 'react';
 import Settings_Style from './Settings.module.css'; 
 import useDarkMode from './useDarkMode';
 import { Amplify } from 'aws-amplify';
+import { withAuthenticator } from '@aws-amplify/ui-react';
 import { graphqlOperation } from '@aws-amplify/api-graphql';
 import { generateClient } from "aws-amplify/api";
 import config from '../amplifyconfiguration.json';
-import { updateUserData } from '../graphql/graphql-operations';
+import { updateUserData, deleteUserData } from '../graphql/graphql-operations';
+
+
 Amplify.configure(config); 
 const client = generateClient();
 
-function Settings() {
+const Settings = ({signOut, user}) => {
   const [darkMode, toggleDarkMode] = useDarkMode();
   const [userData, setUserData] = useState({
     name: '',
     email: '',
     phone: ''
   });
+  console.log(user)
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -34,6 +38,7 @@ function Settings() {
       [name]: value
     }));
   };
+  console.log(user.username)
 
   const handleSubmit = async () => {
     try {
@@ -62,6 +67,8 @@ function Settings() {
     localStorage.setItem('darkMode', !darkMode);
   };
 
+  console.log(userData.name)
+
   return (
     <>
       <Navbar />
@@ -72,32 +79,18 @@ function Settings() {
         <hr />
         <section>
           <h4>Account Details</h4>
+          
           <div>
             <label>Name:</label>
-            <input
-              type="text"
-              name="name"
-              value={userData.name}
-              onChange={handleChange}
-            />
+            <span>{user.username}</span>
           </div>
           <div>
             <label>Email:</label>
-            <input
-              type="email"
-              name="email"
-              value={userData.email}
-              onChange={handleChange}
-            />
+            <span>{user.email}</span>
           </div>
           <div>
             <label>Phone:</label>
-            <input
-              type="text"
-              name="phone"
-              value={userData.phone}
-              onChange={handleChange}
-            />
+            <span>{user.phone}</span>
           </div>
           <button onClick={handleSubmit}>Save Changes</button>
         </section>
@@ -125,7 +118,7 @@ function Settings() {
           </table>
         </section>
       </div>
-      <style global="true">{`
+      {/* <style global="true">{`
       
         body {
           background-color: ${darkMode ? "#111" : "#fff"};
@@ -139,9 +132,9 @@ function Settings() {
         .app {
           padding: 20px;
         }
-      `}</style>
+      `}</style> */}
     </>
   );
 }
-export default Settings;
+export default withAuthenticator(Settings);
 
