@@ -29,7 +29,7 @@ function Card({ recipe }) {
                             <div className="card-header"><h5 className="card-title">{recipe.title}</h5></div>
                             <div className="card-body">
                                 <p className="card-text">{recipe.ingredients}</p>
-                                <p className="card-text">{recipe.recipe}</p>
+                                <p className="card-text">{recipe.instructions}</p>
                             </div>
                             <button
                                 style={{
@@ -40,8 +40,8 @@ function Card({ recipe }) {
                                     padding: '0.5rem',
                                     fontSize: '1rem',
                                     textAlign: 'center',
-                                    color: '#3363ff',
-                                    backgroundColor: '#d8e0fd',
+                                    color: '#F8F8FF',
+                                    backgroundColor: '#BA55D3',
                                     border: 'none',
                                     borderRadius: '0.3rem',
                                     transition: '0.2s',
@@ -57,7 +57,7 @@ function Card({ recipe }) {
                     </div>
                 </div>
             </div>
-            {showPopup && <Popup recipe={recipe} onClose={togglePopup} />} {/* Render Popup if showPopup is true */}
+            {showPopup && <Popup recipe={recipe} ingredients={recipe.ingredients} instructions={recipe.instructions}  onClose={togglePopup} />} {/* Render Popup if showPopup is true */}
         </div>
     );
 }
