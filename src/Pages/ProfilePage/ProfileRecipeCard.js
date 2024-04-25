@@ -5,9 +5,11 @@
  * @author Kaleb Lawrence
  * @contributions Made the create recipe a form instead of a pop up menu, Graphql stayed the same for the most part
  * @brief
+ * 
+ * @author [Your Name]
+ * @contributions Added functionality for favoriting recipes
  *********************************************/
-//Does not show ingredients or instructions in the card, it didn't prior to the form either and I didn't really try to fix it for now but I will at some point.
-// Problem with the ingredients and instructions is fixed but now the update function makes a whole new card instead of changing the existing one. I will continue working on it - caleb
+
 import React, { useState, useEffect } from 'react';
 import { Amplify } from 'aws-amplify';
 import { listRecipes, createRecipe, deleteRecipe, updateRecipe } from '../../graphql/graphql-operations';
@@ -84,6 +86,28 @@ function ProfileRecipeCard() {
     }
   }
 
+  async function handleToggleFavorite(id, isFavorite) {
+    try {
+      const response = await client.graphql(graphqlOperation(updateRecipe, {
+        id,
+        name: recipes.find(recipe => recipe.id === id).name,
+        ingredients: recipes.find(recipe => recipe.id === id).ingredients,
+        instructions: recipes.find(recipe => recipe.id === id).instructions,
+        isFavorite: !isFavorite,
+      }));
+      const updatedRecipe = response.data.updateRecipe;
+      setRecipes(prevRecipes => prevRecipes.map(recipe => {
+        if (recipe.id === updatedRecipe.id) {
+          return updatedRecipe;
+        }
+        return recipe;
+      }));
+    } catch (error) {
+      console.error('Error updating favorite status:', error);
+      setError('Error updating favorite status. Please try again.');
+    }
+  }
+
   return (
     <div>
       {/* Button to toggle form visibility */}
@@ -127,6 +151,7 @@ function ProfileRecipeCard() {
                 <p>Instructions: {recipe.instructions}</p>
                 <button className="btn btn-danger" onClick={() => handleDeleteRecipe(recipe.id)}>Delete</button>
                 <button className="btn btn-primary" onClick={() => handleUpdateRecipe(recipe.id)}>Update</button>
+                <button className={`btn ${recipe.isFavorite ? 'btn-success' : 'btn-outline-success'}`} onClick={() => handleToggleFavorite(recipe.id, recipe.isFavorite)}>{recipe.isFavorite ? 'Unfavorite' : 'Favorite'}</button>
               </div>
             </div>
           </div>

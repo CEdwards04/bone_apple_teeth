@@ -8,18 +8,20 @@ export const listRecipes = /* GraphQL */ `
         name
         ingredients
         instructions
+        isFavorite
       }
     }
   }
 `;
 
 export const createRecipe = /* GraphQL */ `
-  mutation CreateRecipe($name: String!, $instructions: String!, $ingredients: String!) {
-    createRecipe(input: { name: $name, instructions: $instructions, ingredients: $ingredients }) {
+  mutation CreateRecipe($name: String!, $instructions: String!, $ingredients: String!, $isFavorite: Boolean) {
+    createRecipe(input: { name: $name, instructions: $instructions, ingredients: $ingredients, isFavorite: $isFavorite }) {
       id
       name
       ingredients
       instructions
+      isFavorite
     }
   }
 `;
@@ -34,12 +36,13 @@ export const deleteRecipe = /* GraphQL */ `
 `;
 
 export const updateRecipe = /* GraphQL */ `
-  mutation UpdateRecipe($id: ID!, $name: String!, $ingredients: String!, $instructions: String!) {
-    updateRecipe(input: { id: $id, name: $name, ingredients: $ingredients, instructions: $instructions }) {
+  mutation UpdateRecipe($id: ID!, $name: String!, $ingredients: String!, $instructions: String!, $isFavorite: Boolean) {
+    updateRecipe(input: { id: $id, name: $name, ingredients: $ingredients, instructions: $instructions, isFavorite: $isFavorite }) {
       id
       name
       ingredients
       instructions
+      isFavorite
     }
   }
 `;
