@@ -48,9 +48,9 @@ const UserProfile = ({ signOut, user }) => {
           <Navbar></Navbar>
             <div className={ProfileStyle.profile_popup}>
                 <div className={ProfileStyle.profile_picture}>
-                    <img src="https://static.wikia.nocookie.net/412c91cd-50bd-4c0c-8332-6cd5a1b2ec98/scale-to-width/755" alt="Profile Picture" />
+                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="Profile Picture" />
                 </div>
-                <div className={ProfileStyle.username}>Welcome {user.username} (Me after coding)!</div>
+                <div className={ProfileStyle.username}>Welcome {user.username}!</div>
                 <div className={ProfileStyle.section_container}>
                     <div className={ProfileStyle.section}>
                         <h2>My Recipes</h2>
@@ -79,7 +79,7 @@ const UserProfile = ({ signOut, user }) => {
                         </ul>
                     </div>
                 </div>
-                <a href="/profile/settings"><button>Settings</button></a>
+               
                 <button className={ProfileStyle.logout_btn} onClick={signOut}>Sign out</button>
             </div>
         </>
