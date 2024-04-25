@@ -9,7 +9,7 @@
  * @brief
  *********************************************/
 
-import '../../Navbar';
+
 import React, { useState, useEffect } from 'react'; // Import useState and useEffect
 import Navbar from '../../Navbar';
 import ProfileStyle from './ProfilePage.module.css';

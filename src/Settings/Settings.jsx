@@ -11,13 +11,11 @@ import Navbar from '../Navbar';
 import React, { useState } from 'react';
 import Settings_Style from './Settings.module.css'; 
 import useDarkMode from './useDarkMode';
-import { withAuthenticator } from '@aws-amplify/ui-react';
 import { Amplify } from 'aws-amplify';
-import { signIn, signOut } from 'aws-amplify/auth';
 import { graphqlOperation } from '@aws-amplify/api-graphql';
 import { generateClient } from "aws-amplify/api";
 import config from '../amplifyconfiguration.json';
-import { updateUserData, deleteUserData } from '../graphql/graphql-operations';
+import { updateUserData } from '../graphql/graphql-operations';
 Amplify.configure(config); 
 const client = generateClient();
 

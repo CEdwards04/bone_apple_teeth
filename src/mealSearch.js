@@ -12,8 +12,7 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from './Navbar'; // Import Navbar component
 import './Pages/ProfilePage/ProfilePopup';
-import './mealCard';
-import Card from './mealCard';
+import Card from './Card';
 import mealSearchStyle from './CSS Modules/mealSearch.module.css';
 import MealSearchFunction from './mealSearchFunction';
 import './style.css';

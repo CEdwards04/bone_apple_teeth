@@ -5,7 +5,6 @@
  *********************************************/
 
 import './App.css';
-import './Navbar';
 import Navbar from './Navbar';
 import './Pages/ProfilePage/ProfilePopup';
 
