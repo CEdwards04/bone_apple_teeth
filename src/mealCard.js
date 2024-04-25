@@ -9,9 +9,16 @@
  *        the meals and display them on the webpage.
  *********************************************/
 
-
+import React, { useState } from 'react';
+import Popup from './Popup'; // Import the Popup component
 
 function Card({ recipe }) {
+    const [showPopup, setShowPopup] = useState(false);
+
+    const togglePopup = () => {
+        setShowPopup(!showPopup);
+    };
+
     return (
         <div className="d-flex justify-content-center">
             <div className="row row-cols-2 row-cols-md-4 g-4">
@@ -24,33 +31,35 @@ function Card({ recipe }) {
                                 <p className="card-text">{recipe.ingredients}</p>
                                 <p className="card-text">{recipe.recipe}</p>
                             </div>
-                            <button style={{
-                                position: 'absolute',
-                                bottom: '0',
-                                left: '0',
-                                width: '100%',
-                                padding: '0.5rem',
-                                fontSize: '1rem',
-                                textAlign: 'center',
-                                color: '#3363ff',
-                                backgroundColor: '#d8e0fd',
-                                border: 'none',
-                                borderRadius: '0.3rem',
-                                transition: '0.2s',
-                                cursor: 'pointer',
-                                letterSpacing: '0.1rem'
-                            }} className="card-btn">
-                                Ingredients and Instructions <span style={{
-                                    marginLeft: '0.5rem',
-                                    transition: '0.2s'
-                                }}>&rarr;</span>
+                            <button
+                                style={{
+                                    position: 'absolute',
+                                    bottom: '0',
+                                    left: '0',
+                                    width: '100%',
+                                    padding: '0.5rem',
+                                    fontSize: '1rem',
+                                    textAlign: 'center',
+                                    color: '#3363ff',
+                                    backgroundColor: '#d8e0fd',
+                                    border: 'none',
+                                    borderRadius: '0.3rem',
+                                    transition: '0.2s',
+                                    cursor: 'pointer',
+                                    letterSpacing: '0.1rem'
+                                }}
+                                className="card-btn"
+                                onClick={togglePopup} // Add onClick event to toggle the popup
+                            >
+                                Ingredients and Instructions <span style={{ marginLeft: '0.5rem', transition: '0.2s' }}>&rarr;</span>
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
+            {showPopup && <Popup recipe={recipe} onClose={togglePopup} />} {/* Render Popup if showPopup is true */}
         </div>
     );
-}    
+}
 
 export default Card;
