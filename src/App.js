@@ -79,33 +79,75 @@ console.log(deleteResult);
 
   }, []);
   
-  return (
-    <div className="App">
-      <BrowserRouter>
-        <div className={`app ${darkMode ? 'dark' : 'light'}`}>
-          <Routes>
-          <Route path="/" element={<Home></Home>}></Route>
-          <Route path="/meal-search/" element={<MealSearch></MealSearch>}></Route>
-          <Route path="/about" element={<Home />} /> /*Re-routes to home for now*/
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/profile/" element={<UserProfile />} />
-            <Route path="/settings" element={<Settings />} />
-          </Routes>
-        </div>
-      </BrowserRouter>
-      <style jsx="true">{`
-        body {
-          background-color: ${darkMode ? '#111' : '#fff'};
-          color: ${darkMode ? '#fff' : '#111'};
-          transition: background-color 0s, color 0.2s;
-          height: 100vh;
-          margin: 0;
-          font-family: Arial, sans-serif;
-        }
+ return (
+  <div className="App">
+  <BrowserRouter>
+    <div className={`app ${darkMode ? 'dark' : 'light'}`}>
+      <Routes>
+      <Route path="/" element={<Home></Home>}></Route>
+      <Route path="/meal-search/" element={<MealSearch></MealSearch>}></Route>
+      <Route path="/about" element={<Home />} /> /*Re-routes to home for now*/
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/profile/" element={<UserProfile />} />
+        <Route path="/settings" element={<Settings />} />
+      </Routes>
+    </div>
+  </BrowserRouter>
+  <style jsx="true">{`
+    body {
+      background-color: ${darkMode ? '#111' : '#fff'};
+      color: ${darkMode ? '#fff' : '#111'};
+      transition: background-color 0s, color 0.2s;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
       `}</style>
     </div>
+    
   );
 }
 
 export default App;
-//done
+
+
+
+
+
+
+
+/*function App() {
+  return (
+    <div className="App">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home></Home>}></Route>
+          <Route path="/meal-search" element={<MealSearch></MealSearch>}></Route>
+          <Route path="/login" element={<LoginPage></LoginPage>}></Route>
+          <Route path="/profile" element={<UserProfile />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
+  );
+}
+
+export default App;*/
+
+/*import { Amplify } from 'aws-amplify';
+
+import { withAuthenticator } from '@aws-amplify/ui-react';
+import '@aws-amplify/ui-react/styles.css';
+import config from './amplifyconfiguration.json';
+Amplify.configure(config);
+
+function App({ signOut, user }) {
+  return (
+    <>
+      <h1>Hello {user.username}</h1>
+      <button onClick={signOut}>Sign out</button>
+    </>
+  );
+}
+
+export default withAuthenticator(App);*/
+

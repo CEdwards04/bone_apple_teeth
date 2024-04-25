@@ -101,7 +101,7 @@ const Settings = ({signOut, user}) => {
             <tbody>
               <tr>
                 <td>
-                  <p>Enable Dark Mode:</p>
+                  <p>Enable Dark Mode: test</p>
                 </td>
                 <td>
                   <label className={Settings_Style.switch}>
