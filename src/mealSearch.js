@@ -83,7 +83,7 @@ function MealSearch() {
     return (
         <div>
             <Navbar />
-            <h1>Meal Search</h1>
+            <h1>Welcome to the Bone Apple Teeth Meal Search</h1>
             <h2>Take a scroll! Find the recipe that best fits you and your stomach!</h2>
             <table>
                 <tbody>
