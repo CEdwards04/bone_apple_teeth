@@ -15,6 +15,8 @@ function Popup({ recipe, onClose }) {
     };
 
     const popupContainerStyle = {
+        width: '70%',
+        height: '70%',
         backgroundColor: '#fff',
         border: '2px solid #000',
         padding: '20px',
@@ -37,8 +39,22 @@ function Popup({ recipe, onClose }) {
                 <button style={closeButtonStyle} onClick={onClose}>X</button>
                 <h2>{recipe.title}</h2>
                 <img src={recipe.image} alt={recipe.title} />
-                <p>What You Need: {recipe.ingredients}</p>
-                <p>How to Make It: {recipe.recipe}</p>
+                <p>
+                    <strong>What You Need:</strong>
+                </p>
+                <ul>
+                    {recipe.ingredients && recipe.ingredients.map((ingredient, index) => (
+                        <li key={index}>{ingredient}</li>
+                    ))}
+                </ul>
+                <p>
+                    <strong>How to Make It:</strong>
+                </p>
+                <ol>
+                    {recipe.instructions && recipe.instructions.map((instruction, index) => (
+                        <li key={index}>{instruction}</li>
+                    ))}
+                </ol>
             </div>
         </div>
     );

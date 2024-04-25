@@ -24,12 +24,12 @@ function Card({ recipe }) {
             <div className="row row-cols-2 row-cols-md-4 g-4">
                 <div className="col">
                     <div className="meal_card">
-                        <div className="card text-bg-secondary" style={{ height: '340px', width: '15rem', position: 'relative' }}>
+                        <div className="card text-white bg-dark border border-white" style={{ height: '340px', width: '15rem', position: 'relative' }}>
                             <img className="card-img-top" src={recipe.image} alt={recipe.title} style={{ width: '100%', height: '250px', objectFit: 'cover' }} />
-                            <div className="card-header"><h5 className="card-title">{recipe.title}</h5></div>
+                            <div className="card-header"><h5 className="card-title font-weight-bold">{recipe.title}</h5></div>
                             <div className="card-body">
-                                <p className="card-text">{recipe.ingredients}</p>
-                                <p className="card-text">{recipe.recipe}</p>
+                                <p className="card-text font-weight-bold">{recipe.ingredients}</p>
+                                <p className="card-text font-weight-bold">{recipe.recipe}</p>
                             </div>
                             <button
                                 style={{
@@ -40,13 +40,14 @@ function Card({ recipe }) {
                                     padding: '0.5rem',
                                     fontSize: '1rem',
                                     textAlign: 'center',
-                                    color: '#3363ff',
-                                    backgroundColor: '#d8e0fd',
+                                    color: '#ffffff',
+                                    backgroundColor: '#7B68EE',
                                     border: 'none',
                                     borderRadius: '0.3rem',
                                     transition: '0.2s',
                                     cursor: 'pointer',
-                                    letterSpacing: '0.1rem'
+                                    letterSpacing: '0.1rem',
+                                    fontWeight: 'bold' // Adding fontWeight: 'bold' to make the button text bold
                                 }}
                                 className="card-btn"
                                 onClick={togglePopup} // Add onClick event to toggle the popup
@@ -59,7 +60,8 @@ function Card({ recipe }) {
             </div>
             {showPopup && <Popup recipe={recipe} onClose={togglePopup} />} {/* Render Popup if showPopup is true */}
         </div>
-    );
+    ); 
+    
 }
 
 export default Card;

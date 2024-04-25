@@ -48,7 +48,7 @@ function MealSearch() {
 
                 const searchResponse = await axios.get('https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients', {
                     params: {
-                        ingredients: 'apples,flour,sugar',
+                        ingredients: 'bread, beef, lettuce',
                         number: 50,
                         ignorePantry: false,
                         ranking: 1
@@ -84,7 +84,7 @@ function MealSearch() {
         <div>
             <Navbar />
             <h1>Meal Search</h1>
-            <h2>Bone Apple Teeth</h2>
+            <h2>Take a scroll! Find the recipe that best fits you and your stomach!</h2>
             <table>
                 <tbody>
                     <tr>
