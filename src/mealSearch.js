@@ -94,7 +94,7 @@ function MealSearch() {
                         </td>
                         <td className={mealSearchStyle.meal_cards}>
                             {recipeData && recipeData.map((recipe, index) => (
-                                <Card key={recipe.id} recipe={recipe} imageUrl = {recipe.image}/>
+                                <Card key={recipe.id} recipe={recipe} imageUrl = {recipe.image} ingredients = {recipe.ingredients} instructions ={recipe.instructions} />
                             ))}
                         </td>
                     </tr>
