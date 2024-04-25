@@ -38,7 +38,7 @@ function Popup({ recipe, onClose }) {
                 <h2>{recipe.title}</h2>
                 <img src={recipe.image} alt={recipe.title} />
                 <p>What You Need: {recipe.ingredients}</p>
-                <p>How to Make It: {recipe.instructions}</p>
+                <p>How to Make It: {recipe.recipe}</p>
             </div>
         </div>
     );
