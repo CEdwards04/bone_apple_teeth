@@ -16,8 +16,8 @@ import { listRecipes, createRecipe, deleteRecipe, updateRecipe } from '../../gra
 import awsConfig from '../../aws-exports';
 import { graphqlOperation } from '@aws-amplify/api-graphql';
 import { generateClient } from "aws-amplify/api";
-Amplify.configure(awsConfig);
 const client = generateClient();
+Amplify.configure(awsConfig);
 
 function ProfileRecipeCard() {
   const [recipes, setRecipes] = useState([]);

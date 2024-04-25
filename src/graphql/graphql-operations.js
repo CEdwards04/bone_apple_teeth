@@ -78,3 +78,17 @@ export const deleteUserData = /* GraphQL */ `
     }
   }
 `;
+export const listFavoriteRecipes = /* GraphQL */ `
+  query ListFavoriteRecipes {
+    listRecipes(filter: { isFavorite: { eq: true } }) {
+      items {
+        id
+        name
+        ingredients
+        instructions
+        isFavorite
+      }
+    }
+  }
+`;
+
