@@ -10,6 +10,7 @@ to decide quickly on your dinner plans without the need to go out and buy any ne
 Bone Apple Teeth will take the unnecessary dinner planning and perform that for you. The only thing you need
 to do is cook the meal and relax!
 
+Bone_Apple_Teeth-logos_transparent.png
 
 What sets your apart from other meal search sites?
 We offer the ability to search for meals specifically by ingredients. This will allow you to
