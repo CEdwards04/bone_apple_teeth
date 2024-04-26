@@ -1,104 +1,83 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateTodo = /* GraphQL */ `
-  subscription OnCreateTodo(
-    $filter: ModelSubscriptionTodoFilterInput
-    $owner: String
-  ) {
-    onCreateTodo(filter: $filter, owner: $owner) {
+export const onCreateUserData = /* GraphQL */ `
+  subscription OnCreateUserData {
+    onCreateUserData {
       id
       name
-      description
+      email
+      phone
       createdAt
       updatedAt
-      owner
       __typename
     }
   }
 `;
-export const onUpdateTodo = /* GraphQL */ `
-  subscription OnUpdateTodo(
-    $filter: ModelSubscriptionTodoFilterInput
-    $owner: String
-  ) {
-    onUpdateTodo(filter: $filter, owner: $owner) {
+export const onUpdateUserData = /* GraphQL */ `
+  subscription OnUpdateUserData {
+    onUpdateUserData {
       id
       name
-      description
+      email
+      phone
       createdAt
       updatedAt
-      owner
       __typename
     }
   }
 `;
-export const onDeleteTodo = /* GraphQL */ `
-  subscription OnDeleteTodo(
-    $filter: ModelSubscriptionTodoFilterInput
-    $owner: String
-  ) {
-    onDeleteTodo(filter: $filter, owner: $owner) {
+export const onDeleteUserData = /* GraphQL */ `
+  subscription OnDeleteUserData {
+    onDeleteUserData {
       id
       name
-      description
+      email
+      phone
       createdAt
       updatedAt
-      owner
       __typename
     }
   }
 `;
 export const onCreateRecipe = /* GraphQL */ `
-  subscription OnCreateRecipe(
-    $filter: ModelSubscriptionRecipeFilterInput
-    $owner: String
-  ) {
-    onCreateRecipe(filter: $filter, owner: $owner) {
+  subscription OnCreateRecipe {
+    onCreateRecipe {
       id
       name
       ingredients
       instructions
-      Favorite
+      isFavorite
       createdAt
       updatedAt
-      owner
       __typename
     }
   }
 `;
 export const onUpdateRecipe = /* GraphQL */ `
-  subscription OnUpdateRecipe(
-    $filter: ModelSubscriptionRecipeFilterInput
-    $owner: String
-  ) {
-    onUpdateRecipe(filter: $filter, owner: $owner) {
+  subscription OnUpdateRecipe {
+    onUpdateRecipe {
       id
       name
       ingredients
       instructions
-      Favorite
+      isFavorite
       createdAt
       updatedAt
-      owner
       __typename
     }
   }
 `;
 export const onDeleteRecipe = /* GraphQL */ `
-  subscription OnDeleteRecipe(
-    $filter: ModelSubscriptionRecipeFilterInput
-    $owner: String
-  ) {
-    onDeleteRecipe(filter: $filter, owner: $owner) {
+  subscription OnDeleteRecipe {
+    onDeleteRecipe {
       id
       name
       ingredients
       instructions
-      Favorite
+      isFavorite
       createdAt
       updatedAt
-      owner
       __typename
     }
   }
