@@ -82,7 +82,7 @@ const Settings = ({signOut, user}) => {
           <h4>Account Details</h4>
           
           <div>
-            <label>Name:</label>
+            <label>Account ID:</label>
             <span>{user.username}</span>
           </div>
           <div>
@@ -102,7 +102,7 @@ const Settings = ({signOut, user}) => {
             <tbody>
               <tr>
                 <td>
-                  <p>Enable Dark Mode: test</p>
+                  <p>Enable Dark Mode:</p>
                 </td>
                 <td>
                   <label className={Settings_Style.switch}>
