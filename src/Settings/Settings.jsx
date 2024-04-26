@@ -65,6 +65,7 @@ const Settings = ({signOut, user}) => {
   const toggleGlobalDarkMode = () => {
     toggleDarkMode();
     localStorage.setItem('darkMode', !darkMode);
+    window.location.reload();
   };
 
   console.log(userData.name)
