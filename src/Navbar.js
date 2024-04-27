@@ -7,23 +7,25 @@
 
 import React from 'react';
 import logo from './Bone_Apple_Teeth-logos_transparent.png';
+import { Link } from 'react-router-dom'; // Import Link
 
 function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
-        <a className="navbar-brand" href="/">
+        <Link className="navbar-brand" to="/">
           <img src={logo} alt="Bone Apple Teeth Logo" style={{ width: '50px', height: 'auto' }} />
-        </a>
+        </Link>
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav">
-            <a className="nav-link" href="/meal-search">Meal Search</a>
-            <a className="nav-link" href="/about">About</a>
-            <a className="nav-link" href="/contact">Contact</a>
-            <a className="nav-link" href="/settings">Settings</a> 
+            <Link className="nav-link" to="/meal-search">Meal Search</Link>
+            <Link className="nav-link" to="/about">About</Link>
+            <Link className="nav-link" to="/contact">Contact</Link>
+            <Link className="nav-link" to="/settings">Settings</Link>
+            <Link className="nav-link" to="/recipes">Recipes</Link> {/* Add this line */}
           </div>
         </div>
-        <a className="nav-link" href="/profile"><button className="btn btn-dark" type="submit">User Account</button></a>
+        <Link className="nav-link" to="/profile"><button className="btn btn-dark" type="submit">User Account</button></Link>
       </div>
     </nav>
   );

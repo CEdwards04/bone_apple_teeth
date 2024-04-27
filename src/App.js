@@ -18,7 +18,7 @@ import Home from './Home';
 import MealSearch from '../src/mealSearch';
 import UserProfile from './Pages/ProfilePage/ProfilePage';
 import Settings from './Settings/Settings';
-
+import RecipeDisplayPage from './Pages/RecipesPage/RecipeDisplayPage';
 import Contact from './Contact';
 import { createTodo, updateTodo, deleteTodo } from './graphql/mutations';
 import { Amplify } from 'aws-amplify';
@@ -27,6 +27,7 @@ import config from './amplifyconfiguration.json';
 import '@aws-amplify/ui-react/styles.css';
 import {useEffect } from 'react';
 import useDarkMode from './Settings/useDarkMode';
+import './Pages/RecipesPage/RecipeDisplayPage'
 
 
 Amplify.configure(config);
@@ -90,6 +91,8 @@ console.log(deleteResult);
         <Route path="/contact" element={<Contact />} />
         <Route path="/profile/" element={<UserProfile />} />
         <Route path="/settings" element={<Settings />} />
+        <Route path="/" component={Home} />
+        <Route path="/recipes" element={<RecipeDisplayPage></RecipeDisplayPage>}></Route>
       </Routes>
     </div>
   </BrowserRouter>

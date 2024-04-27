@@ -113,3 +113,10 @@ export const listReviews = /* GraphQL */ `
     }
   }
 `;
+export const deleteReview = /* GraphQL */ `
+  mutation DeleteReview($id: ID!) {
+    deleteReview(input: { id: $id }) {
+      id
+    }
+  }
+`;
