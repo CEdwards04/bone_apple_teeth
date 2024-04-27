@@ -62,6 +62,7 @@ export const createRecipe = /* GraphQL */ `
       isFavorite
       reviews {
         id
+        recipeId
         comment
         rating
         createdAt
@@ -87,6 +88,7 @@ export const updateRecipe = /* GraphQL */ `
       isFavorite
       reviews {
         id
+        recipeId
         comment
         rating
         createdAt
@@ -112,6 +114,7 @@ export const deleteRecipe = /* GraphQL */ `
       isFavorite
       reviews {
         id
+        recipeId
         comment
         rating
         createdAt
@@ -131,6 +134,7 @@ export const createReview = /* GraphQL */ `
   ) {
     createReview(input: $input, condition: $condition) {
       id
+      recipeId
       comment
       rating
       createdAt
@@ -146,6 +150,7 @@ export const updateReview = /* GraphQL */ `
   ) {
     updateReview(input: $input, condition: $condition) {
       id
+      recipeId
       comment
       rating
       createdAt
@@ -161,6 +166,7 @@ export const deleteReview = /* GraphQL */ `
   ) {
     deleteReview(input: $input, condition: $condition) {
       id
+      recipeId
       comment
       rating
       createdAt

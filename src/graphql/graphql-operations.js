@@ -92,3 +92,24 @@ export const listFavoriteRecipes = /* GraphQL */ `
   }
 `;
 
+export const createReview = /* GraphQL */ `
+  mutation CreateReview($recipeId: ID!, $comment: String!, $rating: Int!) {
+    createReview(input: { recipeId: $recipeId, comment: $comment, rating: $rating }) {
+      id
+      recipeId
+      comment
+      rating
+    }
+  }
+`;
+export const listReviews = /* GraphQL */ `
+  query ListReviews($recipeId: ID!) {
+    listReviews(filter: { recipeId: { eq: $recipeId } }) {
+      items {
+        id
+        comment
+        rating
+      }
+    }
+  }
+`;

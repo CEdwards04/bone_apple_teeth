@@ -15,6 +15,7 @@ type Recipe @model @auth(rules: [{allow: public}]) {
 }
  type Review @model @auth(rules: [{allow: public}]) {
   id: ID!
+  recipeId: ID!
   comment: String!
   rating: Int!
 }

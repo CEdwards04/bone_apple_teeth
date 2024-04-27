@@ -1,18 +1,6 @@
-/*********************************************
- * @author Caleb Edwards
- * @contributions Created the inital recipe card and its functions.
- * 
- * @author Kaleb Lawrence
- * @contributions Made the create recipe a form instead of a pop up menu, Graphql stayed the same for the most part
- * @brief
- * 
- * @author [Your Name]
- * @contributions Added functionality for favoriting recipes
- *********************************************/
-
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Amplify } from 'aws-amplify';
-import { listRecipes, createRecipe, deleteRecipe, updateRecipe } from '../../graphql/graphql-operations';
+import { listRecipes, createRecipe, deleteRecipe, updateRecipe, createReview, listReviews } from '../../graphql/graphql-operations';
 import awsConfig from '../../aws-exports';
 import { graphqlOperation } from '@aws-amplify/api-graphql';
 import { generateClient } from "aws-amplify/api";
@@ -26,6 +14,13 @@ function ProfileRecipeCard() {
   const [newRecipeIngredients, setNewRecipeIngredients] = useState('');
   const [newRecipeInstructions, setNewRecipeInstructions] = useState('');
   const [showForm, setShowForm] = useState(false);
+  const [reviewingRecipeId, setReviewingRecipeId] = useState(null);
+  const [reviewText, setReviewText] = useState('');
+  const [reviewRating, setReviewRating] = useState(0);
+  const [reviews, setReviews] = useState([]);
+  const [showReviewsModal, setShowReviewsModal] = useState(false);
+
+  const reviewRef = useRef(null);
 
   async function fetchRecipes() {
     try {
@@ -108,6 +103,40 @@ function ProfileRecipeCard() {
     }
   }
 
+  async function handleReviewSubmit(event, recipeId) {
+    event.preventDefault();
+    try {
+      const response = await client.graphql(graphqlOperation(createReview, {
+        recipeId,
+        comment: reviewText,
+        rating: reviewRating
+      }));
+      const newReview = response.data.createReview;
+      setReviews(prevReviews => [...prevReviews, newReview]);
+      setReviewText('');
+      setReviewRating(0);
+      setReviewingRecipeId(null);
+    } catch (error) {
+      console.error('Error submitting review:', error);
+      setError('Error submitting review. Please try again.');
+    }
+  }
+
+  async function fetchReviews(recipeId) {
+    try {
+      const response = await client.graphql(graphqlOperation(listReviews, { recipeId }));
+      setReviews(response.data.listReviews.items);
+    } catch (error) {
+      console.error('Error fetching reviews:', error);
+      setError('Error fetching reviews. Please try again.');
+    }
+  }
+
+  function handleViewReviews(recipeId) {
+    fetchReviews(recipeId);
+    setShowReviewsModal(true);
+  }
+
   return (
     <div>
       {/* Button to toggle form visibility */}
@@ -152,12 +181,55 @@ function ProfileRecipeCard() {
                 <button className="btn btn-danger" onClick={() => handleDeleteRecipe(recipe.id)}>Delete</button>
                 <button className="btn btn-primary" onClick={() => handleUpdateRecipe(recipe.id)}>Update</button>
                 <button className={`btn ${recipe.isFavorite ? 'btn-success' : 'btn-outline-success'}`} onClick={() => handleToggleFavorite(recipe.id, recipe.isFavorite)}>{recipe.isFavorite ? 'Unfavorite' : 'Favorite'}</button>
+                <button className="btn btn-info ms-2" onClick={() => setReviewingRecipeId(recipe.id)}>Review</button>
+                <button className="btn btn-warning ms-2" onClick={() => handleViewReviews(recipe.id)}>View Reviews</button>
               </div>
             </div>
           </div>
         ))}
       </div>
       {error && <div className="alert alert-danger">{error}</div>}
+      {/* Modal for displaying reviews */}
+      {showReviewsModal && (
+        <div className="modal fade show" tabIndex="-1" style={{ display: 'block' }} ref={reviewRef}>
+          <div className="modal-dialog modal-lg">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">Reviews</h5>
+                <button type="button" className="btn-close" onClick={() => setShowReviewsModal(false)}></button>
+              </div>
+              <div className="modal-body">
+                <ul className="list-group">
+                  {reviews.map(review => (
+                    <li key={review.id} className="list-group-item">
+                      <p><strong>Rating:</strong> {review.rating}</p>
+                      <p><strong>Comment:</strong> {review.comment}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+      {/* Review form */}
+      {reviewingRecipeId && (
+        <div className="mt-3">
+          <h4>Leave a Review</h4>
+          <form onSubmit={(e) => handleReviewSubmit(e, reviewingRecipeId)}>
+            <div className="mb-3">
+              <label htmlFor="reviewRating" className="form-label">Rating</label>
+              <input type="number" className="form-control" id="reviewRating" value={reviewRating} onChange={(e) => setReviewRating(parseInt(e.target.value))} min="1" max="5" />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="reviewText" className="form-label">Review</label>
+              <textarea className="form-control" id="reviewText" rows="3" value={reviewText} onChange={(e) => setReviewText(e.target.value)}></textarea>
+            </div>
+            <button type="submit" className="btn btn-primary">Submit Review</button>
+            <button type="button" className="btn btn-secondary ms-2" onClick={() => setReviewingRecipeId(null)}>Cancel</button>
+          </form>
+        </div>
+      )}
     </div>
   );
 }

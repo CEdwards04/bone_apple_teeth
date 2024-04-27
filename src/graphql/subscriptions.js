@@ -50,6 +50,7 @@ export const onCreateRecipe = /* GraphQL */ `
       isFavorite
       reviews {
         id
+        recipeId
         comment
         rating
         createdAt
@@ -72,6 +73,7 @@ export const onUpdateRecipe = /* GraphQL */ `
       isFavorite
       reviews {
         id
+        recipeId
         comment
         rating
         createdAt
@@ -94,6 +96,7 @@ export const onDeleteRecipe = /* GraphQL */ `
       isFavorite
       reviews {
         id
+        recipeId
         comment
         rating
         createdAt
@@ -110,6 +113,7 @@ export const onCreateReview = /* GraphQL */ `
   subscription OnCreateReview {
     onCreateReview {
       id
+      recipeId
       comment
       rating
       createdAt
@@ -122,6 +126,7 @@ export const onUpdateReview = /* GraphQL */ `
   subscription OnUpdateReview {
     onUpdateReview {
       id
+      recipeId
       comment
       rating
       createdAt
@@ -134,6 +139,7 @@ export const onDeleteReview = /* GraphQL */ `
   subscription OnDeleteReview {
     onDeleteReview {
       id
+      recipeId
       comment
       rating
       createdAt

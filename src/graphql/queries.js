@@ -45,6 +45,7 @@ export const getRecipe = /* GraphQL */ `
       isFavorite
       reviews {
         id
+        recipeId
         comment
         rating
         createdAt
@@ -83,6 +84,7 @@ export const getReview = /* GraphQL */ `
   query GetReview($id: ID!) {
     getReview(id: $id) {
       id
+      recipeId
       comment
       rating
       createdAt
@@ -100,6 +102,7 @@ export const listReviews = /* GraphQL */ `
     listReviews(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
+        recipeId
         comment
         rating
         createdAt
