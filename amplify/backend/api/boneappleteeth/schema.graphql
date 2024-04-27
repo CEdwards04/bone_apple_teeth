@@ -11,5 +11,15 @@ type Recipe @model @auth(rules: [{allow: public}]) {
   ingredients: String!
   instructions: String!
   isFavorite: Boolean
+  reviews: [Review]
 }
- 
+ type Review @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  comment: String!
+  rating: Int!
+}
+type Todo @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  description: String
+}

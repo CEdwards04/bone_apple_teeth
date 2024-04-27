@@ -48,6 +48,14 @@ export const onCreateRecipe = /* GraphQL */ `
       ingredients
       instructions
       isFavorite
+      reviews {
+        id
+        comment
+        rating
+        createdAt
+        updatedAt
+        __typename
+      }
       createdAt
       updatedAt
       __typename
@@ -62,6 +70,14 @@ export const onUpdateRecipe = /* GraphQL */ `
       ingredients
       instructions
       isFavorite
+      reviews {
+        id
+        comment
+        rating
+        createdAt
+        updatedAt
+        __typename
+      }
       createdAt
       updatedAt
       __typename
@@ -76,6 +92,86 @@ export const onDeleteRecipe = /* GraphQL */ `
       ingredients
       instructions
       isFavorite
+      reviews {
+        id
+        comment
+        rating
+        createdAt
+        updatedAt
+        __typename
+      }
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onCreateReview = /* GraphQL */ `
+  subscription OnCreateReview {
+    onCreateReview {
+      id
+      comment
+      rating
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onUpdateReview = /* GraphQL */ `
+  subscription OnUpdateReview {
+    onUpdateReview {
+      id
+      comment
+      rating
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onDeleteReview = /* GraphQL */ `
+  subscription OnDeleteReview {
+    onDeleteReview {
+      id
+      comment
+      rating
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onCreateTodo = /* GraphQL */ `
+  subscription OnCreateTodo {
+    onCreateTodo {
+      id
+      name
+      description
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onUpdateTodo = /* GraphQL */ `
+  subscription OnUpdateTodo {
+    onUpdateTodo {
+      id
+      name
+      description
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onDeleteTodo = /* GraphQL */ `
+  subscription OnDeleteTodo {
+    onDeleteTodo {
+      id
+      name
+      description
       createdAt
       updatedAt
       __typename

@@ -43,6 +43,14 @@ export const getRecipe = /* GraphQL */ `
       ingredients
       instructions
       isFavorite
+      reviews {
+        id
+        comment
+        rating
+        createdAt
+        updatedAt
+        __typename
+      }
       createdAt
       updatedAt
       __typename
@@ -71,6 +79,38 @@ export const listRecipes = /* GraphQL */ `
     }
   }
 `;
+export const getReview = /* GraphQL */ `
+  query GetReview($id: ID!) {
+    getReview(id: $id) {
+      id
+      comment
+      rating
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const listReviews = /* GraphQL */ `
+  query ListReviews(
+    $filter: ModelReviewFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listReviews(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        comment
+        rating
+        createdAt
+        updatedAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+  }
+`;
 export const getTodo = /* GraphQL */ `
   query GetTodo($id: ID!) {
     getTodo(id: $id) {
@@ -79,7 +119,6 @@ export const getTodo = /* GraphQL */ `
       description
       createdAt
       updatedAt
-      owner
       __typename
     }
   }
@@ -97,58 +136,9 @@ export const listTodos = /* GraphQL */ `
         description
         createdAt
         updatedAt
-        owner
         __typename
       }
       nextToken
-      __typename
-    }
-  }
-`;
-export const onCreateTodo = /* GraphQL */ `
-  subscription OnCreateTodo(
-    $filter: ModelSubscriptionTodoFilterInput
-    $owner: String
-  ) {
-    onCreateTodo(filter: $filter, owner: $owner) {
-      id
-      name
-      description
-      createdAt
-      updatedAt
-      owner
-      __typename
-    }
-  }
-`;
-export const onUpdateTodo = /* GraphQL */ `
-  subscription OnUpdateTodo(
-    $filter: ModelSubscriptionTodoFilterInput
-    $owner: String
-  ) {
-    onUpdateTodo(filter: $filter, owner: $owner) {
-      id
-      name
-      description
-      createdAt
-      updatedAt
-      owner
-      __typename
-    }
-  }
-`;
-export const onDeleteTodo = /* GraphQL */ `
-  subscription OnDeleteTodo(
-    $filter: ModelSubscriptionTodoFilterInput
-    $owner: String
-  ) {
-    onDeleteTodo(filter: $filter, owner: $owner) {
-      id
-      name
-      description
-      createdAt
-      updatedAt
-      owner
       __typename
     }
   }

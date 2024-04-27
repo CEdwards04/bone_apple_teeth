@@ -60,6 +60,14 @@ export const createRecipe = /* GraphQL */ `
       ingredients
       instructions
       isFavorite
+      reviews {
+        id
+        comment
+        rating
+        createdAt
+        updatedAt
+        __typename
+      }
       createdAt
       updatedAt
       __typename
@@ -77,6 +85,14 @@ export const updateRecipe = /* GraphQL */ `
       ingredients
       instructions
       isFavorite
+      reviews {
+        id
+        comment
+        rating
+        createdAt
+        updatedAt
+        __typename
+      }
       createdAt
       updatedAt
       __typename
@@ -94,6 +110,59 @@ export const deleteRecipe = /* GraphQL */ `
       ingredients
       instructions
       isFavorite
+      reviews {
+        id
+        comment
+        rating
+        createdAt
+        updatedAt
+        __typename
+      }
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const createReview = /* GraphQL */ `
+  mutation CreateReview(
+    $input: CreateReviewInput!
+    $condition: ModelReviewConditionInput
+  ) {
+    createReview(input: $input, condition: $condition) {
+      id
+      comment
+      rating
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const updateReview = /* GraphQL */ `
+  mutation UpdateReview(
+    $input: UpdateReviewInput!
+    $condition: ModelReviewConditionInput
+  ) {
+    updateReview(input: $input, condition: $condition) {
+      id
+      comment
+      rating
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const deleteReview = /* GraphQL */ `
+  mutation DeleteReview(
+    $input: DeleteReviewInput!
+    $condition: ModelReviewConditionInput
+  ) {
+    deleteReview(input: $input, condition: $condition) {
+      id
+      comment
+      rating
       createdAt
       updatedAt
       __typename
@@ -111,7 +180,6 @@ export const createTodo = /* GraphQL */ `
       description
       createdAt
       updatedAt
-      owner
       __typename
     }
   }
@@ -127,7 +195,6 @@ export const updateTodo = /* GraphQL */ `
       description
       createdAt
       updatedAt
-      owner
       __typename
     }
   }
@@ -143,7 +210,6 @@ export const deleteTodo = /* GraphQL */ `
       description
       createdAt
       updatedAt
-      owner
       __typename
     }
   }
