@@ -29,6 +29,7 @@ import {useEffect } from 'react';
 import useDarkMode from './Settings/useDarkMode';
 import './Pages/RecipesPage/RecipeDisplayPage'
 
+import MealSearchPage from './mealSearchPage';
 
 Amplify.configure(config);
 
@@ -86,7 +87,7 @@ console.log(deleteResult);
     <div className={`app ${darkMode ? 'dark' : 'light'}`}>
       <Routes>
       <Route path="/" element={<Home></Home>}></Route>
-      <Route path="/meal-search/" element={<MealSearch></MealSearch>}></Route>
+      <Route path="/meal-search/" element={<MealSearchPage />}></Route>
       <Route path="/about" element={<Home />} /> /*Re-routes to home for now*/
         <Route path="/contact" element={<Contact />} />
         <Route path="/profile/" element={<UserProfile />} />

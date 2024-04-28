@@ -10,17 +10,19 @@
  *********************************************/
 
 import React, { useEffect, useState } from 'react';
-import Navbar from './Navbar'; // Import Navbar component
 import './Pages/ProfilePage/ProfilePopup';
 import Card from './Card';
 import mealSearchStyle from './CSS Modules/mealSearch.module.css';
-import MealSearchFunction from './mealSearchFunction';
 import './style.css';
 import axios from 'axios'; 
 
 
-function MealSearch() {
+function MealSearch({ingredientList, MealSearchFunction}) {
     const [recipeData, setRecipeData] = useState([]);
+
+    function print() {
+        console.log(ingredientList);
+    }
 
     useEffect(() => {
         const fetchData = async () => {
@@ -48,7 +50,7 @@ function MealSearch() {
 
                 const searchResponse = await axios.get('https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients', {
                     params: {
-                        ingredients: 'bread, beef, lettuce',
+                        ingredients: ingredientList,
                         number: 5,
                         ignorePantry: false,
                         ranking: 1
@@ -82,14 +84,13 @@ function MealSearch() {
 
     return (
         <div>
-            <Navbar />
             <h1>Welcome to the Bone Apple Teeth Meal Search</h1>
             <h2>Take a scroll! Find the recipe that best fits you and your stomach!</h2>
             <table>
                 <tbody>
                     <tr>
                         <td className={mealSearchStyle.form}>
-                            <MealSearchFunction />
+                            {MealSearchFunction}
                         </td>
                         <td className={mealSearchStyle.meal_cards}>
                             {recipeData && recipeData.map((recipe, index) => (
@@ -99,6 +100,7 @@ function MealSearch() {
                     </tr>
                 </tbody>
             </table>
+            <button onClick={print}>Data present in mealSearch .js (REMOVE WHEN DONE)</button>
         </div>
     );
 }

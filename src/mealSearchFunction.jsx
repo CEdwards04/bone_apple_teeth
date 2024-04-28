@@ -11,7 +11,7 @@
 import React, { useState } from 'react';
 import MealSearchStyle from './CSS Modules/mealSearch.module.css';
 
-function MealSearchFunction() {
+function MealSearchFunction({handleStateChange}) {
 
     const [ingredientsArray, setIngredientsArray] = useState([]);
 
@@ -27,11 +27,14 @@ function MealSearchFunction() {
         } else {
             setIngredientsArray(ingredientsArray.filter((e) => (e !== value)));
         }
+
     }
 
     const handleIngredientChange = (e) => {
         e.preventDefault();
         console.log(ingredientsArray);
+
+        handleStateChange(ingredientsArray);
     }
 
 
