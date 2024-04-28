@@ -1,3 +1,13 @@
+/*********************************************
+ * @author Caleb Edwards
+ * @contributions Created the inital recipe card and its functions.
+ * 
+ * @author Kaleb Lawrence
+ * @contributions Made the create recipe a form instead of a pop up menu, Graphql stayed the same for the most part
+ * @brief
+ * 
+
+ *********************************************/
 import React, { useState, useEffect, useRef } from 'react';
 import { Amplify } from 'aws-amplify';
 import { listRecipes, createRecipe, deleteRecipe, updateRecipe, createReview, listReviews } from '../../graphql/graphql-operations';
