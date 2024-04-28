@@ -49,7 +49,7 @@ function MealSearch() {
                 const searchResponse = await axios.get('https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients', {
                     params: {
                         ingredients: 'bread, beef, lettuce',
-                        number: 50,
+                        number: 5,
                         ignorePantry: false,
                         ranking: 1
                     },
