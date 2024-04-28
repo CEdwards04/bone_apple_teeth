@@ -13,10 +13,25 @@ import MealSearchStyle from './CSS Modules/mealSearch.module.css';
 
 function MealSearchFunction() {
 
+    const [ingredientsArray, setIngredientsArray] = useState([]);
+
     const handleChange = (e) => {
         const value = e.target.id;
         const checked = e.target.checked;
         console.log(value, checked);
+
+        if(checked) {
+            setIngredientsArray([
+                ...ingredientsArray, value
+            ])
+        } else {
+            setIngredientsArray(ingredientsArray.filter((e) => (e !== value)));
+        }
+    }
+
+    const handleIngredientChange = (e) => {
+        e.preventDefault();
+        console.log(ingredientsArray);
     }
 
 
@@ -301,6 +316,8 @@ function MealSearchFunction() {
                     </div>
                 </div>
             </div>
+
+            <button onClick={handleIngredientChange}>Apply Ingredient Changes</button>
 
             </form>
         </div>
