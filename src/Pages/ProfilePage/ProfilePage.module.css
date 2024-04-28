@@ -90,3 +90,15 @@
     left: 10px;
     bottom: 0px;
 }
+.favorite_recipe_container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 62px; /* Adjust the margin-top value as needed */
+}
+
+.recipe_card {
+    width: calc(33.33% - 20px); /* Adjust the width as needed */
+    margin-bottom: 20px;
+}
+

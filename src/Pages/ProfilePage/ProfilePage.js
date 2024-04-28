@@ -10,7 +10,7 @@
  *********************************************/
 
 
-import React, { useState, useEffect } from 'react'; // Import useState and useEffect
+import React, { useState, useEffect } from 'react';
 import Navbar from '../../Navbar';
 import ProfileStyle from './ProfilePage.module.css';
 import ProfileRecipeCard from './ProfileRecipeCard';
@@ -18,26 +18,25 @@ import { Amplify } from 'aws-amplify';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import config from '../../amplifyconfiguration.json';
-import { listFavoriteRecipes } from '../../graphql/graphql-operations'; // Import listFavoriteRecipes operation
+import { listFavoriteRecipes } from '../../graphql/graphql-operations';
 import { generateClient } from "aws-amplify/api";
-import { graphqlOperation } from '@aws-amplify/api-graphql'; // Import graphqlOperation
-Amplify.configure(config); 
+import { graphqlOperation } from '@aws-amplify/api-graphql';
+Amplify.configure(config);
 
 const client = generateClient();
 
 const UserProfile = ({ signOut, user }) => {
-    const [favoriteRecipes, setFavoriteRecipes] = useState([]); // State to store favorite recipes
+    const [favoriteRecipes, setFavoriteRecipes] = useState([]);
 
     useEffect(() => {
-        // Fetch favorite recipes on component mount
         fetchFavoriteRecipes();
     }, []);
 
     const fetchFavoriteRecipes = async () => {
         try {
-            const response = await client.graphql(graphqlOperation(listFavoriteRecipes)); // Fetch favorite recipes
+            const response = await client.graphql(graphqlOperation(listFavoriteRecipes));
             const favoriteRecipesData = response.data.listRecipes.items;
-            setFavoriteRecipes(favoriteRecipesData); // Set favorite recipes state
+            setFavoriteRecipes(favoriteRecipesData);
         } catch (error) {
             console.error('Error fetching favorite recipes:', error);
         }
@@ -45,12 +44,12 @@ const UserProfile = ({ signOut, user }) => {
 
     return (
         <>
-          <Navbar></Navbar>
+            <Navbar></Navbar>
             <div className={ProfileStyle.profile_popup}>
                 <div className={ProfileStyle.profile_picture}>
                     <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="Profile Picture" />
                 </div>
-                <div className={ProfileStyle.username}>Welcome {user.username}!</div>
+                <div className={ProfileStyle.username}>Welcome User! </div>
                 <div className={ProfileStyle.section_container}>
                     <div className={ProfileStyle.section}>
                         <h2>My Recipes</h2>
@@ -60,26 +59,25 @@ const UserProfile = ({ signOut, user }) => {
                     </div>
                     <div className={ProfileStyle.section}>
                         <h2>My Favorites</h2>
-                        {/* Render favorite recipe cards */}
-                        {favoriteRecipes.map(recipe => (
-                            <div key={recipe.id} className="col">
-                                <div className="card text-bg-secondary" style={{ width: '18rem' }}>
-                                    <div className="card-header">
-                                        <h5 className="card-title">{recipe.name ? recipe.name : 'Unnamed Recipe'}</h5>
-                                    </div>
-                                    <div className="card-body">
-                                        <p>Ingredients: {recipe.ingredients}</p>
-                                        <p>Instructions: {recipe.instructions}</p>
-                                        {/* No need for delete, update, and favorite buttons as this is just display */}
+                        <div className={ProfileStyle.favorite_recipe_container}>
+                            {favoriteRecipes.map(recipe => (
+                                <div key={recipe.id} className={ProfileStyle.recipe_card}>
+                                    <div className="card text-bg-secondary">
+                                        <div className="card-header">
+                                            <h5 className="card-title">{recipe.name ? recipe.name : 'Unnamed Recipe'}</h5>
+                                        </div>
+                                        <div className="card-body">
+                                            <p><strong style={{ color: 'black' }}>Ingredients:</strong> {recipe.ingredients}</p>
+                                            <p><strong style={{ color: 'black' }}>Instructions:</strong> {recipe.instructions}</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        ))}
+                            ))}
+                        </div>
                         <ul className={ProfileStyle.list}>
                         </ul>
                     </div>
                 </div>
-               
                 <button className={ProfileStyle.logout_btn} onClick={signOut}>Sign out</button>
             </div>
         </>
@@ -87,3 +85,4 @@ const UserProfile = ({ signOut, user }) => {
 };
 
 export default withAuthenticator(UserProfile);
+

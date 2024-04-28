@@ -1,19 +1,21 @@
 /*********************************************
  * @author Caleb Edwards
- * @contributions Created the inital recipe card and its functions.
+ * @contributions Created the initial recipe card and its functions.
  * 
  * @author Kaleb Lawrence
- * @contributions Made the create recipe a form instead of a pop up menu, Graphql stayed the same for the most part
- * @brief
- * 
-
+ * @contributions Made the create recipe a form instead of a pop-up menu, GraphQL stayed the same for the most part.
+ * @brief Displays a profile recipe card with options to add, delete, update, favorite, review, and view reviews for recipes.
  *********************************************/
+
 import React, { useState, useEffect, useRef } from 'react';
 import { Amplify } from 'aws-amplify';
 import { listRecipes, createRecipe, deleteRecipe, updateRecipe, createReview, listReviews } from '../../graphql/graphql-operations';
 import awsConfig from '../../aws-exports';
 import { graphqlOperation } from '@aws-amplify/api-graphql';
 import { generateClient } from "aws-amplify/api";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faList, faComment, faStar, faTrashAlt, faPencilAlt, faCommentDots} from '@fortawesome/free-solid-svg-icons';
+import './ProfilePage.module.css'
 const client = generateClient();
 Amplify.configure(awsConfig);
 
@@ -29,6 +31,7 @@ function ProfileRecipeCard() {
   const [reviewRating, setReviewRating] = useState(0);
   const [reviews, setReviews] = useState([]);
   const [showReviewsModal, setShowReviewsModal] = useState(false);
+  const [selectedRecipeDetails, setSelectedRecipeDetails] = useState(null);
 
   const reviewRef = useRef(null);
 
@@ -107,6 +110,7 @@ function ProfileRecipeCard() {
         }
         return recipe;
       }));
+      window.location.reload();
     } catch (error) {
       console.error('Error updating favorite status:', error);
       setError('Error updating favorite status. Please try again.');
@@ -147,6 +151,10 @@ function ProfileRecipeCard() {
     setShowReviewsModal(true);
   }
 
+  function handlePopupContent(recipe) {
+    setSelectedRecipeDetails(recipe);
+  }
+
   return (
     <div>
       {/* Button to toggle form visibility */}
@@ -179,26 +187,56 @@ function ProfileRecipeCard() {
         </form>
       )}
       <div className="d-flex flex-wrap">
-        {recipes.map(recipe => (
-          <div key={recipe.id} className="col">
-            <div className="card text-bg-secondary" style={{ width: '18rem' }}>
-              <div className="card-header">
-                <h5 className="card-title">{recipe.name ? recipe.name : 'Unnamed Recipe'}</h5>
+  {recipes.map(recipe => (
+    <div key={recipe.id} className="col">
+      <div className="card text-bg-secondary" style={{ width: '18rem' }}>
+        <div className="card-header">
+          <h5 className="card-title">{recipe.name ? recipe.name : 'Unnamed Recipe'}</h5>
+        </div>
+        <div className="card-body">
+          <button className="btn btn-danger btn-icon" onClick={() => handleDeleteRecipe(recipe.id)} style={{ position: 'absolute', bottom: '5px', right: '5px' }}>
+            <FontAwesomeIcon icon={faTrashAlt} />
+          </button>                
+          <button className="btn btn-primary btn-icon" onClick={() => handleUpdateRecipe(recipe.id)} style={{ position: 'absolute', bottom: '5px', left: '5px' }}>
+            <FontAwesomeIcon icon={faPencilAlt} />
+          </button>                
+          <button className="btn btn-secondary btn-icon" onClick={() => handleToggleFavorite(recipe.id, recipe.isFavorite)} style={{ position: 'absolute', top: '60px', right: '5px' }}>
+            <FontAwesomeIcon icon={faStar} style={{ color: recipe.isFavorite ? 'yellow' : 'white' }} />
+          </button>
+          <div className="text-center" style={{ marginTop: '30px' }}>
+            <button className="btn btn-dark mb-4" onClick={() => handlePopupContent(recipe)}> <FontAwesomeIcon icon={faList}/> Ingredients & Instructions</button>
+          </div>
+          <div className="text-right" style={{ marginTop: '0px', marginLeft: '40px' }}>
+            <button className="btn btn-light ms-2" onClick={() => setReviewingRecipeId(recipe.id)} >
+              <FontAwesomeIcon icon={faComment} /> Leave Review
+            </button>              
+            <button className="btn btn-success ms-2" onClick={() => handleViewReviews(recipe.id)} >
+              <FontAwesomeIcon icon={faCommentDots}/> View Reviews
+            </button> 
+          </div>        
+        </div>
+      </div>
+    </div>
+  ))}
+      </div>
+      {error && <div className="alert alert-danger">{error}</div>}
+      {/* Modal for displaying ingredients and instructions */}
+      {selectedRecipeDetails && (
+        <div className="modal fade show" tabIndex="-1" style={{ display: 'block' }} ref={reviewRef}>
+          <div className="modal-dialog modal-lg">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">{selectedRecipeDetails.name}</h5>
+                <button type="button" className="btn-close" onClick={() => setSelectedRecipeDetails(null)}></button>
               </div>
-              <div className="card-body">
-                <p>Ingredients: {recipe.ingredients}</p>
-                <p>Instructions: {recipe.instructions}</p>
-                <button className="btn btn-danger" onClick={() => handleDeleteRecipe(recipe.id)}>Delete</button>
-                <button className="btn btn-primary" onClick={() => handleUpdateRecipe(recipe.id)}>Update</button>
-                <button className={`btn ${recipe.isFavorite ? 'btn-success' : 'btn-outline-success'}`} onClick={() => handleToggleFavorite(recipe.id, recipe.isFavorite)}>{recipe.isFavorite ? 'Unfavorite' : 'Favorite'}</button>
-                <button className="btn btn-info ms-2" onClick={() => setReviewingRecipeId(recipe.id)}>Review</button>
-                <button className="btn btn-warning ms-2" onClick={() => handleViewReviews(recipe.id)}>View Reviews</button>
+              <div className="modal-body">
+                <p><strong>Ingredients:</strong> {selectedRecipeDetails.ingredients}</p>
+                <p><strong>Instructions:</strong> {selectedRecipeDetails.instructions}</p>
               </div>
             </div>
           </div>
-        ))}
-      </div>
-      {error && <div className="alert alert-danger">{error}</div>}
+        </div>
+      )}
       {/* Modal for displaying reviews */}
       {showReviewsModal && (
         <div className="modal fade show" tabIndex="-1" style={{ display: 'block' }} ref={reviewRef}>

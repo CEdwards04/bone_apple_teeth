@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { generateClient } from "aws-amplify/api";
 import { listRecipes, createReview, listReviews, deleteReview } from '../../graphql/graphql-operations';
 import { graphqlOperation } from '@aws-amplify/api-graphql';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faList, faCommentDots, faComments } from '@fortawesome/free-solid-svg-icons';
 import Navbar from '../../Navbar';
 import './RecipeDisplayPage.css';
 
@@ -16,6 +18,7 @@ function RecipeDisplayPage() {
   const [reviewText, setReviewText] = useState('');
   const [reviewRating, setReviewRating] = useState(0);
   const [recipeReviews, setRecipeReviews] = useState([]);
+  const [selectedRecipe, setSelectedRecipe] = useState(null);
 
   useEffect(() => {
     fetchRecipes();
@@ -68,6 +71,14 @@ function RecipeDisplayPage() {
     recipe.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  const openRecipeDetails = (recipe) => {
+    setSelectedRecipe(recipe);
+  };
+
+  const closeRecipeDetails = () => {
+    setSelectedRecipe(null);
+  };
+
   return (
     <div>
       <Navbar />
@@ -85,17 +96,49 @@ function RecipeDisplayPage() {
               <h5 className="card-title">{recipe.name ? recipe.name : 'Unnamed Recipe'}</h5>
             </div>
             <div className="card-body">
-              <p>Ingredients: {recipe.ingredients}</p>
-              <p>Instructions: {recipe.instructions}</p>
-              <button onClick={() => handleViewReviews(recipe.id)}>View Reviews</button>
-              <button onClick={() => {
-                setReviewingRecipeId(recipe.id);
-                setShowReviewFormModal(true);
-              }}>Leave Review</button>
+              
+              <button 
+                onClick={() => openRecipeDetails(recipe)} 
+                className="btn btn-dark"
+              >
+                <FontAwesomeIcon icon={faList} /> View Ingredients and Instructions
+              </button>
+              <button 
+                onClick={() => handleViewReviews(recipe.id)} 
+                className="btn btn-success"
+              >
+                <FontAwesomeIcon icon={faCommentDots} /> View Reviews
+              </button>
+              <button 
+                onClick={() => {
+                  setReviewingRecipeId(recipe.id);
+                  setShowReviewFormModal(true);
+                }} 
+                className="btn btn-light"
+              >
+                <FontAwesomeIcon icon={faComments} /> Leave Review
+              </button>
             </div>
           </div>
         ))}
       </div>
+
+      {selectedRecipe && (
+        <div className="modal fade show" tabIndex="-1" style={{ display: 'block' }}>
+          <div className="modal-dialog modal-lg">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">{selectedRecipe.name}</h5>
+                <button type="button" className="btn-close" onClick={closeRecipeDetails}></button>
+              </div>
+              <div className="modal-body">
+                <p><strong>Ingredients:</strong> {selectedRecipe.ingredients}</p>
+                <p><strong>Instructions:</strong> {selectedRecipe.instructions}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {showReviewsModal && (
         <div className="modal fade show" tabIndex="-1" style={{ display: 'block' }}>
