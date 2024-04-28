@@ -76,7 +76,7 @@ function MealSearch({ingredientList, MealSearchFunction}) {
         };
 
         fetchData();
-    }, []);
+    }, [ingredientList]);
 
     console.log("recipeData:", recipeData);
 

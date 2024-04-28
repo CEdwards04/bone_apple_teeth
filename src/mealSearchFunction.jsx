@@ -102,23 +102,23 @@ function MealSearchFunction({handleStateChange}) {
                     </h3>
                     <div className={MealSearchStyle.checkboxGroup} style={{ display: showDairyCheckboxes ? 'block' : 'none' }}>
                         <div className={MealSearchStyle.checkboxRow}>
-                            <input type="checkbox" id="dairy_milk" name="dairy" onClick={handleChange}/>
+                            <input type="checkbox" id="milk" name="dairy" onClick={handleChange}/>
                             <label htmlFor="dairy_milk">Milk</label>
                         </div>
                         <div className={MealSearchStyle.checkboxRow}>
-                            <input type="checkbox" id="dairy_butter" name="dairy" onClick={handleChange}/>
+                            <input type="checkbox" id="butter" name="dairy" onClick={handleChange}/>
                             <label htmlFor="dairy_butter">Butter</label>
                         </div>
                         <div className={MealSearchStyle.checkboxRow}>
-                            <input type="checkbox" id="dairy_cheese" name="dairy" onClick={handleChange} />
+                            <input type="checkbox" id="cheese" name="dairy" onClick={handleChange} />
                             <label htmlFor="dairy_cheese">Cheese</label>
                         </div>
                         <div className={MealSearchStyle.checkboxRow}>
-                            <input type="checkbox" id="dairy_yogurt" name="dairy" onClick={handleChange} />
+                            <input type="checkbox" id="yogurt" name="dairy" onClick={handleChange} />
                             <label htmlFor="dairy_yogurt">Yogurt</label>
                         </div>
                         <div className={MealSearchStyle.checkboxRow}>
-                            <input type="checkbox" id="dairy_ice_cream" name="dairy" onClick={handleChange} />
+                            <input type="checkbox" id="ice_cream" name="dairy" onClick={handleChange} />
                             <label htmlFor="dairy_ice_cream">Ice Cream</label>
                         </div>
                     </div>
@@ -133,23 +133,23 @@ function MealSearchFunction({handleStateChange}) {
                     </h3>
                     <div className={MealSearchStyle.checkboxGroup} style={{ display: showGrainsCheckboxes ? 'block' : 'none' }}>
                         <div className={MealSearchStyle.checkboxRow}>
-                            <input type="checkbox" id="grains_bread" name="grains" onClick={handleChange} />
+                            <input type="checkbox" id="bread" name="grains" onClick={handleChange} />
                             <label htmlFor="grains_bread">Bread</label>
                         </div>
                         <div className={MealSearchStyle.checkboxRow}>
-                            <input type="checkbox" id="grains_oats" name="grains" onClick={handleChange} />
+                            <input type="checkbox" id="oats" name="grains" onClick={handleChange} />
                             <label htmlFor="grains_oats">Oats</label>
                         </div>
                         <div className={MealSearchStyle.checkboxRow}>
-                            <input type="checkbox" id="grains_rice" name="grains" onClick={handleChange} />
+                            <input type="checkbox" id="rice" name="grains" onClick={handleChange} />
                             <label htmlFor="grains_rice">Rice</label>
                         </div>
                         <div className={MealSearchStyle.checkboxRow}>
-                            <input type="checkbox" id="grains_quinoa" name="grains" onClick={handleChange} />
+                            <input type="checkbox" id="quinoa" name="grains" onClick={handleChange} />
                             <label htmlFor="grains_quinoa">Quinoa</label>
                         </div>
                         <div className={MealSearchStyle.checkboxRow}>
-                            <input type="checkbox" id="grains_barley" name="grains" onClick={handleChange} />
+                            <input type="checkbox" id="barley" name="grains" onClick={handleChange} />
                             <label htmlFor="grains_barley">Barley</label>
                         </div>
                     </div>
@@ -164,47 +164,47 @@ function MealSearchFunction({handleStateChange}) {
                     </h3>
                     <div className={MealSearchStyle.checkboxGroup} style={{ display: showFruitsCheckboxes ? 'block' : 'none' }}>
                         <div className={MealSearchStyle.checkboxRow}>
-                            <input type="checkbox" id="fruits_apples" name="fruits" onClick={handleChange} />
+                            <input type="checkbox" id="apples" name="fruits" onClick={handleChange} />
                             <label htmlFor="fruits_apples">Apples</label>
                         </div>
                         <div className={MealSearchStyle.checkboxRow}>
-                            <input type="checkbox" id="fruits_bananas" name="fruits" onClick={handleChange} />
+                            <input type="checkbox" id="bananas" name="fruits" onClick={handleChange} />
                             <label htmlFor="fruits_bananas">Bananas</label>
                         </div>
                         <div className={MealSearchStyle.checkboxRow}>
-                            <input type="checkbox" id="fruits_oranges" name="fruits" onClick={handleChange} />
+                            <input type="checkbox" id="oranges" name="fruits" onClick={handleChange} />
                             <label htmlFor="fruits_oranges">Oranges</label>
                         </div>
                         <div className={MealSearchStyle.checkboxRow}>
-                            <input type="checkbox" id="fruits_lemons" name="fruits" onClick={handleChange} />
+                            <input type="checkbox" id="lemons" name="fruits" onClick={handleChange} />
                             <label htmlFor="fruits_lemons">Lemons</label>
                         </div>
                         <div className={MealSearchStyle.checkboxRow}>
-                            <input type="checkbox" id="fruits_limes" name="fruits" onClick={handleChange} />
+                            <input type="checkbox" id="limes" name="fruits" onClick={handleChange} />
                             <label htmlFor="fruits_limes">Limes</label>
                         </div>
                         <div className={MealSearchStyle.checkboxRow}>
-                            <input type="checkbox" id="fruits_peaches" name="fruits" onClick={handleChange} />
+                            <input type="checkbox" id="peaches" name="fruits" onClick={handleChange} />
                             <label htmlFor="fruits_peaches">Peaches</label>
                         </div>
                         <div className={MealSearchStyle.checkboxRow}>
-                            <input type="checkbox" id="fruits_pears" name="fruits" onClick={handleChange} />
+                            <input type="checkbox" id="pears" name="fruits" onClick={handleChange} />
                             <label htmlFor="fruits_pears">Pears</label>
                         </div>
                         <div className={MealSearchStyle.checkboxRow}>
-                            <input type="checkbox" id="fruits pineapples" name="fruits" onClick={handleChange} />
+                            <input type="checkbox" id="pineapples" name="fruits" onClick={handleChange} />
                             <label htmlFor="fruits_pineapples">Pineapples</label>
                         </div>
                         <div className={MealSearchStyle.checkboxRow}>
-                            <input type="checkbox" id="fruits_strawberries" name="fruits" onClick={handleChange} />
+                            <input type="checkbox" id="strawberries" name="fruits" onClick={handleChange} />
                             <label htmlFor="fruits_strawberries">Strawberries</label>
                         </div>
                         <div className={MealSearchStyle.checkboxRow}>
-                            <input type="checkbox" id="fruits_blueberries" name="fruits" onClick={handleChange} />
+                            <input type="checkbox" id="blueberries" name="fruits" onClick={handleChange} />
                             <label htmlFor="fruits_blueberries">Blueberries</label>
                         </div>
                         <div className={MealSearchStyle.checkboxRow}>
-                            <input type="checkbox" id="fruits_raspberries" name="fruits" onClick={handleChange} />
+                            <input type="checkbox" id="raspberries" name="fruits" onClick={handleChange} />
                             <label htmlFor="fruits_raspberries">Raspberries</label>
                         </div>
                     </div>
@@ -219,19 +219,19 @@ function MealSearchFunction({handleStateChange}) {
                 </h3>
                 <div className={MealSearchStyle.checkboxGroup} style={{ display: showMeatsCheckboxes ? 'block' : 'none' }}>
                         <div className={MealSearchStyle.checkboxRow}>
-                        <input type="checkbox" id="meats_beef" name="meats" onClick={handleChange} />
+                        <input type="checkbox" id="beef" name="meats" onClick={handleChange} />
                         <label htmlFor="meats_beef">Beef</label>
                     </div>
                     <div className={MealSearchStyle.checkboxRow}>
-                        <input type="checkbox" id="meats_pork" name="meats" onClick={handleChange} />
+                        <input type="checkbox" id="pork" name="meats" onClick={handleChange} />
                         <label htmlFor="meats_pork">Pork</label>
                     </div>
                     <div className={MealSearchStyle.checkboxRow}>
-                        <input type="checkbox" id="meats_lamb" name="meats" onClick={handleChange} />
+                        <input type="checkbox" id="lamb" name="meats" onClick={handleChange} />
                         <label htmlFor="meats_lamb">Lamb</label>
                     </div>
                     <div className={MealSearchStyle.checkboxRow}>
-                        <input type="checkbox" id="meats_veal" name="meats" onClick={handleChange} />
+                        <input type="checkbox" id="veal" name="meats" onClick={handleChange} />
                         <label htmlFor="meats_veal">Veal</label>
                     </div>
                 </div>
@@ -245,15 +245,15 @@ function MealSearchFunction({handleStateChange}) {
                     </h3>
                     <div className={MealSearchStyle.checkboxGroup} style={{ display: showPoultryCheckboxes ? 'block' : 'none' }}>
                         <div className={MealSearchStyle.checkboxRow}>
-                            <input type="checkbox" id="poultry_chicken" name="poultry" onClick={handleChange} />
+                            <input type="checkbox" id="chicken" name="poultry" onClick={handleChange} />
                             <label htmlFor="poultry_chicken">Chicken</label>
                         </div>
                         <div className={MealSearchStyle.checkboxRow}>
-                            <input type="checkbox" id="poultry_turkey" name="poultry" onClick={handleChange} />
+                            <input type="checkbox" id="turkey" name="poultry" onClick={handleChange} />
                             <label htmlFor="poultry_turkey">Turkey</label>
                         </div>
                         <div className={MealSearchStyle.checkboxRow}>
-                            <input type="checkbox" id="poultry_duck" name="poultry" onClick={handleChange} />
+                            <input type="checkbox" id="duck" name="poultry" onClick={handleChange} />
                             <label htmlFor="poultry_duck">Duck</label>
                         </div>
                     </div>
@@ -267,27 +267,27 @@ function MealSearchFunction({handleStateChange}) {
                     </h3>
                     <div className={MealSearchStyle.checkboxGroup} style={{ display: showFishSeafoodCheckboxes ? 'block' : 'none' }}>
                         <div className={MealSearchStyle.checkboxRow}>
-                            <input type="checkbox" id="seafood_fish" name="seafood" onClick={handleChange} />
+                            <input type="checkbox" id="fish" name="seafood" onClick={handleChange} />
                             <label htmlFor="seafood_fish">Fish</label>
                         </div>
                         <div className={MealSearchStyle.checkboxRow}>
-                            <input type="checkbox" id="seafood_scallops" name="seafood" onClick={handleChange} />
+                            <input type="checkbox" id="scallops" name="seafood" onClick={handleChange} />
                             <label htmlFor="seafood_scallops">Scallops</label>
                         </div>
                         <div className={MealSearchStyle.checkboxRow}>
-                            <input type="checkbox" id="seafood_prawns" name="seafood" onClick={handleChange} />
+                            <input type="checkbox" id="prawns" name="seafood" onClick={handleChange} />
                             <label htmlFor="seafood_prawns">Prawns</label>
                         </div>
                         <div className={MealSearchStyle.checkboxRow}>
-                            <input type="checkbox" id="seafood_lobster" name="seafood" onClick={handleChange} />
+                            <input type="checkbox" id="lobster" name="seafood" onClick={handleChange} />
                             <label htmlFor="seafood_lobster">Lobster</label>
                         </div>
                         <div className={MealSearchStyle.checkboxRow}>
-                            <input type="checkbox" id="seafood_oysters" name="seafood" onClick={handleChange} />
+                            <input type="checkbox" id="oysters" name="seafood" onClick={handleChange} />
                             <label htmlFor="seafood_oysters">Oysters</label>
                         </div>
                         <div className={MealSearchStyle.checkboxRow}>
-                            <input type="checkbox" id="seafood_clams" name="seafood" onClick={handleChange} />
+                            <input type="checkbox" id="clams" name="seafood" onClick={handleChange} />
                             <label htmlFor="seafood_clams">Clams</label>
                         </div>
                     </div>
@@ -302,19 +302,19 @@ function MealSearchFunction({handleStateChange}) {
                 </h3>
                 <div className={MealSearchStyle.checkboxGroup} style={{ display: showOilsCheckboxes ? 'block' : 'none' }}>
                     <div className={MealSearchStyle.checkboxRow}>
-                        <input type="checkbox" id="oils_olive" name="oils" onClick={handleChange} />
+                        <input type="checkbox" id="olive_oil" name="oils" onClick={handleChange} />
                         <label htmlFor="oils_olive">Olive Oil</label>
                     </div>
                     <div className={MealSearchStyle.checkboxRow}>
-                        <input type="checkbox" id="oils_coconut" name="oils" onClick={handleChange} />
+                        <input type="checkbox" id="coconut_oil" name="oils" onClick={handleChange} />
                         <label htmlFor="oils_coconut">Coconut Oil</label>
                     </div>
                     <div className={MealSearchStyle.checkboxRow}>
-                        <input type="checkbox" id="oils_avocado" name="oils" onClick={handleChange} />
+                        <input type="checkbox" id="avocado_oil" name="oils" onClick={handleChange} />
                         <label htmlFor="oils_avocado">Avocado Oil</label>
                     </div>
                     <div className={MealSearchStyle.checkboxRow}>
-                        <input type="checkbox" id="oils_vegetable" name="oils" onClick={handleChange} />
+                        <input type="checkbox" id="vegetable_oil" name="oils" onClick={handleChange} />
                         <label htmlFor="oils_vegetable">Vegetable Oil</label>
                     </div>
                 </div>
