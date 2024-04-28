@@ -50,7 +50,7 @@ function MealSearch({ingredientList, MealSearchFunction}) {
 
                 const searchResponse = await axios.get('https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients', {
                     params: {
-                        ingredients: ingredientList,
+                        ingredients: " " + ingredientList,
                         number: 5,
                         ignorePantry: false,
                         ranking: 1
