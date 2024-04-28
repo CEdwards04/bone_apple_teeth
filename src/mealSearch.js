@@ -94,7 +94,12 @@ function MealSearch({ingredientList, MealSearchFunction}) {
                         </td>
                         <td className={mealSearchStyle.meal_cards}>
                             {recipeData && recipeData.map((recipe, index) => (
-                                <Card key={recipe.id} recipe={recipe} imageUrl = {recipe.image} ingredients = {recipe.ingredients} instructions ={recipe.instructions} />
+                                <Card
+                                    key={recipe.id}
+                                    recipe={recipe}
+                                    imageUrl={recipe.image}
+                                    ingredients={recipe.usedIngredients.map(ingredient => ingredient.name)}
+                                />
                             ))}
                         </td>
                     </tr>

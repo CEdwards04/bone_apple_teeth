@@ -32,32 +32,28 @@ function Popup({ recipe, onClose }) {
         border: 'none',
         cursor: 'pointer'
     };
-
     return (
         <div style={popupOverlayStyle}>
             <div style={popupContainerStyle}>
                 <button style={closeButtonStyle} onClick={onClose}>X</button>
                 <h2>{recipe.title}</h2>
                 <img src={recipe.image} alt={recipe.title} />
-                <p>
-                    <strong>What You Need:</strong>
-                </p>
+                <p><strong>What You Need:</strong></p>
                 <ul>
-                    {recipe.ingredients && recipe.ingredients.map((ingredient, index) => (
-                        <li key={index}>{ingredient}</li>
+                    {recipe.usedIngredients.map((ingredient, index) => (
+                        <li key={index}>{ingredient.original}</li>
                     ))}
                 </ul>
-                <p>
-                    <strong>How to Make It:</strong>
-                </p>
-                <ol>
-                    {recipe.instructions && recipe.instructions.map((instruction, index) => (
-                        <li key={index}>{instruction}</li>
+                <p><strong>Additional Ingredients:</strong></p>
+                <ul>
+                    {recipe.missedIngredients.map((ingredient, index) => (
+                        <li key={index}>{ingredient.original}</li>
                     ))}
-                </ol>
+                </ul>
             </div>
         </div>
     );
+    
 }
 
 export default Popup;
