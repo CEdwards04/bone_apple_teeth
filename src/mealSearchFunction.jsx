@@ -7,19 +7,14 @@
  * @brief Basic searching function that has common ingredients listed as
  *        checkboxes in a drop down menu.
  *********************************************/
-
 import React, { useState } from 'react';
 import MealSearchStyle from './CSS Modules/mealSearch.module.css';
-
 function MealSearchFunction({handleStateChange}) {
-
     const [ingredientsArray, setIngredientsArray] = useState([]);
-
     const handleChange = (e) => {
         const value = e.target.id;
         const checked = e.target.checked;
         console.log(value, checked);
-
         if(checked) {
             setIngredientsArray([
                 ...ingredientsArray, value
@@ -27,17 +22,12 @@ function MealSearchFunction({handleStateChange}) {
         } else {
             setIngredientsArray(ingredientsArray.filter((e) => (e !== value)));
         }
-
     }
-
     const handleIngredientChange = (e) => {
         e.preventDefault();
         console.log(ingredientsArray);
-
         handleStateChange(ingredientsArray);
     }
-
-
     const [showDairyCheckboxes, setShowDairyCheckboxes] = useState(false);
     const [showGrainsCheckboxes, setShowGrainsCheckboxes] = useState(false);
     const [showFruitsCheckboxes, setShowFruitsCheckboxes] = useState(false);
@@ -45,7 +35,11 @@ function MealSearchFunction({handleStateChange}) {
     const [showPoultryCheckboxes, setShowPoultryCheckboxes] = useState(false);
     const [showFishSeafoodCheckboxes, setShowFishSeafoodCheckboxes] = useState(false);
     const [showOilsCheckboxes, setShowOilsCheckboxes] = useState(false);
+    const [showVegetablesCheckboxes, setShowVegetablesCheckboxes] = useState(false);
 
+    const toggleVegetablesCheckboxes = () => {
+    setShowVegetablesCheckboxes(!showVegetablesCheckboxes);
+    };
     const toggleDairyCheckboxes = () => {
         setShowDairyCheckboxes(!showDairyCheckboxes);
     };
@@ -67,27 +61,27 @@ function MealSearchFunction({handleStateChange}) {
     const toggleOilsCheckboxes = () => {
         setShowOilsCheckboxes(!showOilsCheckboxes);
     };
-
-
     return (
         <div className={MealSearchStyle.container}>
             <form className={MealSearchStyle.form}>
+                {/* Updated styling for "Force only selected" checkbox */}
+                <div className={MealSearchStyle.forceOnlySelected}>
+                    <input type="checkbox" id="force_only_selected" name="force_only_selected" onClick={handleChange}/>
+                    <label htmlFor="force_only_selected">Force only selected</label>
+                </div>
 
                 <div className={MealSearchStyle.forceOnlySelected}>
                     <input type="checkbox" id="breakfast" name="breakfast" onClick={handleChange}/>
                     <label htmlFor="breakfast">Breakfast</label>
                 </div>
-
                 <div className={MealSearchStyle.forceOnlySelected}>
                     <input type="checkbox" id="Lunch" name="Lunch" onClick={handleChange}/>
                     <label htmlFor="Lunch">Lunch</label>
                 </div>
-
                 <div className={MealSearchStyle.forceOnlySelected}>
                     <input type="checkbox" id="Dinner" name="Dinner" onClick={handleChange}/>
                     <label htmlFor="Dinner">Dinner</label>
                 </div>
-
                 <div className={MealSearchStyle.category}>
                     <h3 className={MealSearchStyle.categoryTitle}onClick={toggleDairyCheckboxes}>
                         Dairy
@@ -118,7 +112,6 @@ function MealSearchFunction({handleStateChange}) {
                         </div>
                     </div>
                 </div>
-
                 <div className={MealSearchStyle.category}>
                     <h3 className={MealSearchStyle.categoryTitle}onClick={toggleGrainsCheckboxes}>
                         Grains
@@ -130,6 +123,10 @@ function MealSearchFunction({handleStateChange}) {
                         <div className={MealSearchStyle.checkboxRow}>
                             <input type="checkbox" id="bread" name="grains" onClick={handleChange} />
                             <label htmlFor="grains_bread">Bread</label>
+                        </div>
+                        <div className={MealSearchStyle.checkboxRow}>
+                            <input type="checkbox" id="flour" name="grains" onClick={handleChange} />
+                            <label htmlFor="grains_flour">Flour</label>
                         </div>
                         <div className={MealSearchStyle.checkboxRow}>
                             <input type="checkbox" id="oats" name="grains" onClick={handleChange} />
@@ -149,7 +146,6 @@ function MealSearchFunction({handleStateChange}) {
                         </div>
                     </div>
                 </div>
-
                 <div className={MealSearchStyle.category}>
                     <h3 className={MealSearchStyle.categoryTitle}onClick={toggleFruitsCheckboxes}>
                         Fruits
@@ -204,6 +200,56 @@ function MealSearchFunction({handleStateChange}) {
                         </div>
                     </div>
                 </div>
+                <div className={MealSearchStyle.category}>
+                    <h3 className={MealSearchStyle.categoryTitle} onClick={toggleVegetablesCheckboxes}>
+                        Vegetables
+                        <span className={MealSearchStyle.dropdownArrow} onClick={toggleVegetablesCheckboxes}>
+                            &#9662;
+                        </span>
+                    </h3>
+                    <div className={MealSearchStyle.checkboxGroup} style={{ display: showVegetablesCheckboxes ? 'block' : 'none' }}>
+                        <div className={MealSearchStyle.checkboxRow}>
+                            <input type="checkbox" id="carrots" name="vegetables" onClick={handleChange} />
+                            <label htmlFor="vegetables_carrots">Carrots</label>
+                        </div>
+                        <div className={MealSearchStyle.checkboxRow}>
+                            <input type="checkbox" id="broccoli" name="vegetables" onClick={handleChange} />
+                            <label htmlFor="vegetables_broccoli">Broccoli</label>
+                        </div>
+                        <div className={MealSearchStyle.checkboxRow}>
+                            <input type="checkbox" id="spinach" name="vegetables" onClick={handleChange} />
+                            <label htmlFor="vegetables_spinach">Spinach</label>
+                        </div>
+                        <div className={MealSearchStyle.checkboxRow}>
+                            <input type="checkbox" id="tomatoes" name="vegetables" onClick={handleChange} />
+                            <label htmlFor="vegetables_tomatoes">Tomatoes</label>
+                        </div>
+                        <div className={MealSearchStyle.checkboxRow}>
+                            <input type="checkbox" id="potatoes" name="vegetables" onClick={handleChange} />
+                            <label htmlFor="vegetables_potatoes">Potatoes</label>
+                        </div>
+                        <div className={MealSearchStyle.checkboxRow}>
+                            <input type="checkbox" id="bell_peppers" name="vegetables" onClick={handleChange} />
+                            <label htmlFor="vegetables_bell_peppers">Bell Peppers</label>
+                        </div>
+                        <div className={MealSearchStyle.checkboxRow}>
+                            <input type="checkbox" id="cucumbers" name="vegetables" onClick={handleChange} />
+                            <label htmlFor="vegetables_cucumbers">Cucumbers</label>
+                        </div>
+                        <div className={MealSearchStyle.checkboxRow}>
+                            <input type="checkbox" id="onions" name="vegetables" onClick={handleChange} />
+                            <label htmlFor="vegetables_onions">Onions</label>
+                        </div>
+                        <div className={MealSearchStyle.checkboxRow}>
+                            <input type="checkbox" id="garlic" name="vegetables" onClick={handleChange} />
+                            <label htmlFor="vegetables_garlic">Garlic</label>
+                        </div>
+                        <div className={MealSearchStyle.checkboxRow}>
+                            <input type="checkbox" id="mushrooms" name="vegetables" onClick={handleChange} />
+                            <label htmlFor="vegetables_mushrooms">Mushrooms</label>
+                        </div>
+                    </div>
+                </div>
 
                 <div className={MealSearchStyle.category}>
                 <h3 className={MealSearchStyle.categoryTitle}onClick={toggleMeatsCheckboxes}>
@@ -220,6 +266,10 @@ function MealSearchFunction({handleStateChange}) {
                     <div className={MealSearchStyle.checkboxRow}>
                         <input type="checkbox" id="pork" name="meats" onClick={handleChange} />
                         <label htmlFor="meats_pork">Pork</label>
+                    </div>
+                    <div className={MealSearchStyle.checkboxRow}>
+                        <input type="checkbox" id="Sausage" name="meats" onClick={handleChange} />
+                        <label htmlFor="meats_sausage">Sausage</label>
                     </div>
                     <div className={MealSearchStyle.checkboxRow}>
                         <input type="checkbox" id="lamb" name="meats" onClick={handleChange} />
@@ -242,6 +292,10 @@ function MealSearchFunction({handleStateChange}) {
                         <div className={MealSearchStyle.checkboxRow}>
                             <input type="checkbox" id="chicken" name="poultry" onClick={handleChange} />
                             <label htmlFor="poultry_chicken">Chicken</label>
+                        </div>
+                        <div className={MealSearchStyle.checkboxRow}>
+                            <input type="checkbox" id="eggs" name="poultry" onClick={handleChange} />
+                            <label htmlFor="poultry_eggs">Eggs</label>
                         </div>
                         <div className={MealSearchStyle.checkboxRow}>
                             <input type="checkbox" id="turkey" name="poultry" onClick={handleChange} />
@@ -287,7 +341,6 @@ function MealSearchFunction({handleStateChange}) {
                         </div>
                     </div>
                 </div>
-
                 <div className={MealSearchStyle.category}>
                 <h3 className={MealSearchStyle.categoryTitle}onClick={toggleOilsCheckboxes}>
                     Oils
@@ -314,14 +367,9 @@ function MealSearchFunction({handleStateChange}) {
                     </div>
                 </div>
             </div>
-
             <button onClick={handleIngredientChange}>Apply Ingredient Changes</button>
-
             </form>
         </div>
     );
 }
-
 export default MealSearchFunction;
-
-
