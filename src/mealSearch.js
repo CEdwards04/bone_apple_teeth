@@ -105,7 +105,6 @@ function MealSearch({ingredientList, MealSearchFunction}) {
                     </tr>
                 </tbody>
             </table>
-            <button onClick={print}>Data present in mealSearch .js (REMOVE WHEN DONE)</button>
         </div>
     );
 }

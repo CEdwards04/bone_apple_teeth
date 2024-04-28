@@ -23,7 +23,6 @@ function MealSearchPage() {
 
             <MealSearch ingredientList={ingredientsArray} MealSearchFunction={<MealSearchFunction handleStateChange={handleStateChange} />}  />
             
-            <button onClick={print}>Data present in mealSearchPage.jsx (REMOVE WHEN DONE)</button>
         </>
     );
 
