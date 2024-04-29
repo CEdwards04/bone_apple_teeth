@@ -89,7 +89,7 @@ const Settings = ({signOut, user}) => {
             <label>Email:</label>
             <span>{user.email}</span>
           </div>
-          <div>
+         <div>
             <label>Phone:</label>
             <span>{user.phone}</span>
           </div>

@@ -1,3 +1,14 @@
+/*********************************************
+ * @author Caleb Edwards
+ * @contributions Created the initial recipe card and its functions.
+ * 
+ * @author ChatGPT
+ * @contributions Created most of the comments for this code.
+ * 
+ * @brief Webpage to display all recipes stored in the database with the option to review and rate them.
+ *********************************************/
+
+// Importing necessary modules from React and AWS Amplify
 import React, { useState, useEffect } from 'react';
 import { generateClient } from "aws-amplify/api";
 import { listRecipes, createReview, listReviews, deleteReview } from '../../graphql/graphql-operations';
@@ -7,23 +18,27 @@ import { faList, faCommentDots, faComments } from '@fortawesome/free-solid-svg-i
 import Navbar from '../../Navbar';
 import './RecipeDisplayPage.css';
 
+// Generating a client using AWS Amplify
 const client = generateClient();
 
 function RecipeDisplayPage() {
-  const [recipes, setRecipes] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [showReviewsModal, setShowReviewsModal] = useState(false);
-  const [showReviewFormModal, setShowReviewFormModal] = useState(false);
-  const [reviewingRecipeId, setReviewingRecipeId] = useState(null);
-  const [reviewText, setReviewText] = useState('');
-  const [reviewRating, setReviewRating] = useState(0);
-  const [recipeReviews, setRecipeReviews] = useState([]);
-  const [selectedRecipe, setSelectedRecipe] = useState(null);
+  // State variables to manage different aspects of the component
+  const [recipes, setRecipes] = useState([]); // Holds the list of recipes
+  const [searchTerm, setSearchTerm] = useState(''); // Holds the search term entered by the user
+  const [showReviewsModal, setShowReviewsModal] = useState(false); // Indicates whether to show the reviews modal
+  const [showReviewFormModal, setShowReviewFormModal] = useState(false); // Indicates whether to show the review form modal
+  const [reviewingRecipeId, setReviewingRecipeId] = useState(null); // Holds the ID of the recipe being reviewed
+  const [reviewText, setReviewText] = useState(''); // Holds the text of the review
+  const [reviewRating, setReviewRating] = useState(0); // Holds the rating of the review
+  const [recipeReviews, setRecipeReviews] = useState([]); // Holds the list of reviews for a recipe
+  const [selectedRecipe, setSelectedRecipe] = useState(null); // Holds the selected recipe for detailed view
 
+  // Fetch recipes from the database when the component mounts
   useEffect(() => {
     fetchRecipes();
   }, []);
 
+  // Function to fetch recipes from the database
   async function fetchRecipes() {
     try {
       const recipeData = await client.graphql(graphqlOperation(listRecipes));
@@ -33,6 +48,7 @@ function RecipeDisplayPage() {
     }
   }
 
+  // Function to handle leaving a review for a recipe
   async function handleLeaveReview() {
     try {
       await client.graphql(graphqlOperation(createReview, {
@@ -47,6 +63,7 @@ function RecipeDisplayPage() {
     }
   }
 
+  // Function to handle viewing reviews for a recipe
   async function handleViewReviews(recipeId) {
     try {
       const response = await client.graphql(graphqlOperation(listReviews, { recipeId }));
@@ -57,6 +74,7 @@ function RecipeDisplayPage() {
     }
   }
 
+  // Function to handle deleting a review
   async function handleDeleteReview(reviewId) {
     try {
       await client.graphql(graphqlOperation(deleteReview, { id: reviewId }));
@@ -67,36 +85,43 @@ function RecipeDisplayPage() {
     }
   }
 
+  // Filtering recipes based on search term
   const filteredRecipes = recipes.filter(recipe =>
     recipe.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  // Function to open detailed view of a recipe
   const openRecipeDetails = (recipe) => {
     setSelectedRecipe(recipe);
   };
 
+  // Function to close detailed view of a recipe
   const closeRecipeDetails = () => {
     setSelectedRecipe(null);
   };
 
+  // Rendering the component
   return (
     <div>
+      {/* Navbar component */}
       <Navbar />
       <h1>All Recipes</h1>
+      {/* Search input field */}
       <input
         type="text"
         placeholder="Search by recipe name"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
+      {/* Displaying list of recipes */}
       <div className="recipe-list">
         {filteredRecipes.map(recipe => (
-          <div key={recipe.id} className="card text-bg-secondary" style={{ width: '18rem' }}>
-            <div className="card-header">
+          <div key={recipe.id} className="card text-bg-secondary" style={{ width: '18rem', border: '2px solid black', margintop: '20px', marginbottom: '20px' }}>
+            <div className="card-header" style={{ width: '16rem', border: '2px solid black' }}>
               <h5 className="card-title">{recipe.name ? recipe.name : 'Unnamed Recipe'}</h5>
             </div>
             <div className="card-body">
-              
+              {/* Buttons to view details, reviews, and leave a review */}
               <button 
                 onClick={() => openRecipeDetails(recipe)} 
                 className="btn btn-dark"
@@ -123,6 +148,7 @@ function RecipeDisplayPage() {
         ))}
       </div>
 
+      {/* Modal for displaying detailed view of a recipe */}
       {selectedRecipe && (
         <div className="modal fade show" tabIndex="-1" style={{ display: 'block' }}>
           <div className="modal-dialog modal-lg">
@@ -140,6 +166,7 @@ function RecipeDisplayPage() {
         </div>
       )}
 
+      {/* Modal for displaying reviews */}
       {showReviewsModal && (
         <div className="modal fade show" tabIndex="-1" style={{ display: 'block' }}>
           <div className="modal-dialog modal-lg">
@@ -149,10 +176,12 @@ function RecipeDisplayPage() {
                 <button type="button" className="btn-close" onClick={() => setShowReviewsModal(false)}></button>
               </div>
               <div className="modal-body">
+                {/* Displaying reviews */}
                 {recipeReviews.map(review => (
                   <div key={review.id} className="review">
                     <p><strong>Rating:</strong> {review.rating}</p>
                     <p><strong>Comment:</strong> {review.comment}</p>
+                    {/* Button to delete a review */}
                     <button onClick={() => handleDeleteReview(review.id)}>Delete Review</button>
                   </div>
                 ))}
@@ -162,6 +191,7 @@ function RecipeDisplayPage() {
         </div>
       )}
 
+      {/* Modal for leaving a review */}
       {showReviewFormModal && (
         <div className="modal fade show" tabIndex="-1" style={{ display: 'block' }}>
           <div className="modal-dialog modal-lg">
@@ -171,6 +201,7 @@ function RecipeDisplayPage() {
                 <button type="button" className="btn-close" onClick={() => setShowReviewFormModal(false)}></button>
               </div>
               <div className="modal-body">
+                {/* Form to leave a review */}
                 <form onSubmit={(e) => {
                   e.preventDefault();
                   handleLeaveReview();
@@ -183,6 +214,7 @@ function RecipeDisplayPage() {
                     <label htmlFor="reviewText" className="form-label">Review</label>
                     <textarea className="form-control" id="reviewText" rows="3" value={reviewText} onChange={(e) => setReviewText(e.target.value)}></textarea>
                   </div>
+                  {/* Buttons to submit or cancel the review */}
                   <button type="submit" className="btn btn-primary">Submit Review</button>
                   <button type="button" className="btn btn-secondary ms-2" onClick={() => setShowReviewFormModal(false)}>Cancel</button>
                 </form>

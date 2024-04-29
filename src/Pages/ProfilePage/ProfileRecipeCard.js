@@ -4,6 +4,10 @@
  * 
  * @author Kaleb Lawrence
  * @contributions Made the create recipe a form instead of a pop-up menu, GraphQL stayed the same for the most part.
+ * 
+ * @author ChatGPT
+ * @contributions Created most of the comments for this code.
+ * 
  * @brief Displays a profile recipe card with options to add, delete, update, favorite, review, and view reviews for recipes.
  *********************************************/
 
@@ -14,27 +18,29 @@ import awsConfig from '../../aws-exports';
 import { graphqlOperation } from '@aws-amplify/api-graphql';
 import { generateClient } from "aws-amplify/api";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faList, faComment, faStar, faTrashAlt, faPencilAlt, faCommentDots} from '@fortawesome/free-solid-svg-icons';
+import { faList, faStar, faTrashAlt, faPencilAlt, faCommentDots} from '@fortawesome/free-solid-svg-icons';
 import './ProfilePage.module.css'
 const client = generateClient();
 Amplify.configure(awsConfig);
 
 function ProfileRecipeCard() {
+  // State variables for managing recipes, form inputs, reviews, and error handling
   const [recipes, setRecipes] = useState([]);
   const [error, setError] = useState(null);
   const [newRecipeName, setNewRecipeName] = useState('');
   const [newRecipeIngredients, setNewRecipeIngredients] = useState('');
   const [newRecipeInstructions, setNewRecipeInstructions] = useState('');
   const [showForm, setShowForm] = useState(false);
-  const [reviewingRecipeId, setReviewingRecipeId] = useState(null);
   const [reviewText, setReviewText] = useState('');
   const [reviewRating, setReviewRating] = useState(0);
   const [reviews, setReviews] = useState([]);
   const [showReviewsModal, setShowReviewsModal] = useState(false);
   const [selectedRecipeDetails, setSelectedRecipeDetails] = useState(null);
 
+  // Reference for managing modals
   const reviewRef = useRef(null);
 
+  // Function to fetch recipes from GraphQL API
   async function fetchRecipes() {
     try {
       const recipeData = await client.graphql(graphqlOperation(listRecipes));
@@ -45,10 +51,12 @@ function ProfileRecipeCard() {
     }
   }
 
+  // Effect hook to fetch recipes on component mount
   useEffect(() => {
     fetchRecipes();
   }, []);
 
+  // Function to handle form submission for creating a new recipe
   async function handleSubmit(event) {
     event.preventDefault();
     if (newRecipeName && newRecipeIngredients && newRecipeInstructions) {
@@ -74,6 +82,7 @@ function ProfileRecipeCard() {
     }
   }
 
+  // Function to handle deletion of a recipe
   async function handleDeleteRecipe(id) {
     try {
       await client.graphql(graphqlOperation(deleteRecipe, { id }));
@@ -84,6 +93,7 @@ function ProfileRecipeCard() {
     }
   }
 
+  // Function to handle updating a recipe
   async function handleUpdateRecipe(id) {
     const recipeToUpdate = recipes.find(recipe => recipe.id === id);
     if (recipeToUpdate) {
@@ -94,6 +104,7 @@ function ProfileRecipeCard() {
     }
   }
 
+  // Function to toggle favorite status of a recipe
   async function handleToggleFavorite(id, isFavorite) {
     try {
       const response = await client.graphql(graphqlOperation(updateRecipe, {
@@ -110,13 +121,14 @@ function ProfileRecipeCard() {
         }
         return recipe;
       }));
-      window.location.reload();
+      window.location.reload(); // Reloading the page to reflect changes
     } catch (error) {
       console.error('Error updating favorite status:', error);
       setError('Error updating favorite status. Please try again.');
     }
   }
 
+  // Function to handle submission of a review for a recipe
   async function handleReviewSubmit(event, recipeId) {
     event.preventDefault();
     try {
@@ -129,13 +141,13 @@ function ProfileRecipeCard() {
       setReviews(prevReviews => [...prevReviews, newReview]);
       setReviewText('');
       setReviewRating(0);
-      setReviewingRecipeId(null);
     } catch (error) {
       console.error('Error submitting review:', error);
       setError('Error submitting review. Please try again.');
     }
   }
 
+  // Function to fetch reviews for a recipe
   async function fetchReviews(recipeId) {
     try {
       const response = await client.graphql(graphqlOperation(listReviews, { recipeId }));
@@ -146,11 +158,13 @@ function ProfileRecipeCard() {
     }
   }
 
+  // Function to handle viewing reviews for a recipe
   function handleViewReviews(recipeId) {
     fetchReviews(recipeId);
     setShowReviewsModal(true);
   }
 
+  // Function to set selected recipe details for modal display
   function handlePopupContent(recipe) {
     setSelectedRecipeDetails(recipe);
   }
@@ -186,39 +200,38 @@ function ProfileRecipeCard() {
           </div>
         </form>
       )}
+      {/* Displaying recipe cards */}
       <div className="d-flex flex-wrap">
-  {recipes.map(recipe => (
-    <div key={recipe.id} className="col">
-      <div className="card text-bg-secondary" style={{ width: '18rem' }}>
-        <div className="card-header">
-          <h5 className="card-title">{recipe.name ? recipe.name : 'Unnamed Recipe'}</h5>
-        </div>
-        <div className="card-body">
-          <button className="btn btn-danger btn-icon" onClick={() => handleDeleteRecipe(recipe.id)} style={{ position: 'absolute', bottom: '5px', right: '5px' }}>
-            <FontAwesomeIcon icon={faTrashAlt} />
-          </button>                
-          <button className="btn btn-primary btn-icon" onClick={() => handleUpdateRecipe(recipe.id)} style={{ position: 'absolute', bottom: '5px', left: '5px' }}>
-            <FontAwesomeIcon icon={faPencilAlt} />
-          </button>                
-          <button className="btn btn-secondary btn-icon" onClick={() => handleToggleFavorite(recipe.id, recipe.isFavorite)} style={{ position: 'absolute', top: '60px', right: '5px' }}>
-            <FontAwesomeIcon icon={faStar} style={{ color: recipe.isFavorite ? 'yellow' : 'white' }} />
-          </button>
-          <div className="text-center" style={{ marginTop: '30px' }}>
-            <button className="btn btn-dark mb-4" onClick={() => handlePopupContent(recipe)}> <FontAwesomeIcon icon={faList}/> Ingredients & Instructions</button>
+        {recipes.map(recipe => (
+          <div key={recipe.id} className="col" style={{ marginBottom: '20px' }}>
+            <div className="card text-bg-secondary" style={{ width: '18rem', border: '2px solid black' }}>
+              <div className="card-header text-center" style={{ width: '16rem', border: '2px solid black' }}> {/* Centered header */}
+                <h5 className="card-title">{recipe.name ? recipe.name : 'Unnamed Recipe'}</h5>
+              </div>
+              <div className="card-body">
+                {/* Buttons for various actions */}
+                <button className="btn btn-danger btn-icon" onClick={() => handleDeleteRecipe(recipe.id)} style={{ position: 'absolute', bottom: '5px', right: '5px' }}>
+                  <FontAwesomeIcon icon={faTrashAlt} />
+                </button>                
+                <button className="btn btn-primary btn-icon" onClick={() => handleUpdateRecipe(recipe.id)} style={{ position: 'absolute', bottom: '5px', left: '5px' }}>
+                  <FontAwesomeIcon icon={faPencilAlt} />
+                </button>                
+                <button className="btn btn-secondary btn-icon" onClick={() => handleToggleFavorite(recipe.id, recipe.isFavorite)} style={{ position: 'absolute', top: '70px', right: '5px' }}>
+                  <FontAwesomeIcon icon={faStar} style={{ color: recipe.isFavorite ? 'yellow' : 'white' }} />
+                </button>
+                <div className="text-center" style={{ marginTop: '30px' }}>
+                  <button className="btn btn-dark mb-4" onClick={() => handlePopupContent(recipe)}> <FontAwesomeIcon icon={faList}/> Ingredients & Instructions</button>
+                </div>
+                {/* Button to view reviews */}
+                <button className="btn btn-success ms-2" onClick={() => handleViewReviews(recipe.id)} style={{ position: 'absolute', bottom: '10px', right: '70px' }}>
+                  <FontAwesomeIcon icon={faCommentDots}/> View Reviews
+                </button> 
+              </div>        
+            </div>
           </div>
-          <div className="text-right" style={{ marginTop: '0px', marginLeft: '40px' }}>
-            <button className="btn btn-light ms-2" onClick={() => setReviewingRecipeId(recipe.id)} >
-              <FontAwesomeIcon icon={faComment} /> Leave Review
-            </button>              
-            <button className="btn btn-success ms-2" onClick={() => handleViewReviews(recipe.id)} >
-              <FontAwesomeIcon icon={faCommentDots}/> View Reviews
-            </button> 
-          </div>        
-        </div>
+        ))}
       </div>
-    </div>
-  ))}
-      </div>
+      {/* Displaying error message if any */}
       {error && <div className="alert alert-danger">{error}</div>}
       {/* Modal for displaying ingredients and instructions */}
       {selectedRecipeDetails && (
@@ -258,24 +271,6 @@ function ProfileRecipeCard() {
               </div>
             </div>
           </div>
-        </div>
-      )}
-      {/* Review form */}
-      {reviewingRecipeId && (
-        <div className="mt-3">
-          <h4>Leave a Review</h4>
-          <form onSubmit={(e) => handleReviewSubmit(e, reviewingRecipeId)}>
-            <div className="mb-3">
-              <label htmlFor="reviewRating" className="form-label">Rating</label>
-              <input type="number" className="form-control" id="reviewRating" value={reviewRating} onChange={(e) => setReviewRating(parseInt(e.target.value))} min="1" max="5" />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="reviewText" className="form-label">Review</label>
-              <textarea className="form-control" id="reviewText" rows="3" value={reviewText} onChange={(e) => setReviewText(e.target.value)}></textarea>
-            </div>
-            <button type="submit" className="btn btn-primary">Submit Review</button>
-            <button type="button" className="btn btn-secondary ms-2" onClick={() => setReviewingRecipeId(null)}>Cancel</button>
-          </form>
         </div>
       )}
     </div>
