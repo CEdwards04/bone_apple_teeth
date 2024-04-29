@@ -28,8 +28,6 @@ function Card({ recipe }) {
                             <img className="card-img-top" src={recipe.image} alt={recipe.title} style={{ width: '100%', height: '250px', objectFit: 'cover' }} />
                             <div className="card-header"><h5 className="card-title font-weight-bold">{recipe.title}</h5></div>
                             <div className="card-body">
-                                <p className="card-text font-weight-bold">{recipe.ingredients}</p>
-                                <p className="card-text font-weight-bold">{recipe.recipe}</p>
                             </div>
                             <button
                                 style={{
@@ -37,7 +35,7 @@ function Card({ recipe }) {
                                     bottom: '0',
                                     left: '0',
                                     width: '100%',
-                                    padding: '0.5rem',
+                                    padding: '0.2rem',
                                     fontSize: '1rem',
                                     textAlign: 'center',
                                     color: '#ffffff',
