@@ -64,11 +64,6 @@ function MealSearchFunction({handleStateChange}) {
     return (
         <div className={MealSearchStyle.container}>
             <form className={MealSearchStyle.form}>
-                {/* Updated styling for "Force only selected" checkbox */}
-                <div className={MealSearchStyle.forceOnlySelected}>
-                    <input type="checkbox" id="force_only_selected" name="force_only_selected" onClick={handleChange}/>
-                    <label htmlFor="force_only_selected">Force only selected</label>
-                </div>
 
                 <div className={MealSearchStyle.forceOnlySelected}>
                     <input type="checkbox" id="breakfast" name="breakfast" onClick={handleChange}/>
