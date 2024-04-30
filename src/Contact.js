@@ -1,16 +1,23 @@
 /*********************************************
+ * Contact Page Component
+ * 
  * @author Mazin Alambouri
- * @contribution Entire file
- * @brief This is the Contact page of the website.
+ * @contribution Developed the entire Contact component.
+ * 
+ * @brief Implements the Contact page of the website, featuring a navigation bar,
+ *        detailed contact information, and a user message form to facilitate
+ *        communication with visitors.
  *********************************************/
 
-import React from 'react';
-import './Contact.css';
-import Navbar from './Navbar';
+import React from 'react'; // Import React for component development.
+import './Contact.css'; // Specific styles for the Contact component.
+import Navbar from './Navbar'; // Navigation bar component for consistent site navigation.
 
 /**
- * Contact component represents a page for contacting the website.
- * It includes a navigation bar, contact information, and a form for sending messages.
+ * Represents the contact page on the website. This component renders a navigation bar,
+ * contact details such as email and phone number, and a form for visitors to send messages.
+ * 
+ * @returns {JSX.Element} The full contact page including a navigation bar, contact details, and a message form.
  */
 const Contact = () => {
   return (
