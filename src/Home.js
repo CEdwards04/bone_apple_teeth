@@ -6,6 +6,7 @@
 
 import './App.css';
 import Navbar from './Navbar';
+import { Link } from 'react-router-dom'; // Import Link
 import './Pages/ProfilePage/ProfilePopup';
 
 /**
@@ -31,7 +32,7 @@ function Home() {
       <p className="HomePageTextLeft">In addition, this can help if you are on a diet, vegetarian, vegan, pescetarian, etc.</p>
       <hr></hr>
       <h3 className="HomePageHeadingLeft">Have suggestions?</h3>
-      <p className="HomePageTextLeft">Please reach out to the team here: <button className="btn btn-primary">Contact us!</button></p>
+      <p className="HomePageTextLeft">Please reach out to the team here: <Link to="/Contact"><button className="btn btn-primary">Contact us!</button></Link></p>
     </div>
   );
 }

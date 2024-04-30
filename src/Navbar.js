@@ -23,7 +23,6 @@ function Navbar() {
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav">
             <Link className="nav-link" to="/meal-search">Meal Search</Link>
-            <Link className="nav-link" to="/about">About</Link>
             <Link className="nav-link" to="/contact">Contact</Link>
             <Link className="nav-link" to="/settings">Settings</Link>
             <Link className="nav-link" to="/recipes">Recipes</Link> {/* Add this line */}
