@@ -22,7 +22,7 @@ function Navbar() {
             <Link className="nav-link" to="/about">About</Link>
             <Link className="nav-link" to="/contact">Contact</Link>
             <Link className="nav-link" to="/settings">Settings</Link>
-            <Link className="nav-link" to="/recipes">Recipes</Link> {/* Add this line */}
+            <Link className="nav-link" to="/recipes">User Recipes</Link> {/* Add this line */}
           </div>
         </div>
         <Link className="nav-link" to="/profile"><button className="btn btn-dark" type="submit">User Account</button></Link>
