@@ -1,4 +1,4 @@
-![Bone_Apple_Teeth-logos_transparent](https://github.com/WVU-CS230-2024-01-Group08/bone_apple_teeth/assets/156378900/5cdea582-11f4-4120-8827-19a9998cc789 =250x250)
+![Bone_Apple_Teeth-logos_transparent](https://github.com/WVU-CS230-2024-01-Group08/bone_apple_teeth/assets/156378900/5cdea582-11f4-4120-8827-19a9998cc789)
 The Quality of Life Recipe Finder
 Bone Apple Teeth is aimed at giving the people what they want:
 The ability to decide what they want to cook based on ingredients they already have on hand!
