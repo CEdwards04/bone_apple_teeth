@@ -10,9 +10,9 @@
  *        between webpages.
  *********************************************/
 
+//Imports needed for this file
 import './App.css';
 import './Pages/ProfilePage/ProfilePopup';
-
 import { BrowserRouter, Routes, Route} from "react-router-dom";
 import Home from './Home';
 import UserProfile from './Pages/ProfilePage/ProfilePage';
@@ -26,13 +26,17 @@ import config from './amplifyconfiguration.json';
 import '@aws-amplify/ui-react/styles.css';
 import {useEffect } from 'react';
 import useDarkMode from './Settings/useDarkMode';
-import './Pages/RecipesPage/RecipeDisplayPage'
-
+import './Pages/RecipesPage/RecipeDisplayPage';
 import MealSearchPage from './mealSearchPage';
 
 //This configures Amplify based on the configuration set up in the backend
 Amplify.configure(config);
 
+/**
+ * App is what runs the website, everything that displays goes through this file.
+ * In addition, this file houses the routing code for routing between webpages
+ * @returns The entire website display and routing links between pages
+ */
 function App() {
   const [darkMode] = useDarkMode();
 
