@@ -1,27 +1,32 @@
 /*********************************************
+ * Meal Card Component
+ * 
  * @author Jeffrey Adkins
- * @contribution Code for the meal cards
+ * @contribution Code for the meal cards displaying meal information and image.
  * 
  * @author Jeremy Appiah
- * @contribution Meal Card popup code
+ * @contribution Interactive meal card popup functionality.
  * 
- * @brief This is the basic meal card component in which will load
- *        the meals and display them on the webpage.
+ * @brief Displays individual meal cards that load meal details and offer
+ *        an interactive popup to show detailed recipes. Ideal for use in
+ *        any part of the application where meal summaries are required.
  *********************************************/
 
-import React, { useState } from 'react';
-import Popup from './Popup'; // Import the Popup component
+import React, { useState } from 'react'; // React library and useState hook for managing component state.
+import Popup from './Popup'; // Popup component for displaying detailed recipe information.
 
 /**
+ * Renders a meal card that shows brief information about a meal.
+ * On clicking the card, a popup with detailed ingredients and instructions is displayed.
  * 
- * @param recipe - The recipe wanting to be displayed on a popup
- * @returns The function in which displays the meal cards and popup
+ * @param {object} recipe - The recipe object containing details like image, title, and other relevant information.
+ * @returns {JSX.Element} The card component with a clickable area that triggers a popup for more details.
  */
 function Card({ recipe }) {
-    const [showPopup, setShowPopup] = useState(false);
+    const [showPopup, setShowPopup] = useState(false); // State to manage the visibility of the popup.
 
     const togglePopup = () => {
-        setShowPopup(!showPopup);
+        setShowPopup(!showPopup); // Toggles the state of showPopup to show or hide the Popup component.
     };
 
     return (
@@ -61,7 +66,7 @@ function Card({ recipe }) {
                     </div>
                 </div>
             </div>
-            {showPopup && <Popup recipe={recipe} onClose={togglePopup} />} {/* Render Popup if showPopup is true */}
+            {showPopup && <Popup recipe={recipe} onClose={togglePopup} />} // Conditionally render the Popup component based on showPopup state.
         </div>
     ); 
     
