@@ -45,6 +45,9 @@ function App() {
   useEffect(() => {
   const client = generateClient();
  
+/**
+ * A basic createTodoItem that creates an entry into graphGL
+ */
 async function createTodoItem(){
 const createResult = await client.graphql({
   query: createTodo,
@@ -56,7 +59,9 @@ const createResult = await client.graphql({
 });
 }
 
-
+/**
+ * A basic updateTodoItem that updates an entry in graphQL
+ */
 async function updateTodoItem(){
 const updateResult = await client.graphql({
   query: updateTodo,
@@ -70,7 +75,9 @@ const updateResult = await client.graphql({
 console.log(updateResult);
 }
 
-
+/**
+ * A basic deleteTodoItem that deletes an entry in graphQL
+ */
 async function deleteTodoItem(){
 const deleteResult = await client.graphql({
   query: deleteTodo,
