@@ -1,3 +1,11 @@
+/*********************************************
+ * @author Adel Ismail
+ * @contibution Entire file
+ * 
+ * @brief This file implements dark mode allowing switching between light and
+ *        dark mode
+ *********************************************/
+
 import { useState } from 'react';
 
 function useDarkMode() {
