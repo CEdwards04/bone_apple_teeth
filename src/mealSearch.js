@@ -1,43 +1,49 @@
 /*********************************************
+ * Meal Search Page Component
+ * 
  * @author Jeffrey Adkins
- * @contribution Jsx skeleton, setting up mealSearchFunction.jsx, help with
- *               API configuring to display on page
+ * @contribution Developed the JSX skeleton, set up the MealSearchFunction component,
+ *                and integrated API fetching directly into this page component.
  * 
  * @author Jeremy Appiah
- * @contribution Code relating to the API and meal searching using API
+ * @contribution Implemented the API interaction logic for searching meals using
+ *                provided ingredients.
  * 
- * @brief This file contains the code for how the meal search page webpage will
- *        look, but also communicates with the API as to complete the recipe
- *        search
+ * @brief This file implements the Meal Search page, displaying a search form
+ *        and resulting meal cards based on user-selected ingredients. It handles
+ *        fetching data from an external recipe API.
  *********************************************/
 
-import React, { useEffect, useState } from 'react';
-import './Pages/ProfilePage/ProfilePopup';
-import Card from './Card';
-import mealSearchStyle from './CSS Modules/mealSearch.module.css';
-import './style.css';
-import axios from 'axios'; 
+import React, { useEffect, useState } from 'react'; // React library for component and state management.
+import './Pages/ProfilePage/ProfilePopup'; // Popup component for user profile interactions (assumed usage).
+import Card from './Card'; // Card component for displaying individual recipes.
+import mealSearchStyle from './CSS Modules/mealSearch.module.css'; // CSS module for meal search page styling.
+import './style.css'; // General styling.
+import axios from 'axios'; // HTTP client for making API requests.
 
 
 /**
- * MealSearch contains the entire display for the mealSearchPage and returns it
- * as well as communicates back to the parent driver to complete the search
- * for recipes utilizing the API
- * @param {*} ingredientList - The current list of ingredients in the parent
- *                             driver (mealSearchPage)
- * @param {*} mealSearchFunction - The code for the mealSearchFunction form
- * @returns The display for the mealSearchPage
+ * Component that renders the meal search functionality, including a form for ingredient input
+ * and a display area for meal cards. It fetches recipe data from an API based on the ingredients
+ * provided by the user.
+ *
+ * @param {Array} ingredientList - List of ingredients input by the user.
+ * @param {Function} MealSearchFunction - The form component for user input.
+ * @returns {JSX.Element} The component structure for the meal search page.
  */
 function MealSearch({ingredientList, MealSearchFunction}) {
-    const [recipeData, setRecipeData] = useState([]);
-
+    const [recipeData, setRecipeData] = useState([]); // State to hold the recipe data fetched from the API.
+    
+    // Logs the current list of ingredients to the console
     function print() {
         console.log(ingredientList);
     }
-
+    
+    // Fetches recipe data from an API whenever the ingredientList changes.
     useEffect(() => {
         const fetchData = async () => {
             try {
+                // Posting to an API to analyze a fixed recipe (demonstration purposes).
                 const analyzeResponse = await axios.post('https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/analyze', {
                     title: 'Spaghetti Carbonara',
                     servings: 2,
@@ -58,7 +64,8 @@ function MealSearch({ingredientList, MealSearchFunction}) {
                 });
 
                 console.log("Analyze Response:", analyzeResponse.data);
-
+                
+                // Fetching recipes based on ingredients provided by the user.
                 const searchResponse = await axios.get('https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients', {
                     params: {
                         ingredients: " " + ingredientList,
@@ -73,7 +80,8 @@ function MealSearch({ingredientList, MealSearchFunction}) {
                 });
 
                 console.log("Search Response:", searchResponse.data);
-
+                
+                // Handling the response to set the recipe data or log an error.
                 if (Array.isArray(searchResponse.data)) {
                     setRecipeData(searchResponse.data);
                 } else {
@@ -87,8 +95,9 @@ function MealSearch({ingredientList, MealSearchFunction}) {
         };
 
         fetchData();
-    }, [ingredientList]);
-
+    }, [ingredientList]); // Dependency array to re-run the effect when ingredientList changes.
+    
+    // Logging recipe data to console for debugging.
     console.log("recipeData:", recipeData);
 
     
