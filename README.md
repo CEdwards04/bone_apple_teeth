@@ -1,3 +1,4 @@
+![Bone_Apple_Teeth-logos_transparent](https://github.com/WVU-CS230-2024-01-Group08/bone_apple_teeth/assets/156378900/5cdea582-11f4-4120-8827-19a9998cc789)
 The Quality of Life Recipe Finder
 Bone Apple Teeth is aimed at giving the people what they want:
 The ability to decide what they want to cook based on ingredients they already have on hand!
@@ -9,9 +10,6 @@ to decide quickly on your dinner plans without the need to go out and buy any ne
 
 Bone Apple Teeth will take the unnecessary dinner planning and perform that for you. The only thing you need
 to do is cook the meal and relax!
-(https://github.com/WVU-CS230-2024-01-Group08/bone_apple_teeth/assets/156378900/5cdea582-11f4-4120-8827-19a9998cc789)
-
-C:\Users\Lettc\source\repos\bone_apple_teeth\src\Bone_Apple_Teeth-logos_transparent.png
 
 What sets your apart from other meal search sites?
 We offer the ability to search for meals specifically by ingredients. This will allow you to
