@@ -66,7 +66,7 @@ function Card({ recipe }) {
                     </div>
                 </div>
             </div>
-            {showPopup && <Popup recipe={recipe} onClose={togglePopup} />} // Conditionally render the Popup component based on showPopup state.
+            {showPopup && <Popup recipe={recipe} onClose={togglePopup} />} 
         </div>
     ); 
     
