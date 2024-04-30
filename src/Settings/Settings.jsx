@@ -1,6 +1,6 @@
 /*********************************************
  * @author Jeffrey Adkins
- * @contribution 
+ * @contribution Base skeleton for the page along with the option slider
  * 
  * @author Adel Ismail
  * @contribution 
@@ -119,21 +119,6 @@ const Settings = ({signOut, user}) => {
           </table>
         </section>
       </div>
-      {/* <style global="true">{`
-      
-        body {
-          background-color: ${darkMode ? "#111" : "#fff"};
-          color: ${darkMode ? "#fff" : "#111"};
-          transition: background-color .7s, color .7s;
-          height: 100vh; 
-          margin: 0; 
-          font-family: Arial, sans-serif; 
-        }
-
-        .app {
-          padding: 20px;
-        }
-      `}</style> */}
     </>
   );
 }

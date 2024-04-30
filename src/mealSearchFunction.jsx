@@ -10,6 +10,17 @@
  *********************************************/
 import React, { useState } from 'react';
 import MealSearchStyle from './CSS Modules/mealSearch.module.css';
+
+
+/**
+ * MealSearchFunctiton houses the code for which will display the search form
+ * on the mealSearchPage and also coordinates the selected ingredients with
+ * the API to complete the recipe search
+ * @param {*} handleStateChange - This handles a state change in this file and
+ *                                links it to the mealSearchPage file 
+ * @returns The display for the mealSearch Form as well as handles changes
+ *          to the ingredients list
+ */
 function MealSearchFunction({handleStateChange}) {
     const [ingredientsArray, setIngredientsArray] = useState([]);
     const handleChange = (e) => {

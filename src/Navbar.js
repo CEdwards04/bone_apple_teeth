@@ -9,6 +9,10 @@ import React from 'react';
 import logo from './Bone_Apple_Teeth-logos_transparent.png';
 import { Link } from 'react-router-dom'; // Import Link
 
+/**
+ * Navbar contains the navigation bar which displays at the top of any given page
+ * @returns The display for the navbar along witth the links to re-direct users
+ */
 function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">

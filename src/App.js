@@ -2,7 +2,7 @@
  * @author Jeffrey Adkins
  * @contibution React-Router-Dom routing skeleton and page switching
  * 
- * @author
+ * @author Caleb Edwards
  * @contribution
  * 
  * @brief This is the function in which the website is rendered. This file
@@ -15,7 +15,6 @@ import './Pages/ProfilePage/ProfilePopup';
 
 import { BrowserRouter, Routes, Route} from "react-router-dom";
 import Home from './Home';
-import MealSearch from '../src/mealSearch';
 import UserProfile from './Pages/ProfilePage/ProfilePage';
 import Settings from './Settings/Settings';
 import RecipeDisplayPage from './Pages/RecipesPage/RecipeDisplayPage';
@@ -31,6 +30,7 @@ import './Pages/RecipesPage/RecipeDisplayPage'
 
 import MealSearchPage from './mealSearchPage';
 
+//This configures Amplify based on the configuration set up in the backend
 Amplify.configure(config);
 
 function App() {
@@ -113,45 +113,3 @@ console.log(deleteResult);
 }
 
 export default App;
-
-
-
-
-
-
-
-/*function App() {
-  return (
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home></Home>}></Route>
-          <Route path="/meal-search" element={<MealSearch></MealSearch>}></Route>
-          <Route path="/login" element={<LoginPage></LoginPage>}></Route>
-          <Route path="/profile" element={<UserProfile />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
-  );
-}
-
-export default App;*/
-
-/*import { Amplify } from 'aws-amplify';
-
-import { withAuthenticator } from '@aws-amplify/ui-react';
-import '@aws-amplify/ui-react/styles.css';
-import config from './amplifyconfiguration.json';
-Amplify.configure(config);
-
-function App({ signOut, user }) {
-  return (
-    <>
-      <h1>Hello {user.username}</h1>
-      <button onClick={signOut}>Sign out</button>
-    </>
-  );
-}
-
-export default withAuthenticator(App);*/
-
