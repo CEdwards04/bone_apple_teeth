@@ -3,7 +3,7 @@
  * @contibution React-Router-Dom routing skeleton and page switching
  * 
  * @author Caleb Edwards
- * @contribution
+ * @contribution Added new page routing for the user recipes pages and the todo functions.
  * 
  * @brief This is the function in which the website is rendered. This file
  *        also contains the react-router-dom in which allows switching
