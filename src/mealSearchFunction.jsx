@@ -1,28 +1,29 @@
 /*********************************************
  * @author Jeffrey Adkins
- * @contribution Form basics: labels, input boxes, common ingredients, and added
- *               way for form to communicate with API
+ * @contribution Implemented form basics including labels, input boxes, and API integration.
  * 
  * @author Kaleb Lawrence
- * @contribution  Added more form basics so that there is a drop down menu to select common ingredients.
- * @brief Basic searching function that has common ingredients listed as
- *        checkboxes in a drop down menu.
+ * @contribution Enhanced form with a dropdown menu to select common ingredients.
+ *
+ * @brief Implements a search form that allows users to select meal types and ingredients 
+ *        from various categories using checkboxes within dropdown menus. It manages state 
+ *        for ingredient selections and communicates with an API to fetch recipes based 
+ *        on selected ingredients.
  *********************************************/
-import React, { useState } from 'react';
-import MealSearchStyle from './CSS Modules/mealSearch.module.css';
+import React, { useState } from 'react'; // React library and useState hook for managing component state.
+import MealSearchStyle from './CSS Modules/mealSearch.module.css'; // Styles specific to the Meal Search component.
 
 
 /**
- * MealSearchFunctiton houses the code for which will display the search form
- * on the mealSearchPage and also coordinates the selected ingredients with
- * the API to complete the recipe search
- * @param {*} handleStateChange - This handles a state change in this file and
- *                                links it to the mealSearchPage file 
- * @returns The display for the mealSearch Form as well as handles changes
- *          to the ingredients list
+ * Displays a search form with checkboxes for selecting meal types and ingredients.
+ * The selected ingredients can be submitted to an external API through a controlled form.
+ * 
+ * @param {Function} handleStateChange - Function to handle state changes, relaying selected ingredients to a parent component.
+ * @returns {JSX.Element} - Renders a form with multiple checkboxes categorized by ingredient type, and a submit button.
  */
 function MealSearchFunction({handleStateChange}) {
-    const [ingredientsArray, setIngredientsArray] = useState([]);
+    const [ingredientsArray, setIngredientsArray] = useState([]); // Manages the array of selected ingredient IDs.
+    // Handle checkbox changes to add or remove ingredients from the array.
     const handleChange = (e) => {
         const value = e.target.id;
         const checked = e.target.checked;
@@ -30,16 +31,18 @@ function MealSearchFunction({handleStateChange}) {
         if(checked) {
             setIngredientsArray([
                 ...ingredientsArray, value
-            ])
+            ]) // Add ingredient to array.
         } else {
-            setIngredientsArray(ingredientsArray.filter((e) => (e !== value)));
+            setIngredientsArray(ingredientsArray.filter((e) => (e !== value))); // Remove ingredient from array.
         }
     }
+    // Submit selected ingredients to the parent component's handler.
     const handleIngredientChange = (e) => {
         e.preventDefault();
         console.log(ingredientsArray);
         handleStateChange(ingredientsArray);
     }
+    // State hooks for managing the visibility of checkboxes in each category.
     const [showDairyCheckboxes, setShowDairyCheckboxes] = useState(false);
     const [showGrainsCheckboxes, setShowGrainsCheckboxes] = useState(false);
     const [showFruitsCheckboxes, setShowFruitsCheckboxes] = useState(false);
@@ -49,6 +52,7 @@ function MealSearchFunction({handleStateChange}) {
     const [showOilsCheckboxes, setShowOilsCheckboxes] = useState(false);
     const [showVegetablesCheckboxes, setShowVegetablesCheckboxes] = useState(false);
 
+    // Toggle functions for showing and hiding checkboxes of specific ingredient categories.
     const toggleVegetablesCheckboxes = () => {
     setShowVegetablesCheckboxes(!showVegetablesCheckboxes);
     };
