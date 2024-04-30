@@ -8,7 +8,10 @@ import './App.css';
 import Navbar from './Navbar';
 import './Pages/ProfilePage/ProfilePopup';
 
-
+/**
+ * Home is the function in which houses the code for the home page
+ * @returns The display to be used on the home page
+ */
 function Home() {
   return (
     <div>

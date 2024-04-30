@@ -2,8 +2,8 @@
  * @author Jeffrey Adkins
  * @contribution Code for the meal cards
  * 
- * @author
- * @contribution
+ * @author Jeremy Appiah
+ * @contribution Meal Card popup code
  * 
  * @brief This is the basic meal card component in which will load
  *        the meals and display them on the webpage.
@@ -12,6 +12,11 @@
 import React, { useState } from 'react';
 import Popup from './Popup'; // Import the Popup component
 
+/**
+ * 
+ * @param recipe - The recipe wanting to be displayed on a popup
+ * @returns The function in which displays the meal cards and popup
+ */
 function Card({ recipe }) {
     const [showPopup, setShowPopup] = useState(false);
 

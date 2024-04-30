@@ -1,6 +1,7 @@
 /*********************************************
  * @author Jeffrey Adkins
- * @contribution Form basics: labels, input boxes, and common ingredients
+ * @contribution Form basics: labels, input boxes, common ingredients, and added
+ *               way for form to communicate with API
  * 
  * @author Kaleb Lawrence
  * @contribution  Added more form basics so that there is a drop down menu to select common ingredients.
@@ -9,6 +10,17 @@
  *********************************************/
 import React, { useState } from 'react';
 import MealSearchStyle from './CSS Modules/mealSearch.module.css';
+
+
+/**
+ * MealSearchFunctiton houses the code for which will display the search form
+ * on the mealSearchPage and also coordinates the selected ingredients with
+ * the API to complete the recipe search
+ * @param {*} handleStateChange - This handles a state change in this file and
+ *                                links it to the mealSearchPage file 
+ * @returns The display for the mealSearch Form as well as handles changes
+ *          to the ingredients list
+ */
 function MealSearchFunction({handleStateChange}) {
     const [ingredientsArray, setIngredientsArray] = useState([]);
     const handleChange = (e) => {
@@ -64,11 +76,6 @@ function MealSearchFunction({handleStateChange}) {
     return (
         <div className={MealSearchStyle.container}>
             <form className={MealSearchStyle.form}>
-                {/* Updated styling for "Force only selected" checkbox */}
-                <div className={MealSearchStyle.forceOnlySelected}>
-                    <input type="checkbox" id="force_only_selected" name="force_only_selected" onClick={handleChange}/>
-                    <label htmlFor="force_only_selected">Force only selected</label>
-                </div>
 
                 <div className={MealSearchStyle.forceOnlySelected}>
                     <input type="checkbox" id="breakfast" name="breakfast" onClick={handleChange}/>

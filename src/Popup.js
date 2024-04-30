@@ -1,5 +1,17 @@
+/*********************************************
+ * @author Jeremy Appiah
+ * @contribution Entire file
+ * @brief 
+ *********************************************/
+
 import React from 'react';
 
+/**
+ * Popup is
+ * @param {*} recipe
+ * @param {*} onClose 
+ * @returns 
+ */
 function Popup({ recipe, onClose }) {
     const popupOverlayStyle = {
         position: 'fixed',

@@ -3,10 +3,12 @@
  * @contribution Jsx skeleton, setting up mealSearchFunction.jsx, help with
  *               API configuring to display on page
  * 
- * @author
- * @contribution
+ * @author Jeremy Appiah
+ * @contribution Code relating to the API and meal searching using API
  * 
- * @brief
+ * @brief This file contains the code for how the meal search page webpage will
+ *        look, but also communicates with the API as to complete the recipe
+ *        search
  *********************************************/
 
 import React, { useEffect, useState } from 'react';
@@ -17,6 +19,15 @@ import './style.css';
 import axios from 'axios'; 
 
 
+/**
+ * MealSearch contains the entire display for the mealSearchPage and returns it
+ * as well as communicates back to the parent driver to complete the search
+ * for recipes utilizing the API
+ * @param {*} ingredientList - The current list of ingredients in the parent
+ *                             driver (mealSearchPage)
+ * @param {*} mealSearchFunction - The code for the mealSearchFunction form
+ * @returns The display for the mealSearchPage
+ */
 function MealSearch({ingredientList, MealSearchFunction}) {
     const [recipeData, setRecipeData] = useState([]);
 
@@ -51,7 +62,7 @@ function MealSearch({ingredientList, MealSearchFunction}) {
                 const searchResponse = await axios.get('https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients', {
                     params: {
                         ingredients: " " + ingredientList,
-                        number: 5,
+                        number: 50,
                         ignorePantry: false,
                         ranking: 1
                     },
