@@ -14,11 +14,11 @@
 import './App.css';
 import './Pages/ProfilePage/ProfilePopup';
 import { BrowserRouter, Routes, Route} from "react-router-dom";
-import Home from './Home';
+import Home from './Pages/Home';
 import UserProfile from './Pages/ProfilePage/ProfilePage';
 import Settings from './Settings/Settings';
 import RecipeDisplayPage from './Pages/RecipesPage/RecipeDisplayPage';
-import Contact from './Contact';
+import Contact from './Pages/ContactPage/Contact';
 import { createTodo, updateTodo, deleteTodo } from './graphql/mutations';
 import { Amplify } from 'aws-amplify';
 import { generateClient } from 'aws-amplify/api';
@@ -27,7 +27,7 @@ import '@aws-amplify/ui-react/styles.css';
 import {useEffect } from 'react';
 import useDarkMode from './Settings/useDarkMode';
 import './Pages/RecipesPage/RecipeDisplayPage';
-import MealSearchPage from './mealSearchPage';
+import MealSearchPage from './Pages/MealSearchPage/mealSearchPage';
 
 //This configures Amplify based on the configuration set up in the backend
 Amplify.configure(config);

@@ -4,10 +4,10 @@
  * @brief This is the home page of the website.
  *********************************************/
 
-import './App.css';
-import Navbar from './Navbar';
+import '../App.css';
+import Navbar from '../Components/Navbar';
 import { Link } from 'react-router-dom'; // Import Link
-import './Pages/ProfilePage/ProfilePopup';
+import './ProfilePage/ProfilePopup';
 
 /**
  * Home is the function in which houses the code for the home page

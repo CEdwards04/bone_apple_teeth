@@ -15,10 +15,10 @@
  *********************************************/
 
 import React, { useEffect, useState } from 'react'; // React library for component and state management.
-import './Pages/ProfilePage/ProfilePopup'; // Popup component for user profile interactions (assumed usage).
-import Card from './Card'; // Card component for displaying individual recipes.
-import mealSearchStyle from './CSS Modules/mealSearch.module.css'; // CSS module for meal search page styling.
-import './style.css'; // General styling.
+import '../ProfilePage/ProfilePopup'; // Popup component for user profile interactions (assumed usage).
+import Card from '../../Components/Card'; // Card component for displaying individual recipes.
+import mealSearchStyle from '../../CSS Modules/mealSearch.module.css'; // CSS module for meal search page styling.
+import '../../style.css'; // General styling.
 import axios from 'axios'; // HTTP client for making API requests.
 
 

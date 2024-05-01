@@ -7,10 +7,10 @@
  *********************************************/
 
 import React from "react";
-import Navbar from "./Navbar";
-import './style.css';
-import MealSearch from "./mealSearch";
-import MealSearchFunction from "./mealSearchFunction";
+import Navbar from "../../Components/Navbar";
+import '../../style.css'; // General styling.
+import MealSearch from '../MealSearchPage/mealSearch';
+import MealSearchFunction from "../MealSearchPage/mealSearchFunction";
 import { useState } from "react";
 
 

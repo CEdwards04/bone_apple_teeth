@@ -13,7 +13,7 @@
 
 
 import React, { useState, useEffect } from 'react';
-import Navbar from '../../Navbar';
+import Navbar from '../../Components/Navbar';
 import ProfileStyle from './ProfilePage.module.css';
 import ProfileRecipeCard from './ProfileRecipeCard';
 import { Amplify } from 'aws-amplify';

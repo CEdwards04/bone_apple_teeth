@@ -11,7 +11,7 @@
  *        on selected ingredients.
  *********************************************/
 import React, { useState } from 'react'; // React library and useState hook for managing component state.
-import MealSearchStyle from './CSS Modules/mealSearch.module.css'; // Styles specific to the Meal Search component.
+import MealSearchStyle from '../../CSS Modules/mealSearch.module.css'; // Styles specific to the Meal Search component.
 
 
 /**

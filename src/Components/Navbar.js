@@ -10,7 +10,7 @@
  *********************************************/
 
 import React from 'react'; // React library import for using JSX and React features.
-import logo from './Bone_Apple_Teeth-logos_transparent.png'; // Logo image for the navbar.
+import logo from '../Bone_Apple_Teeth-logos_transparent.png'; // Logo image for the navbar.
 import { Link } from 'react-router-dom'; // Used for handling internal navigation without full page reloads.
 
 /**

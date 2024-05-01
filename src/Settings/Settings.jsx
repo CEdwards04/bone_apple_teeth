@@ -7,7 +7,7 @@
  * @brief
  *********************************************/
 
-import Navbar from '../Navbar';
+import Navbar from '../Components/Navbar';
 import React, { useState } from 'react';
 import Settings_Style from './Settings.module.css'; 
 import useDarkMode from './useDarkMode';

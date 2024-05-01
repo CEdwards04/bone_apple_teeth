@@ -15,7 +15,7 @@ import { listRecipes, createReview, listReviews, deleteReview } from '../../grap
 import { graphqlOperation } from '@aws-amplify/api-graphql';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faList, faCommentDots, faComments } from '@fortawesome/free-solid-svg-icons';
-import Navbar from '../../Navbar';
+import Navbar from '../../Components/Navbar';
 import './RecipeDisplayPage.css';
 
 // Generating a client using AWS Amplify

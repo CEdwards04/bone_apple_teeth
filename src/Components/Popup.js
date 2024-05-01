@@ -54,20 +54,20 @@ function Popup({ recipe, onClose }) {
     return (
         <div style={popupOverlayStyle}>
             <div style={popupContainerStyle}>
-                //Close button
-                <button style={closeButtonStyle} onClick={onClose}>X</button> 
-                //Title of recipe 
+                {/*Close button*/}
+                <button style={closeButtonStyle} onClick={onClose}>X</button>
+                {/*Title of recipe */}
                 <h2>{recipe.title}</h2> 
-                //Recipe image
+                {/*Recipe image*/}
                 <img src={recipe.image} alt={recipe.title} />
-                //Heading used for ingredients 
+                {/*Heading used for ingredients */}
                 <p><strong>What You Need:</strong></p>
                 <ul>
                     {recipe.usedIngredients.map((ingredient, index) => (
                         <li key={index}>{ingredient.original}</li>
                     ))}
                 </ul>
-                    //Heading for additional ingredients
+                    {/*Heading for additional ingredients*/}
                 <p><strong>Additional Ingredients:</strong></p>
                 <ul>
                     {recipe.missedIngredients.map((ingredient, index) => (

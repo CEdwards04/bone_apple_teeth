@@ -6,7 +6,7 @@
 
 import React from 'react';
 import './Contact.css';
-import Navbar from './Navbar';
+import Navbar from '../../Components/Navbar';
 
 /**
  * Contact component represents a page for contacting the website.
