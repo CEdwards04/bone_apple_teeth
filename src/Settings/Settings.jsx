@@ -8,18 +8,14 @@
  * @brief Manages user settings including account details and appearance preferences like dark mode.
  *********************************************/
 
-import Navbar from '../Components/Navbar';
-import React, { useState } from 'react';
-import Settings_Style from './Settings.module.css'; 
-import useDarkMode from './useDarkMode';
-import { Amplify } from 'aws-amplify';
-import { withAuthenticator } from '@aws-amplify/ui-react';
-
-import config from '../amplifyconfiguration.json';
-
-
-Amplify.configure(config); 
-
+import Navbar from '../Components/Navbar'; // Navbar component for consistent navigation.
+import React, { useState } from 'react'; // React library import for component creation and state management.
+import Settings_Style from './Settings.module.css'; // CSS module for settings page styling.
+import useDarkMode from './useDarkMode'; // Custom hook for managing dark mode state and effects.
+import { Amplify } from 'aws-amplify'; // AWS Amplify for backend integration.
+import { withAuthenticator } from '@aws-amplify/ui-react'; // Amplify UI component for authenticating the user session.
+import config from '../amplifyconfiguration.json'; // Configuration file for AWS Amplify setup.
+Amplify.configure(config); // Configure Amplify with the imported settings.
 
 /**
  * The Settings component allows users to manage their account settings and toggle appearance preferences.
@@ -95,4 +91,3 @@ const Settings = ({signOut, user}) => {
   );
 }
 export default withAuthenticator(Settings);
-
