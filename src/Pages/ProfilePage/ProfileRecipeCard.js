@@ -1,28 +1,40 @@
 /*********************************************
+ * Profile Recipe Card Component
+ * 
  * @author Caleb Edwards
- * @contributions Created the initial recipe card and its functions.
+ * @contributions Initially created the recipe card and its functional aspects.
  * 
  * @author Kaleb Lawrence
- * @contributions Made the create recipe a form instead of a pop-up menu, GraphQL stayed the same for the most part.
+ * @contributions Transitioned the recipe creation from a pop-up menu to a form, maintaining GraphQL compatibility.
  * 
  * @author ChatGPT
- * @contributions Created most of the comments for this code.
+ * @contributions Provided comprehensive comments throughout the code.
  * 
- * @brief Displays a profile recipe card with options to add, delete, update, favorite, review, and view reviews for recipes.
+ * @brief Manages and displays a profile recipe card with options to add, delete, update, favorite, 
+ *        review, and view reviews for recipes within the user profile.
  *********************************************/
 
-import React, { useState, useEffect, useRef } from 'react';
-import { Amplify } from 'aws-amplify';
-import { listRecipes, createRecipe, deleteRecipe, updateRecipe, createReview, listReviews } from '../../graphql/graphql-operations';
-import awsConfig from '../../aws-exports';
-import { graphqlOperation } from '@aws-amplify/api-graphql';
-import { generateClient } from "aws-amplify/api";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faList, faStar, faTrashAlt, faPencilAlt, faCommentDots} from '@fortawesome/free-solid-svg-icons';
-import './ProfilePage.module.css'
+import React, { useState, useEffect, useRef } from 'react'; // React library for component and state management.
+import { Amplify } from 'aws-amplify'; // AWS Amplify for backend integration.
+import { listRecipes, createRecipe, deleteRecipe, updateRecipe, createReview, listReviews } from '../../graphql/graphql-operations'; // GraphQL operations for managing recipes and reviews.
+import awsConfig from '../../aws-exports'; // AWS configuration for Amplify setup.
+import { graphqlOperation } from '@aws-amplify/api-graphql'; // Helper for constructing GraphQL operations.
+import { generateClient } from "aws-amplify/api"; // Helper function to generate an Amplify API client.
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Component for displaying FontAwesome icons.
+import { faList, faStar, faTrashAlt, faPencilAlt, faCommentDots} from '@fortawesome/free-solid-svg-icons'; // Specific icons used in this component.
+import './ProfilePage.module.css'; // Styles for the profile page.
+
 const client = generateClient();
 Amplify.configure(awsConfig);
 
+/**
+ * The ProfileRecipeCard component manages and displays various functionalities related to recipes
+ * in a user's profile. This includes creating new recipes, updating existing ones, marking recipes as favorites,
+ * and managing reviews. It interacts with the backend via GraphQL to fetch, add, delete, and update recipe data.
+ * 
+ * @returns {JSX.Element} Renders a comprehensive interface for managing recipes including a form for additions,
+ *                        buttons for various actions, and modals for viewing detailed content and reviews.
+ */
 function ProfileRecipeCard() {
   // State variables for managing recipes, form inputs, reviews, and error handling
   const [recipes, setRecipes] = useState([]);

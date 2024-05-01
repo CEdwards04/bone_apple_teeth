@@ -1,17 +1,21 @@
 /*********************************************
+ * UserProfile Component
+ * 
  * @author Caleb Edwards
- * @contribution Set up the initial profile page with everything but the login.
+ * @contribution Initial setup of the profile page excluding login functionality.
  * 
  * @author Jeffrey Adkins
- * @contribution Setup login to work on this page as well as the logout
- *               button only appearing here.
- * @author ChatGPT
- * @contributions Created most of the comments for this code.
+ * @contribution Integrated login and logout functionalities on the profile page.
  * 
- * @brief Webpage to display the user profile and call the other profile functions like the recipe card and favorites.
+ * @author ChatGPT
+ * @contributions Provided extensive comments throughout the code for clarity.
+ * 
+ * @brief Implements the user profile page, displaying user-specific data such as favorite recipes
+ *        and managing user authentication states.
  *********************************************/
 
 
+<<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
 import Navbar from '../../Components/Navbar';
 import ProfileStyle from './ProfilePage.module.css';
@@ -24,14 +28,36 @@ import { listFavoriteRecipes } from '../../graphql/graphql-operations';
 import { generateClient } from "aws-amplify/api";
 import { graphqlOperation } from '@aws-amplify/api-graphql';
 Amplify.configure(config);
+=======
+import React, { useState, useEffect } from 'react'; // React library for building the component and using hooks.
+import Navbar from '../../Navbar'; // Navigation bar component displayed on all pages.
+import ProfileStyle from './ProfilePage.module.css'; // CSS module for styling the profile page.
+import ProfileRecipeCard from './ProfileRecipeCard'; // Component for displaying a recipe card on the profile.
+import { Amplify } from 'aws-amplify'; // AWS Amplify for backend integration.
+import { withAuthenticator } from '@aws-amplify/ui-react'; // Amplify UI component for wrapping the profile with authentication.
+import '@aws-amplify/ui-react/styles.css'; // Default styles for Amplify UI components.
+import config from '../../amplifyconfiguration.json'; // Configuration for initializing Amplify.
+import { listFavoriteRecipes } from '../../graphql/graphql-operations'; // GraphQL operation to fetch favorite recipes.
+import { generateClient } from "aws-amplify/api"; // Helper function to generate an Amplify API client.
+import { graphqlOperation } from '@aws-amplify/api-graphql'; // Helper for constructing GraphQL operations.
+Amplify.configure(config); // Configure Amplify with settings from the configuration file.
+>>>>>>> 432dd1e4288c3bcb3672690b3943b4587e7878d7
 
 const client = generateClient();
-
+/**
+ * Renders the user profile page with user-specific functionalities including their favorite recipes,
+ * personal recipe cards, and a logout button. This component is wrapped with authentication to ensure
+ * only authenticated users can access it.
+ *
+ * @param {Function} signOut - Function provided by Amplify to sign out the user.
+ * @param {Object} user - User object containing information about the authenticated user.
+ * @returns {JSX.Element} The user profile page containing favorite recipes, profile information, and a logout button.
+ */
 const UserProfile = ({ signOut, user }) => {
-    const [favoriteRecipes, setFavoriteRecipes] = useState([]);
+    const [favoriteRecipes, setFavoriteRecipes] = useState([]); // State to store favorite recipes fetched from the API.
 
     useEffect(() => {
-        fetchFavoriteRecipes();
+        fetchFavoriteRecipes(); // Fetch favorite recipes on component mount.
     }, []);
 
     // Function to fetch favorite recipes from GraphQL API

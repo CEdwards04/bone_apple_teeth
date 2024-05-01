@@ -1,12 +1,14 @@
 /*********************************************
- * @author Jeffrey Adkins
- * @contribution Base skeleton for the page along with the option slider
+ * Settings Component
  * 
  * @author Adel Ismail
- * @contribution 
- * @brief
+ * @author Jeffrey Adkins
+ * @contribution Created the basic structure of the settings page and implemented the dark mode toggle feature.
+ * 
+ * @brief Manages user settings including account details and appearance preferences like dark mode.
  *********************************************/
 
+<<<<<<< HEAD
 import Navbar from '../Components/Navbar';
 import React, { useState } from 'react';
 import Settings_Style from './Settings.module.css'; 
@@ -19,22 +21,46 @@ import config from '../amplifyconfiguration.json';
 
 Amplify.configure(config); 
 
+=======
+import Navbar from '../Navbar'; // Navbar component for consistent navigation.
+import React, { useState } from 'react'; // React library import for component creation and state management.
+import Settings_Style from './Settings.module.css'; // CSS module for settings page styling.
+import useDarkMode from './useDarkMode'; // Custom hook for managing dark mode state and effects.
+import { Amplify } from 'aws-amplify'; // AWS Amplify for backend integration.
+import { withAuthenticator } from '@aws-amplify/ui-react'; // Amplify UI component for authenticating the user session.
+import config from '../amplifyconfiguration.json'; // Configuration file for AWS Amplify setup.
+Amplify.configure(config); // Configure Amplify with the imported settings.
+>>>>>>> 432dd1e4288c3bcb3672690b3943b4587e7878d7
 
+/**
+ * The Settings component allows users to manage their account settings and toggle appearance preferences.
+ * It displays user account information and provides an option to switch between dark and light themes.
+ *
+ * @param {Object} signOut - Function provided by Amplify to handle user sign-out.
+ * @param {Object} user - Object containing user data, such as username.
+ * @returns {JSX.Element} The settings page containing sections for account details and appearance settings.
+ */
 const Settings = ({signOut, user}) => {
-  const [darkMode, toggleDarkMode] = useDarkMode();
+    // State hooks for managing dark mode and user data.
+  const [darkMode, toggleDarkMode] = useDarkMode(); // Toggle state for dark mode.
   const [userData] = useState({
     name: '',
     email: '',
     phone: ''
   });
+  
   console.log(user)
   console.log(user.username)
+  
+    // Toggle dark mode globally and store the preference in local storage.
   const toggleGlobalDarkMode = () => {
-    toggleDarkMode();
-    localStorage.setItem('darkMode', !darkMode);
-    window.location.reload();
+    toggleDarkMode(); // Use the custom hook to toggle the dark mode.
+    localStorage.setItem('darkMode', !darkMode); // Save the dark mode state to local storage.
+    window.location.reload(); // Reload the page to apply the dark mode across the application.
   };
   console.log(userData.name)
+  
+  // Render the settings page layout.
   return (
     <>
       <Navbar />
@@ -48,7 +74,7 @@ const Settings = ({signOut, user}) => {
           
           <div>
             <label>Account ID:</label>
-            <span>{user.username}</span>
+            <span>{user.username}</span> 
           </div>
         
         </section>
