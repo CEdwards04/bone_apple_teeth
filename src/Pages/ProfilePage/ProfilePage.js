@@ -15,7 +15,6 @@
  *********************************************/
 
 
-<<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
 import Navbar from '../../Components/Navbar';
 import ProfileStyle from './ProfilePage.module.css';
@@ -28,20 +27,6 @@ import { listFavoriteRecipes } from '../../graphql/graphql-operations';
 import { generateClient } from "aws-amplify/api";
 import { graphqlOperation } from '@aws-amplify/api-graphql';
 Amplify.configure(config);
-=======
-import React, { useState, useEffect } from 'react'; // React library for building the component and using hooks.
-import Navbar from '../../Navbar'; // Navigation bar component displayed on all pages.
-import ProfileStyle from './ProfilePage.module.css'; // CSS module for styling the profile page.
-import ProfileRecipeCard from './ProfileRecipeCard'; // Component for displaying a recipe card on the profile.
-import { Amplify } from 'aws-amplify'; // AWS Amplify for backend integration.
-import { withAuthenticator } from '@aws-amplify/ui-react'; // Amplify UI component for wrapping the profile with authentication.
-import '@aws-amplify/ui-react/styles.css'; // Default styles for Amplify UI components.
-import config from '../../amplifyconfiguration.json'; // Configuration for initializing Amplify.
-import { listFavoriteRecipes } from '../../graphql/graphql-operations'; // GraphQL operation to fetch favorite recipes.
-import { generateClient } from "aws-amplify/api"; // Helper function to generate an Amplify API client.
-import { graphqlOperation } from '@aws-amplify/api-graphql'; // Helper for constructing GraphQL operations.
-Amplify.configure(config); // Configure Amplify with settings from the configuration file.
->>>>>>> 432dd1e4288c3bcb3672690b3943b4587e7878d7
 
 const client = generateClient();
 /**

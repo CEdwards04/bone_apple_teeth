@@ -9,15 +9,9 @@
  *        communication with visitors.
  *********************************************/
 
-<<<<<<< HEAD:src/Pages/ContactPage/Contact.js
 import React from 'react';
 import './Contact.css';
 import Navbar from '../../Components/Navbar';
-=======
-import React from 'react'; // Import React for component development.
-import './Contact.css'; // Specific styles for the Contact component.
-import Navbar from './Navbar'; // Navigation bar component for consistent site navigation.
->>>>>>> 432dd1e4288c3bcb3672690b3943b4587e7878d7:src/Contact.js
 
 /**
  * Represents the contact page on the website. This component renders a navigation bar,
