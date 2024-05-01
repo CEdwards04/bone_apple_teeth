@@ -1,6 +1,6 @@
 /*********************************************
- * @author
- * @brief
+ * @author Kaleb Lawrence
+ * @brief The file for the login page form
  *********************************************/
 
 function setFormMessage(formElement, type, message){

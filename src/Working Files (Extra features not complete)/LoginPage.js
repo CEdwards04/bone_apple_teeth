@@ -1,6 +1,6 @@
 /*********************************************
- * @author
- * @brief
+ * @author Kaleb Lawrence
+ * @brief The actual login page file that calls the form
  *********************************************/
 
 import React, { useState } from 'react';

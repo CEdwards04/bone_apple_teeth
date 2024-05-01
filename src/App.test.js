@@ -1,3 +1,8 @@
+/*********************************************
+ * @author Auto Generated
+ * @brief Auto-generated file for react app
+ *********************************************/
+
 import { render, screen } from '@testing-library/react';
 import App from './App';
 

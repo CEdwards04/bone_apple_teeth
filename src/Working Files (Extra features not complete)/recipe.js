@@ -1,6 +1,6 @@
 /*********************************************
- * @author
- * @brief
+ * @author Jackson
+ * @brief Basic page skeleton for the individual recipe pages
  *********************************************/
 import Navbar from './Navbar';
 

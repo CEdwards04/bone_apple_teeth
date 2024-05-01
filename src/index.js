@@ -1,6 +1,6 @@
 /*********************************************
  * @author Aidan Lett
- * @brief
+ * @brief Auto-generated index.js for react app
  *********************************************/
 
 import React from 'react';
